@@ -1,7 +1,7 @@
 #include <string>
 #include "Student.h"
 
-Student::Student(const string &name, const string &id) : name(name),id(id) {}
+Student::Student(const string &name, const string &id,Schedule &schedule_) : name(name),id(id), schedule(schedule_) {}
 
 const string &Student::getName() const {
     return name;

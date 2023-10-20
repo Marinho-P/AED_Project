@@ -9,8 +9,9 @@ class Lecture{
         int startHour;
         string type;
         string weekday;
+        string UC_Code;
     public:
-        Lecture(int duration, int startHour, const string &type, const string &weekday);
+        Lecture(int duration, int startHour, const string &type, const string &weekday, const string &Uc_Code);
         int getDuration() const;
         void setDuration(int duration);
         int getStartHour() const;
@@ -19,6 +20,7 @@ class Lecture{
         void setType(const string &type);
         const string &getWeekday() const;
         void setWeekday(const string &weekday);
+        const string &getUcCode() const;
 };
 
 #endif //AED_PROJECT_AULA_H

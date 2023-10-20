@@ -1,22 +1,22 @@
 #include "Class_UC.h"
 
+
 const string &Class_UC::getUcCode() const {
-    return UC_Code;
+    return ucCode;
 }
 
-const string &Class_UC::getClassCode() const {
-    return Class_Code;
+Class_UC::Class_UC(const string &ucCode_ ) {
+    ucCode = ucCode_;
 }
 
-void Class_UC::setClassCode(const string &classCode) {
-    Class_Code = classCode;
+void Class_UC::addClassCode(const string &classCode) {
+    classCodes.insert(classCode);
 }
 
-void Class_UC::setUcCode(const string &ucCode) {
-    UC_Code = ucCode;
+bool Class_UC::operator<(const Class_UC& other) const {
+    return ucCode < other.getUcCode();
 }
 
-Class_UC::Class_UC(const string &ucCode, const string &classCode) {
-    Class_Code = classCode;
-    UC_Code = ucCode;
+const set<string> &Class_UC::getClassCodes() const{
+    return classCodes;
 }

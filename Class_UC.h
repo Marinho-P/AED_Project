@@ -1,19 +1,20 @@
 #ifndef AED_PROJECT_UC_H
 #define AED_PROJECT_UC_H
 #include <string>
+#include <set>
+
 using namespace std;
 
 class Class_UC{
     private:
-        string UC_Code;
-        string Class_Code;
-
+        string ucCode;
+        set<string> classCodes;
     public:
-        Class_UC(const string &ucCode, const string &classCode);
+        Class_UC(const string &ucCode_);
         const string &getUcCode() const;
-        const string &getClassCode() const;
-        void setUcCode(const string &ucCode);
-        void setClassCode(const string &classCode);
+        void addClassCode(const string &ucCode);
+        bool operator<(const Class_UC& other) const;
+        const set<string> &getClassCodes() const;
 };
 
 #endif //AED_PROJECT_UC_H
