@@ -20,3 +20,11 @@ bool Class_UC::operator<(const Class_UC& other) const {
 const set<string> &Class_UC::getClassCodes() const{
     return classCodes;
 }
+
+void Class_UC::printUcAndClasses() {
+    cout << "Uc_code: " << ucCode << endl;
+    cout << "Class codes:" << endl;
+    for (const string& classCode:classCodes ) {
+        cout << classCode << endl;
+    }
+}

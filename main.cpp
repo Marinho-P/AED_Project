@@ -1,13 +1,11 @@
 #include "DataProcessor.h"
 
 int main(){
-    std::cout << "Hello, World!" << std::endl;
-    std::ifstream inputFile("ball.txt");
-    if (inputFile.is_open()) {
-        // File opened successfully
-    } else {
-        std::cerr << "Error opening the CSV file." << std::endl;
-        return 1;
+    DataProcessor parseData;
+    parseData.classes_per_uc();
+    set<Class_UC> UcAndClasses = parseData.getClassUc();
+    for(auto ucClass: UcAndClasses){
+        ucClass.printUcAndClasses();
     }
-    return 0;
+
 }

@@ -2,6 +2,7 @@
 #define AED_PROJECT_UC_H
 #include <string>
 #include <set>
+#include <iostream>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ class Class_UC{
         void addClassCode(const string &ucCode);
         bool operator<(const Class_UC& other) const;
         const set<string> &getClassCodes() const;
+        void printUcAndClasses();
 };
 
 #endif //AED_PROJECT_UC_H
