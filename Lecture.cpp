@@ -1,5 +1,5 @@
 #include "Lecture.h"
-Lecture::Lecture(int duration, int startHour, const string &type, const string &weekday,const string &UcCode) {
+Lecture::Lecture(const string &duration,const string &startHour, const string &type, const string &weekday,const string &UcCode) {
     this->duration = duration;
     this->weekday = weekday;
     this->type = type;
@@ -7,16 +7,8 @@ Lecture::Lecture(int duration, int startHour, const string &type, const string &
     UC_Code = UcCode;
 }
 
-int Lecture::getDuration() const {
-    return duration;
-}
-
 void Lecture::setDuration(int duration) {
     Lecture::duration = duration;
-}
-
-int Lecture::getStartHour() const {
-    return startHour;
 }
 
 void Lecture::setStartHour(int startHour) {
@@ -41,4 +33,8 @@ void Lecture::setWeekday(const string &weekday) {
 
 const string &Lecture::getUcCode() const{
     return UC_Code;
+}
+
+bool Lecture::operator<(const Lecture& other) const{
+    return startHour < other.startHour;
 }
