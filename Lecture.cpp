@@ -1,9 +1,10 @@
 #include "Lecture.h"
-Lecture::Lecture(int duration, int startHour, const string &type, const string &weekday) {
+Lecture::Lecture(int duration, int startHour, const string &type, const string &weekday,const string &UcCode) {
     this->duration = duration;
     this->weekday = weekday;
     this->type = type;
     this-> startHour = startHour;
+    UC_Code = UcCode;
 }
 
 int Lecture::getDuration() const {
@@ -36,4 +37,8 @@ const string &Lecture::getWeekday() const {
 
 void Lecture::setWeekday(const string &weekday) {
     Lecture::weekday = weekday;
+}
+
+const string &Lecture::getUcCode() const{
+    return UC_Code;
 }
