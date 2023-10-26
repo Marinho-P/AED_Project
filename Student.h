@@ -11,7 +11,7 @@ class Student {
         string id;
         set<Class_UC> classesUcs;
     public:
-        Student(const string &name, const string &id,const set<Class_UC> &classesUcs);
+        Student(const string &name = "", const string &id = "",const set<Class_UC> &classesUcs = set<Class_UC>());
         const string &getName() const;
         const string &getId() const;
         void setName(const string &name);

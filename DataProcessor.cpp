@@ -41,6 +41,7 @@ void DataProcessor::students_classes() {
     string header;
     getline(file,header);
     string line;
+    Student lastSeenStudent;
     while (getline(file,line)){
         istringstream separate_comma(line);
         string ucCode,classCode,studentName,studentCode;
@@ -48,15 +49,14 @@ void DataProcessor::students_classes() {
         getline(separate_comma,studentCode,',');
         getline(separate_comma,ucCode,',');
         getline(separate_comma,classCode,',');
-        Student testStudent = Student(studentName,studentCode);
-        auto it = find(students.begin(),students.end(),testStudent) ;
-        if (it != students.end()){
-            *it.addClassUc(Class_UC(classCode,ucCode));
+        if (lastSeenStudent.getId() == studentCode){
+            lastSeenStudent.addClassUc(Class_UC(classCode,ucCode));
+        } else{
+            students.insert(lastSeenStudent);
+            Student newStudent =  Student(studentName,studentCode);
+            newStudent.addClassUc(Class_UC(classCode,ucCode));
+            lastSeenStudent = newStudent;
         }
-        else{
-            set<Class_UC> studentClassesUc;
-            Student student = Student(studentName,studentCode,studentClassesUc);
-            students.insert(student);
-        }
+
     }
 }
