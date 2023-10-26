@@ -12,13 +12,14 @@
 #include "Class_UC.h"
 using namespace std;
 
-class DataProcessor {
+class DataProcessor{
     private:
         set<Student> students;
         set<Class_UC> classes_uc;
     public:
         DataProcessor();
         void classes_per_uc();
+        void students_classes();
         set<Class_UC> getClassUc();
 };
 

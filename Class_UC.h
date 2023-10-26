@@ -9,14 +9,14 @@ using namespace std;
 class Class_UC{
     private:
         string ucCode;
-        set<string> classCodes;
+        string classCode;
     public:
-        Class_UC(const string &ucCode_);
+        Class_UC(const string &classCode_,const string &ucCode_);
         const string &getUcCode() const;
-        void addClassCode(const string &ucCode);
-        bool operator<(const Class_UC& other) const;
-        const set<string> &getClassCodes() const;
-        void printUcAndClasses();
+        void setUcCode(const string &ucCode);
+        const string &getClassCode() const;
+        void setClassCode(const string &classCode);
+        bool operator<(const Class_UC &other) const;
 };
 
 #endif //AED_PROJECT_UC_H

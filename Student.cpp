@@ -1,7 +1,6 @@
-#include <string>
 #include "Student.h"
 
-Student::Student(const string &name, const string &id,Schedule &schedule_) : name(name),id(id), schedule(schedule_) {}
+Student::Student(const string &name, const string &id,const set<Class_UC> &classesUcs) : name(name),id(id),classesUcs(classesUcs) {}
 
 const string &Student::getName() const {
     return name;
@@ -17,4 +16,17 @@ void Student::setName(const string &name) {
 
 void Student::setId(const string &id) {
     Student::id = id;
+}
+
+
+bool Student::operator<(const Student &other) const{
+    return id < other.id;
+}
+
+bool Student::operator==(const Student &other) const {
+    return id == other.id;
+}
+
+void Student::addClassUc(const Class_UC &classUc){
+    classesUcs.insert(classUc);
 }
