@@ -7,8 +7,6 @@
 
 
 
-
-
 void Schedule::printSchedule() const { // word (ucCode-type) in each slot must be [0,13] characters long
     try {
         vector<Lecture> toPrint = lectures;
@@ -39,7 +37,9 @@ void Schedule::printSchedule() const { // word (ucCode-type) in each slot must b
     }
 
 }
+
 Schedule::Schedule(const string &classCode) {
+
     this->classCode = classCode;
 }
 

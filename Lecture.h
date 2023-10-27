@@ -11,9 +11,11 @@ class Lecture{
         string weekday;
         string UC_Code;
     public:
+
         Lecture(const float &duration,const float &startHour, const string &type, const string &weekday, const string &Uc_Code);
         void setDuration(float duration);
         void setStartHour(float startHour);
+
         const string &getType() const;
         const float &getDuration() const;
         void setType(const string &type);

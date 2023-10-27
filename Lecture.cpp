@@ -7,6 +7,7 @@ Lecture::Lecture(const float &duration,const float &startHour, const string &typ
     UC_Code = UcCode;
 }
 
+
 void Lecture::setDuration(float duration) {
     Lecture::duration = duration;
 }
@@ -14,6 +15,7 @@ void Lecture::setDuration(float duration) {
 void Lecture::setStartHour(float startHour) {
     Lecture::startHour = startHour;
 }
+
 
 const string &Lecture::getType() const {
     return type;

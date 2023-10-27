@@ -23,8 +23,13 @@ class DataProcessor{
         void classes_per_uc();
         void classes();
         void students_classes();
-        set<Class_UC> getClassUc();
-        set<Schedule> getSchedule();
+        const set<Student> &getStudents() const;
+        const set<Class_UC> &getClassUc() const;
+        const set<Schedule> &getSchedule() const;
+        void studentsInUc(int n);
+        void studentsInClass(const string& classCode);
+        void studentsInCourse(string course);
+        void studentsInYear(const string &year);
 };
 
 
