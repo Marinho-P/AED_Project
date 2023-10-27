@@ -12,8 +12,6 @@ class Lecture{
         string UC_Code;
     public:
         Lecture(const string &duration,const string &startHour, const string &type, const string &weekday, const string &Uc_Code);
-        void setDuration(int duration);
-        void setStartHour(int startHour);
         const string &getType() const;
         void setType(const string &type);
         const string &getWeekday() const;

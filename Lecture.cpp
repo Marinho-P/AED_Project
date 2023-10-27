@@ -7,13 +7,6 @@ Lecture::Lecture(const string &duration,const string &startHour, const string &t
     UC_Code = UcCode;
 }
 
-void Lecture::setDuration(int duration) {
-    Lecture::duration = duration;
-}
-
-void Lecture::setStartHour(int startHour) {
-    Lecture::startHour = startHour;
-}
 
 const string &Lecture::getType() const {
     return type;

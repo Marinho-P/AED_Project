@@ -79,16 +79,42 @@ void DataProcessor::classes(){
     }
 }
 
-int DataProcessor::studentsInUc(int n) {
+void DataProcessor::studentsInUc(int n) {
     int res = 0;
     for (const Student& student: students){
         if (student.getClassesUcs().size() >= n){
             res++;
         }
     }
-    return res;
+    cout << res << endl;
 }
 
 const set<Student> &DataProcessor::getStudents() const {
     return students;
+}
+
+void DataProcessor::studentsInClass(const string& classCode) {
+    cout << "Students in class " << classCode << " are:" << endl;
+    vector<Student> temp;
+    for (const Student& student:students){
+        for (const Class_UC& classUc:student.getClassesUcs()){
+            if (classCode == classUc.getClassCode()){
+                temp.push_back(student);
+                break;
+            }
+        }
+    }
+    sort(temp.begin(),temp.end(),[](const Student& a ,const Student& b){return a.getName()<b.getName();});
+    if (!temp.empty()){
+        cout << "------------------------------" << endl;
+        cout << "Name / ID" << endl;
+        cout << "------------------------------" << endl;
+        for (const Student& student : temp){
+            cout << student.getName() << " / " << student.getId() << endl;
+        }
+        cout << "------------------------------" << endl;
+    }
+    else {
+        cout << "No students in this class." << endl;
+    }
 }

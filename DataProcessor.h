@@ -26,7 +26,8 @@ class DataProcessor{
         const set<Student> &getStudents() const;
         const set<Class_UC> &getClassUc() const;
         const set<Schedule> &getSchedule() const;
-        int studentsInUc(int n);
+        void studentsInUc(int n);
+        void studentsInClass(const string& classCode);
 };
 
 
