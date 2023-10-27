@@ -9,4 +9,6 @@ int main(){
     }
     parseData.studentsInUc(5);
     parseData.studentsInClass("1LEIC04");
+    parseData.studentsInCourse("leiC");
+    parseData.studentsInYear("2019");
 }

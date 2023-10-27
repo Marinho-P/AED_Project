@@ -28,6 +28,8 @@ class DataProcessor{
         const set<Schedule> &getSchedule() const;
         void studentsInUc(int n);
         void studentsInClass(const string& classCode);
+        void studentsInCourse(string course);
+        void studentsInYear(const string &year);
 };
 
 

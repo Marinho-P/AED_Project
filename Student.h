@@ -20,6 +20,7 @@ class Student {
         bool operator<(const Student &other) const;
         bool operator==(const Student &other) const;
         void addClassUc(const Class_UC &classUc);
+        string getYear() const;
 };
 
 #endif
