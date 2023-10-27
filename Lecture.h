@@ -5,21 +5,23 @@ using namespace std;
 
 class Lecture{
     private:
-        string duration;
-        string startHour;
+        float duration;
+        float startHour;
         string type;
         string weekday;
         string UC_Code;
     public:
-        Lecture(const string &duration,const string &startHour, const string &type, const string &weekday, const string &Uc_Code);
-        void setDuration(int duration);
-        void setStartHour(int startHour);
+        Lecture(const float &duration,const float &startHour, const string &type, const string &weekday, const string &Uc_Code);
+        void setDuration(float duration);
+        void setStartHour(float startHour);
         const string &getType() const;
+        const float &getDuration() const;
         void setType(const string &type);
         const string &getWeekday() const;
         void setWeekday(const string &weekday);
         const string &getUcCode() const;
         bool operator<(const Lecture& other) const;
+        const float &getStartHour() const;
 };
 
 #endif //AED_PROJECT_AULA_H

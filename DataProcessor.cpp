@@ -57,13 +57,20 @@ void DataProcessor::classes(){
     string line;
     while (getline(file,line)){
         istringstream separate_comma(line);
-        string classCode,ucCode,weekday,startHour,duration,type;
-        getline(separate_comma,classCode,',');
-        getline(separate_comma,ucCode,',');
-        getline(separate_comma,weekday,',');
-        getline(separate_comma,startHour,',');
-        getline(separate_comma,duration,',');
-        getline(separate_comma,type,',');
+        string classCode,ucCode,weekday,type;
+        float duration,startHour;
+        separate_comma >> classCode;
+        separate_comma.ignore(1);
+        separate_comma >>  ucCode;
+        separate_comma.ignore(1);
+        separate_comma >> weekday;
+        separate_comma.ignore(1);
+        separate_comma >> startHour;
+        separate_comma.ignore(1);
+        separate_comma >> duration;
+        separate_comma.ignore(1);
+        separate_comma >> type;
+        separate_comma.ignore(1);
         Lecture lecture = Lecture(duration,startHour,type,weekday,ucCode);
         auto it = schedules.find(Schedule(classCode));
         if (it != schedules.end()) {

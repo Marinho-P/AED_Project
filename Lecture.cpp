@@ -1,17 +1,17 @@
 #include "Lecture.h"
-Lecture::Lecture(const string &duration,const string &startHour, const string &type, const string &weekday,const string &UcCode) {
-    this->duration = duration;
+Lecture::Lecture(const float &duration,const float &startHour, const string &type, const string &weekday,const string &UcCode) {
+    this->duration = duration; //float
     this->weekday = weekday;
     this->type = type;
-    this-> startHour = startHour;
+    this-> startHour = startHour; // float
     UC_Code = UcCode;
 }
 
-void Lecture::setDuration(int duration) {
+void Lecture::setDuration(float duration) {
     Lecture::duration = duration;
 }
 
-void Lecture::setStartHour(int startHour) {
+void Lecture::setStartHour(float startHour) {
     Lecture::startHour = startHour;
 }
 
@@ -37,4 +37,11 @@ const string &Lecture::getUcCode() const{
 
 bool Lecture::operator<(const Lecture& other) const{
     return startHour < other.startHour;
+}
+const float &Lecture::getDuration() const{
+    return duration;
+}
+
+const float &Lecture::getStartHour() const {
+    return startHour;
 }
