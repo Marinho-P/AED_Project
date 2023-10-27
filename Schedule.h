@@ -11,11 +11,16 @@ class Schedule {
         vector<Lecture> lectures;
         string classCode;
     public:
+
+        Schedule(vector<Lecture> schedule);
+        void printSchedule();
+
         Schedule(const string &classCode = "");
         const vector<Lecture> &getSchedule() const;
         const string &getClassCode() const;
         void addLecture(Lecture lecture);
         bool operator<(const Schedule& other) const;
+
 };
 
 #endif //AED_PROJECT_SCHEDULE_H
