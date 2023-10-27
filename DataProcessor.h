@@ -10,17 +10,21 @@
 #include <algorithm>
 #include "Student.h"
 #include "Class_UC.h"
+#include "Lecture.h"
 using namespace std;
 
 class DataProcessor{
     private:
         set<Student> students;
         set<Class_UC> classes_uc;
+        set<Schedule> schedules;
     public:
         DataProcessor();
         void classes_per_uc();
+        void classes();
         void students_classes();
         set<Class_UC> getClassUc();
+        set<Schedule> getSchedule();
 };
 
 
