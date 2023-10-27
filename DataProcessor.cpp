@@ -7,11 +7,11 @@ void DataProcessor::classes_per_uc() {
 
 }
 
-set<Class_UC> DataProcessor::getClassUc(){
+const set<Class_UC> &DataProcessor::getClassUc() const{
     return classes_uc;
 }
 
-set<Schedule> DataProcessor::getSchedule(){
+const set<Schedule> &DataProcessor::getSchedule() const{
     return schedules;
 }
 
@@ -77,4 +77,18 @@ void DataProcessor::classes(){
             schedules.insert(newSchedule);
         }
     }
+}
+
+int DataProcessor::studentsInUc(int n) {
+    int res = 0;
+    for (const Student& student: students){
+        if (student.getClassesUcs().size() >= n){
+            res++;
+        }
+    }
+    return res;
+}
+
+const set<Student> &DataProcessor::getStudents() const {
+    return students;
 }

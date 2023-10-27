@@ -7,4 +7,5 @@ int main(){
     for (auto ball :parseData.getSchedule()){
         cout << ball.getClassCode() << endl;
     }
+    cout << parseData.studentsInUc(5) << endl;
 }
