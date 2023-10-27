@@ -10,6 +10,7 @@ class Schedule {
         vector<Lecture> schedule;
     public:
         Schedule(vector<Lecture> schedule);
+        void printSchedule();
 };
 
 
