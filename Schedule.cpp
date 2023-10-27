@@ -59,20 +59,20 @@ bool Schedule::operator<(const Schedule &other) const {
     return classCode < other.classCode;
 }
 
-string Schedule::getSlotString(float time, string weekday, vector<Lecture> toPrint) {
-    int i = 0;
+//string Schedule::getSlotString(float time, string weekday, vector<Lecture> toPrint) {
+    //int i = 0;
 
-    while(weekday != toPrint[i].getWeekday()){
-        i++;
-        if(time != toPrint[i].getStartHour()){
-            return "             ";
-        }
-    }
+    //while(weekday != toPrint[i].getWeekday()){
+        //i++;
+        //if(time != toPrint[i].getStartHour()){
+        //    return "             ";
+        //}
+   // }
     //int linesoccupied =  1 + 2*(toPrint[i].getStartHour() / 0.5;
 
 
     //return
-}
+//}
 string Schedule::timeFtS(float time) const{
     float remainder = time - (int)time;
     float hours = (int)time;
