@@ -10,27 +10,36 @@
 void Schedule::printSchedule() const { // word (ucCode-type) in each slot must be [0,13] characters long
     try {
         vector<Lecture> toPrint = lectures;
-        sort(toPrint.begin(), toPrint.end()); // sorted by Start Time
         float time = 8.0;
         vector<string> daysoftheweek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+        vector<int> currentLine = {0,0,0,0,0};
+        vector<int> linesOccupied = {-1,-1,-1,-1,-1};
         cout << "+-------------+-------------+-------------+-------------+-------------+-------------+\n" <<
                 "|             |   Monday    |   Tuesday   |  Wednesday  |  Thursday   |    Friday   |\n" <<
                 "+-------------+-------------+-------------+-------------+-------------+-------------+\n";
 
 
-        for (size_t i = 0; i < 25; i++) {
+        for (size_t k = 0; k < 48; k++) {
 
-            cout << "|" << centerString(timeFtS(time)) << "|";
+            bool inSlot = !(k%2);
+            if(inSlot) {
+                cout << "|" << centerString(timeFtS(time) + "-" + timeFtS(time+0.5))   << "|";
+            }
+            else{
+                cout << "|-------------|";
+            }
+
+
             for (size_t i = 0; i < 5; i++) {
-                cout << "             |";
+                sort(toPrint.begin(), toPrint.end()); // sorted by Start Time
+
+                cout << centerString(getSlotString(time,daysoftheweek[i],toPrint,currentLine[i],linesOccupied[i],inSlot)) + "|";
             }
             cout << "\n";
-            cout << "+-------------+";
-            for (size_t i = 0; i < 5; i++) {
-                cout << "-------------+";
+            if(!(inSlot)){
+                time += 0.5;
             }
-            cout << "\n";
-            time += 0.5;
+
         }
     }catch (const out_of_range& error){
             cerr << error.what() << endl;
@@ -59,20 +68,61 @@ bool Schedule::operator<(const Schedule &other) const {
     return classCode < other.classCode;
 }
 
-//string Schedule::getSlotString(float time, string weekday, vector<Lecture> toPrint) {
-    //int i = 0;
+string Schedule::getSlotString(float time, string weekday, vector<Lecture> &toPrint, int &currentLine, int &linesOccupied ,bool inSlot ) const{
+    int i = 0;
+    if(toPrint.empty()){
+        if(inSlot){
+            return "             ";
+        }
+        else{
+            return "-------------";
+        }
+    }
+    while(weekday != toPrint[i].getWeekday()){
+        i++;
 
-    //while(weekday != toPrint[i].getWeekday()){
-        //i++;
-        //if(time != toPrint[i].getStartHour()){
-        //    return "             ";
-        //}
-   // }
-    //int linesoccupied =  1 + 2*(toPrint[i].getStartHour() / 0.5;
+        if(time != toPrint[i].getStartHour()){
+            if(inSlot) {
+                return "             ";
+            }
+            else{
+                return "-------------";
+            }
+
+        }
+    }
+    if(linesOccupied == currentLine){
+        toPrint.erase(next(toPrint.begin(),i));
+        linesOccupied = -1;
+        currentLine = 0;
+        return "-------------";
+
+    }
+
+    if(linesOccupied == -1){
+        linesOccupied = 2*(toPrint[i].getDuration() / 0.5) - 1 ;
+        currentLine = 0;
+    }
+    if(!(inSlot)) {
+        toPrint[i].setStartHour(toPrint[i].getStartHour() + 0.5);
+    }
+    if( currentLine == (linesOccupied / 2)){
+        currentLine++;
+        return toPrint[i].getUcCode()+ "-" + toPrint[i].getType();
+    }
+    else{
+        currentLine++;
+
+        return "             ";
+
+    }
 
 
-    //return
-//}
+
+
+
+
+}
 string Schedule::timeFtS(float time) const{
     float remainder = time - (int)time;
     float hours = (int)time;

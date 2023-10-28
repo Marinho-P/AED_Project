@@ -1,7 +1,10 @@
 #include "DataProcessor.h"
 
 
-DataProcessor::DataProcessor(){}
+DataProcessor::DataProcessor(){
+    students_classes();
+    classes();
+}
 
 void DataProcessor::classes_per_uc() {
 
@@ -11,7 +14,7 @@ const set<Class_UC> &DataProcessor::getClassUc() const{
     return classes_uc;
 }
 
-const set<Schedule> &DataProcessor::getSchedule() const{
+const set<Schedule> &DataProcessor::getSchedules() const{
     return schedules;
 }
 

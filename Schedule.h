@@ -12,7 +12,7 @@ class Schedule {
         string classCode;
     public:
         void printSchedule() const;
-        string getSlotString(string time, string weekday,vector<Lecture> toPrint );
+        string getSlotString(float time, string weekday,vector<Lecture> &toPrint,int &currentLine, int &linesOccupied, bool inSlot ) const;
         string timeFtS(float time) const;
         Schedule(const string &classCode = "");
         const vector<Lecture> &getSchedule() const;
