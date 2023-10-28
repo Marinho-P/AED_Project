@@ -11,7 +11,7 @@ class Class_UC{
         string ucCode;
         string classCode;
     public:
-        Class_UC(const string &classCode_,const string &ucCode_);
+        Class_UC(const string &classCode_ ,const string &ucCode_);
         const string &getUcCode() const;
         void setUcCode(const string &ucCode);
         const string &getClassCode() const;

@@ -8,6 +8,7 @@
 #include <string>
 #include <set>
 #include <algorithm>
+#include <unordered_map>
 #include "Student.h"
 #include "Class_UC.h"
 #include "Lecture.h"
@@ -16,7 +17,7 @@ using namespace std;
 class DataProcessor{
     private:
         set<Student> students;
-        set<Class_UC> classes_uc;
+        set<Class_UC> existingClassesUc;
         set<Schedule> schedules;
     public:
         DataProcessor();
@@ -30,6 +31,7 @@ class DataProcessor{
         void studentsInClass(const string& classCode);
         void studentsInCourse(string course);
         void studentsInYear(const string &year);
+        void ucGreatestNumberStudents();
 };
 
 
