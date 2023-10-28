@@ -212,3 +212,12 @@ void DataProcessor::ucGreatestNumberStudents() {
         cout << "-----------------------------------" << endl;
     }
 }
+
+void DataProcessor::scheduleOfClass(const string &classCode) {
+    for(const Schedule& schedule:schedules){
+        if (schedule.getClassCode() == classCode){
+            schedule.printSchedule();
+            break;
+        }
+    }
+}

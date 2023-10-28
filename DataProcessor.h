@@ -32,6 +32,7 @@ class DataProcessor{
         void studentsInCourse(string course);
         void studentsInYear(const string &year);
         void ucGreatestNumberStudents();
+        void scheduleOfClass(const string &classCode);
 };
 
 
