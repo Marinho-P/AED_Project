@@ -7,11 +7,21 @@ DataProcessor::DataProcessor(){
 }
 
 void DataProcessor::classes_per_uc() {
-
+    ifstream file("classes_per_uc.csv");
+    string header;
+    getline(file,header);
+    string line;
+    while (getline(file,line)){
+        istringstream separated_comma(line);
+        string classCode , ucCode;
+        getline(separated_comma,ucCode,',');
+        getline(separated_comma,classCode,',');
+        existingClassesUc.insert(Class_UC(classCode,ucCode));
+    }
 }
 
 const set<Class_UC> &DataProcessor::getClassUc() const{
-    return classes_uc;
+    return existingClassesUc;
 }
 
 const set<Schedule> &DataProcessor::getSchedules() const{
@@ -161,5 +171,56 @@ void DataProcessor::studentsInYear(const string &year) {
         cout << "-------------------------------------" << endl;
         cout << "There are no students from that year." << endl;
         cout << "-------------------------------------" << endl;
+    }
+}
+
+void DataProcessor::ucGreatestNumberStudents() {
+    unordered_map<string,int> numberUcStudents;
+    for (const Student& student:students){
+        for (const Class_UC& classesUc :student.getClassesUcs() ){
+            numberUcStudents[classesUc.getUcCode()]++;
+        }
+    }
+    int maxNumberStudent = INT_MIN;
+    vector<string> ucMax;
+    for (const auto& pair:numberUcStudents){
+        if (pair.second > maxNumberStudent){
+            maxNumberStudent = pair.second;
+            ucMax.clear();
+            ucMax.push_back(pair.first);
+        }
+        else if (pair.second == maxNumberStudent){
+            ucMax.push_back(pair.first);
+        }
+    }
+    if (ucMax.size() > 1){
+        int lastIteration = (int)ucMax.size()-1;
+        cout << "-----------------------------------" << endl;
+        cout << "The UCs with the most students are: " << endl;
+        cout << "-----------------------------------" << endl;
+        for (const string& ucs :ucMax){
+            if (!lastIteration--){
+                cout << ucs << endl;
+            }
+            cout << ucs <<  "/";
+        }
+        cout << "Having " << maxNumberStudent << " number of students." << endl;
+        cout << "-----------------------------------" << endl;
+    } else{
+        cout << "---------------------------------" << endl;
+        cout << "The UC with the most students is: " << endl;
+        cout << "---------------------------------" << endl;
+        cout << ucMax.front() << endl;
+        cout << "Having " << maxNumberStudent << " enrolled students." << endl;
+        cout << "-----------------------------------" << endl;
+    }
+}
+
+void DataProcessor::scheduleOfClass(const string &classCode) {
+    for(const Schedule& schedule:schedules){
+        if (schedule.getClassCode() == classCode){
+            schedule.printSchedule();
+            break;
+        }
     }
 }
