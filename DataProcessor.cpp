@@ -59,18 +59,14 @@ void DataProcessor::classes(){
         istringstream separate_comma(line);
         string classCode,ucCode,weekday,type;
         float duration,startHour;
-        separate_comma >> classCode;
-        separate_comma.ignore(1);
-        separate_comma >>  ucCode;
-        separate_comma.ignore(1);
-        separate_comma >> weekday;
-        separate_comma.ignore(1);
+        getline(separate_comma, classCode, ',');
+        getline(separate_comma, ucCode, ',');
+        getline(separate_comma, weekday, ',');
         separate_comma >> startHour;
-        separate_comma.ignore(1);
+        separate_comma.ignore();
         separate_comma >> duration;
-        separate_comma.ignore(1);
+        separate_comma.ignore();
         separate_comma >> type;
-        separate_comma.ignore(1);
         Lecture lecture = Lecture(duration,startHour,type,weekday,ucCode);
         auto it = schedules.find(Schedule(classCode));
         if (it != schedules.end()) {
@@ -112,7 +108,6 @@ void printStudents(vector<Student> temp){
 }
 
 void DataProcessor::studentsInClass(const string& classCode) {
-    cout << "Students in class " << classCode << " are:" << endl;
     vector<Student> temp;
     for (const Student& student:students){
         for (const Class_UC& classUc:student.getClassesUcs()){
@@ -123,38 +118,45 @@ void DataProcessor::studentsInClass(const string& classCode) {
         }
     }
     if (!temp.empty()){
+        cout << "Students in class " << classCode << " are:" << endl;
         printStudents(temp);
     }
     else{
-        cout << "No students in this class." << endl;
+        cout << "------------------------------------" << endl;
+        cout << "There are no students in this class." << endl;
+        cout << "------------------------------------" << endl;
     }
 }
 
 void DataProcessor::studentsInCourse(string course) {
     transform(course.begin(), course.end(), course.begin(), ::toupper);
-    cout << "Students in course " << course << " are:" << endl;
     if (course == "LEIC") {
+        cout << "Students in course " << course << " are:" << endl;
         vector<Student> temp;
         copy(students.begin(),students.end(), back_inserter(temp));
         printStudents(temp);
     }
     else{
+        cout << "-------------------------------------" << endl;
         cout << "There are no students in that course." << endl;
+        cout << "-------------------------------------" << endl;
     }
 
 }
 void DataProcessor::studentsInYear(const string &year) {
     vector<Student> temp;
-    cout << "Students from " << year << " are:" << endl;
     for (const Student& student:students){
         if(year == student.getYear()){
             temp.push_back(student);
         }
     }
     if (!temp.empty()){
+        cout << "Students from " << year << " are:" << endl;
         printStudents(temp);
     }
     else{
+        cout << "-------------------------------------" << endl;
         cout << "There are no students from that year." << endl;
+        cout << "-------------------------------------" << endl;
     }
 }

@@ -12,8 +12,8 @@ int main(){
     for (auto ball :parseData.getSchedule()){
         cout << ball.getClassCode() << endl;
     }
-    parseData.studentsInUc(5);
-    parseData.studentsInClass("1LEIC04");
-    parseData.studentsInCourse("leiC");
-    parseData.studentsInYear("2019");
+    //parseData.studentsInUc(9);
+    //parseData.studentsInClass("1LEIC021");
+    //parseData.studentsInCourse("leiccc");
+    //parseData.studentsInYear("2018");
 }
