@@ -7,11 +7,14 @@ Menu::Menu(const Schedule &manager) {
     this->manager = manager;
 }
 
-int Menu::run(){
-    int Menu::run() {
+int Menu::run() {
         while (true) {
-            int option = optionsMenu();
+            int option = options();
             switch (option) {
+                case 0:{
+                    cout << ">> Exiting the menu." << endl;
+                    return 0;
+                }
                 case 1: {
                     checkUcShedule();
                     input();
@@ -53,12 +56,28 @@ int Menu::run(){
                     break;
                 }
                 case 9: {
-                    save;
+                    save();
                     return 0;
                 }
                 default:
-                    cout << ">> Submit a valid option." << endl;
+                    cout << ">> Invalid option try again." << endl;
             }
         }
     }
+int Menu::options() const{
+    int choice;
+    cout << "Menu Options:" << endl;
+    cout << "1. Check UC Schedule" << endl;
+    cout << "2. Check UC Students" << endl;
+    cout << "3. Check Class Schedule" << endl;
+    cout << "4. Check Class Students" << endl;
+    cout << "5. Check Student Schedule" << endl;
+    cout << "6. Requests" << endl;
+    cout << "7. Print Pending Requests" << endl;
+    cout << "8. Process Requests" << endl;
+    cout << "9. Save" << endl;
+    cout << "0. Exit" << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+    return choice;
 }
