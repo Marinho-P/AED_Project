@@ -3,10 +3,10 @@
 int main(){
     DataProcessor parseData;
 
-    for ( Schedule schedule: parseData.getSchedules()){
-
-        schedule.printSchedule();
-    }
+    //for ( const Schedule &schedule: parseData.getSchedules()){
+    //    cout << schedule.getClassCode() << endl;
+    //    schedule.printSchedule();
+    //}
 
     //parseData.students_classes();
     //parseData.classes();

@@ -67,7 +67,7 @@ int Menu::run() {
 int Menu::options() const{
     int choice;
     cout << "Menu Options:" << endl;
-    cout << "1. Check UC Schedule" << endl;
+    cout << "1. Check UC Schedule" << endl; // not possible? (overlapping schedules)
     cout << "2. Check UC Students" << endl;
     cout << "3. Check Class Schedule" << endl;
     cout << "4. Check Class Students" << endl;
@@ -81,3 +81,4 @@ int Menu::options() const{
     cin >> choice;
     return choice;
 }
+
