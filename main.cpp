@@ -3,13 +3,10 @@
 int main(){
     DataProcessor parseData;
     //parseData.getSchedules().begin()->printSchedule();
-
-
     for ( Schedule schedule: parseData.getSchedules()){
 
         schedule.printSchedule();
     }
-
     //parseData.students_classes();
     //parseData.classes();
     //cout << schedule.centerString("L.EIC001 - TP") << "\n";
@@ -27,7 +24,6 @@ int main(){
     //for (Schedule schedule:parseData.getSchedules()){
     //    schedule.printSchedule();
     //}
-
     //Menu menu(Schedule("2LEIC02"));
     //menu.run();
 }
