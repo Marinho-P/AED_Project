@@ -2,6 +2,8 @@
 
 int main(){
     DataProcessor parseData;
+    //parseData.getSchedules().begin()->printSchedule();
+
 
     //for ( const Schedule &schedule: parseData.getSchedules()){
     //    cout << schedule.getClassCode() << endl;
@@ -10,7 +12,6 @@ int main(){
 
     //parseData.students_classes();
     //parseData.classes();
-
     //cout << schedule.centerString("L.EIC001 - TP") << "\n";
     //parseData.students_classes();
     //parseData.classes();
@@ -23,7 +24,10 @@ int main(){
     //parseData.studentsInCourse("leiccc");
     //parseData.studentsInYear("2018");
     //parseData.ucGreatestNumberStudents();
-    //parseData.scheduleOfClass("1LEIC08");
-    //Menu menu(Schedule("1LEIC08"));
+    //for (Schedule schedule:parseData.getSchedules()){
+    //    schedule.printSchedule();
+    //}
+
+    //Menu menu(Schedule("2LEIC02"));
     //menu.run();
 }
