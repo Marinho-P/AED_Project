@@ -1,13 +1,10 @@
 #include "Menu.h"
 
 int main(){
-    //DataProcessor parseData;
-
+    DataProcessor parseData;
     //parseData.getSchedules().begin()->printSchedule();
-
     //parseData.students_classes();
     //parseData.classes();
-
     //cout << schedule.centerString("L.EIC001 - TP") << "\n";
     //parseData.students_classes();
     //parseData.classes();
@@ -20,7 +17,10 @@ int main(){
     //parseData.studentsInCourse("leiccc");
     //parseData.studentsInYear("2018");
     //parseData.ucGreatestNumberStudents();
-    //parseData.scheduleOfClass("1LEIC08");
-    //Menu menu(Schedule("1LEIC08"));
+    //for (Schedule schedule:parseData.getSchedules()){
+    //    schedule.printSchedule();
+    //}
+    parseData.scheduleOfClass("2LEIC02");
+    //Menu menu(Schedule("2LEIC02"));
     //menu.run();
 }
