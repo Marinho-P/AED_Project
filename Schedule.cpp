@@ -78,17 +78,18 @@ string Schedule::getSlotString(float time, string weekday, vector<Lecture> &toPr
             return "-------------";
         }
     }
-    while(weekday != toPrint[i].getWeekday()){
+    while(true){
+        if( weekday == toPrint[i].getWeekday() && time == toPrint[i].getStartHour()){
+            break;
+        }
         i++;
-
-        if(time != toPrint[i].getStartHour()){
+        if(i > 4){
             if(inSlot) {
                 return "             ";
             }
             else{
                 return "-------------";
             }
-
         }
     }
     if(linesOccupied == currentLine){

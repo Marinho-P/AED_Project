@@ -1,9 +1,12 @@
 #include "Menu.h"
 
 int main(){
-    //DataProcessor parseData;
+    DataProcessor parseData;
 
-    //parseData.getSchedules().begin()->printSchedule();
+    for ( Schedule schedule: parseData.getSchedules()){
+
+        schedule.printSchedule();
+    }
 
     //parseData.students_classes();
     //parseData.classes();
