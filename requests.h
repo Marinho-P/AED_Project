@@ -3,7 +3,7 @@
 #define AED2324_P03_REQUESTS_H
 #include "Student.h"
 #include <iostream>
-
+#include "Class_UC.h"
 
 class Request {
 public:

@@ -38,10 +38,3 @@ const set<Class_UC> &Student::getClassesUcs() const {
 string Student::getYear() const {
     return id.substr(0,4);
 }
-string Student::getUcId() const {
-    return ucId;
-}
-
-string Student::getClassId() const {
-    return classId;
-}

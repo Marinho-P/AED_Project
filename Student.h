@@ -23,8 +23,6 @@ public:
     bool operator==(const Student &other) const;
     void addClassUc(const Class_UC &classUc);
     string getYear() const;
-    string getUcId() const;
-    string getClassId() const;
 };
 
 #endif

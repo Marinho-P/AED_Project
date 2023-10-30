@@ -18,7 +18,7 @@ void Request::printHeader() const {
         }
     } else {
         for (const auto& uc : desiredUcClass) {
-            cout << "Requested class: " << uc.getUcId() << " - " << uc.getClassId();
+            cout << "Requested class: " << uc.getUcCode() << " - " << uc.getClassCode();
         }
     }
 }
