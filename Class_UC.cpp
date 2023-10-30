@@ -33,6 +33,6 @@ bool Class_UC::operator<(const Class_UC &other) const{
     return false;
 }
 
-bool Class_UC::operator==(const Class_UC &other) const {
-    return other.ucCode == ucCode && other.classCode == classCode;
-}
+//bool Class_UC::operator==(const Class_UC &other) const {
+//  return other.ucCode == ucCode && other.classCode == classCode;
+//}

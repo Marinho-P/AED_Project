@@ -35,7 +35,6 @@ public:
     void ucGreatestNumberStudents();
     void scheduleOfClass(const string &classCode);
     void scheduleOfStudent(const Student &student);
-    Student* findStudent(const string &studentId) const;
 };
 
 

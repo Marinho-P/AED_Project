@@ -10,8 +10,6 @@ private:
     string name;
     string id;
     set<Class_UC> classesUcs;
-    string ucId;
-    string classId;
 public:
     Student(const string &name = "", const string &id = "",const set<Class_UC> &classesUcs = set<Class_UC>());
     const string &getName() const;

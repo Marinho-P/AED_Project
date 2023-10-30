@@ -1,7 +1,7 @@
 #include "Menu.h"
 
 int main(){
-    Menu menu;
+    //Menu menu;
     DataProcessor parseData;
     //menu.run();
     //parseData.getSchedules().begin()->printSchedule();
@@ -11,14 +11,21 @@ int main(){
     //parseData.students_classes();
     //parseData.classes();
     //parseData.classes_per_uc();
-    auto it = parseData.getStudents().begin();
-    parseData.scheduleOfStudent(*it);
+    Student student = Student("202079292","Jose Teofilo");
+    student.addClassUc(Class_UC("L.EIC023","3LEIC14"));
+    student.addClassUc(Class_UC("L.EIC024","3LEIC08"));
+    const Student &ball = student;
+    parseData.scheduleOfStudent(ball);
     //parseData.studentsInUc(9);
     //parseData.studentsInClass("1LEIC021");
+    for (const Student &student: parseData.getStudents()){
+        cout << student.getName() << endl;
+        parseData.scheduleOfStudent(student);
+    }
     //parseData.studentsInCourse("leiccc");
     //parseData.studentsInYear("2018");
     //parseData.ucGreatestNumberStudents();
     //for (Schedule schedule:parseData.getSchedules()){
     //    schedule.printSchedule();
     //}
-}
+}}

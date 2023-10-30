@@ -17,7 +17,7 @@ public:
     const string &getClassCode() const;
     void setClassCode(const string &classCode);
     bool operator<(const Class_UC &other) const;
-    bool operator==(const Class_UC &other) const;
+    //bool operator==(const Class_UC &other) const;
 };
 
 #endif //AED_PROJECT_UC_H
