@@ -241,3 +241,34 @@ void DataProcessor::scheduleOfStudent(const Student &student) {
     }
     new_schedule.printSchedule();
 }
+
+void DataProcessor::printClassStudents(const UcClass& ucClass, const string& sortCriterion) const {
+    vector<Student> studentsInUcClass;
+
+    for (const Student& student : students) {
+        if (student.isInUcClass(ucClass)) {
+            studentsInUcClass.push_back(student);
+        }
+    }
+    if (sortCriterion == "alphabetical") {
+        sort(studentsInUcClass.begin(), studentsInUcClass.end(), [](const Student& a, const Student& b) {
+            return a.getName() < b.getName();
+        });
+    } else if (sortCriterion == "reverse alphabetical") {
+        sort(studentsInUcClass.begin(), studentsInUcClass.end(), [](const Student& a, const Student& b) {
+            return a.getName() > b.getName();
+        });
+    } else if (sortCriterion == "numerical") {
+        sort(studentsInUcClass.begin(), studentsInUcClass.end(), [](const Student& a, const Student& b) {
+            return a.getId() < b.getId();
+        });
+    } else if (sortCriterion == "reverse numerical") {
+        sort(studentsInUcClass.begin(), studentsInUcClass.end(), [](const Student& a, const Student& b) {
+            return a.getId() > b.getId();
+        });
+    }
+
+    for (const Student& student : studentsInUcClass) {
+        cout << student.getName() << " / " << student.getId() << endl;
+    }
+}

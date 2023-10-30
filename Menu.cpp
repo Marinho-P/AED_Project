@@ -24,25 +24,19 @@ int Menu::run() {
                 break;
             }
             case 3: {
-                CheckStudentSchedule();
+                checkClassStudents();
                 break;
             }
-            case 4:{
-                int i = requestsMenu();
-                if(i != 0) {
-                    requestsMenu();
-                }
+            case 4: {
+                checkStudentSchedule();
                 break;
             }
-            case 5: {
-                //printPendingRequests();
+            case 5:{
                 break;
             }
-            case 6:{
-                //processRequests();
-                break;
+
             }
-            case 7: {
+            case 6: {
                 //save();
                 return 0;
             }
@@ -56,11 +50,10 @@ int Menu::options() const{
     cout << "Menu Options:" << endl;
     cout << "1. Check Students" << endl;
     cout << "2. Check Class Schedule" << endl;
-    cout << "3. Check Student Schedule" << endl;
-    cout << "4. Requests" << endl;
-    cout << "5. Print Pending Requests" << endl;
-    cout << "6. Process Requests" << endl;
-    cout << "7. Save" << endl;
+    cout << "3. Check Class Students" << endl;
+    cout << "4. Check Student Schedule" << endl;
+    cout << "5. Requests" << endl;
+    cout << "6. Save" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter your choice: ";
     cin >> choice;
@@ -89,7 +82,7 @@ void Menu::CheckStudent() {
             dataProcessor.studentsInClass(classCode);
             break;
         }
-        case 2: {
+        case 2:{
             string year;
             cout << "Enter a year (ex. 2020):";
             cin >> year;
@@ -97,7 +90,7 @@ void Menu::CheckStudent() {
             dataProcessor.studentsInYear(year);
             break;
         }
-        case 3: {
+        case 3:{
             string course;
             cout << "Enter a course (ex. LEIC):";
             cin >> course;
@@ -105,72 +98,59 @@ void Menu::CheckStudent() {
             dataProcessor.studentsInCourse(course);
             break;
         }
-        default: {
+        default:{
             cout << "Invalid option" << endl;
         }
     }
 }
-
-void Menu::CheckStudentSchedule(){
-    string upNumber;
-    cout << "Insert the student's UP number: ";
-    cin >> upNumber;
-    dataProcessor.scheduleOfStudent(upNumber);
-}
-int Menu::requestsMenu(){
-    int option;
-    cout << "What changes do you want to make to your schedule?:" << endl;
-    cout << "1 - Change class" << endl;
-    cout << "2 - Enroll in a new uc" << endl;
-    cout << "3 - Cancel a uc registration" << endl;
-    cout << "0 - Go back" << endl;
-    cin >> option;
-    if (cin.fail()) {
+int Menu::sorting() const {
+    cout << "1 Alphabetical" << endl;
+    cout << "2 Alphabetical in reverse" << endl;
+    cout << "3 Numerical" << endl;
+    cout << "4 Numerical in reverse" << endl;
+    cout << "In which order do you want to display the students? ";
+    int option; cin >> option; cout << endl;
+    if(cin.fail())
         throw invalid_argument(">> Invalid number");
-    }
-    while(option < 0 || option > 3) {
-        cout << ">> Submit a valid option: "; cin >> option; cout << endl;
+    while(option < 1 || option > 4){
+        cout << ">> Please choose a valid option: "; cin >> option; cout << endl;
     }
     return option;
 }
-void Menu::changeRequest(Student *student) {
-
-}
-
-
-void Menu::enrollmentRequest(Student *student) {
-
-}
-
-
-void Menu::removeRequest(Student *student) {
-
-}
-
-
-
-void Menu::newRequest(int option) {
-    string upNumber;
-    cout << "Insert the student's UP number: ";
-    cin >> upNumber;
+void Menu::checkClassStudents() const {
+    int option = sortingMenu();
+    string ucCode, classCode;
+    cout << "Please insert the uc code: ";
+    cin >> ucCode;
+    cout << "Please insert the class code: ";
+    cin >> classCode;
     cout << endl;
-    Student *student = dataProcessor.findStudent(upNumber);
-    if (student == nullptr) {
-        cout << ">> Student not found." << endl;
-        return;
-    }
-
+    UcClass ucClass = UcClass(ucCode, classCode);
     switch (option) {
         case 1:
-            changeRequest(student);
+            dataProcessor.printClassStudents(ucClass, "alphabetical");
             break;
         case 2:
-            enrollmentRequest(student);
+            dataProcessor.printClassStudents(ucClass, "reverse alphabetical");
             break;
         case 3:
-            removeRequest(student);
+            dataProcessor.printClassStudents(ucClass, "numerical");
+            break;
+        case 4:
+            dataProcessor.printClassStudents(ucClass, "reverse numerical");
             break;
         default:
             cout << ">> Invalid option." << endl;
     }
+}
+void Menu::checkClassSchedule() const{
+    string classCode;
+    cout << "Please insert the class code: "; cin >>classCode; cout<<endl;
+    manager.scheduleOfClass(classCode);
+}
+void Menu::checkStudentSchedule() const {
+    string upNumber;
+    cout << "Insert the student's UP number: ";
+    cin >> upNumber;
+    manager.scheduleOfStudent(upNumber);
 }

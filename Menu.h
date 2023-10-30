@@ -3,7 +3,6 @@
 #include "Schedule.h"
 #include "Student.h"
 #include "DataProcessor.h"
-#include "requests.h"
 
 class Menu{
 private:
@@ -12,24 +11,14 @@ public:
     Menu();
     int run();
     void ClassSchedule();
+
     void CheckStudent();
     int options() const;
-    void CheckStudentSchedule();
-    int requestsMenu();
-
-
-
-    //void checkUcStudents() const;
-    //void checkClassSchedule() const;
-    //void checkClassStudents() const;
-
-    void changeRequest(Student* student);
-    void removeRequest(Student* student);
-    void newRequest(int option);
-    void enrollmentRequest(Student* student);
-    //void processRequests();
-    //void printPendingRequests() const;
+    int sorting() const;
+    void checkClassSchedule() const;
+    void checkClassStudents() const;
+    void checkStudentSchedule() const;
     //void save();
-    //void exit();
+
 };
 #endif //AED2324_P03_MENU_H

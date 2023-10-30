@@ -35,6 +35,7 @@ public:
     void ucGreatestNumberStudents();
     void scheduleOfClass(const string &classCode);
     void scheduleOfStudent(const Student &student);
+    void printClassStudents(const UcClass& ucClass, const string& sortCriterion) const;
 };
 
 
