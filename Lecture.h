@@ -4,23 +4,25 @@
 using namespace std;
 
 class Lecture{
-    private:
-        int duration;
-        int startHour;
-        string type;
-        string weekday;
-        string UC_Code;
-    public:
-        Lecture(int duration, int startHour, const string &type, const string &weekday, const string &Uc_Code);
-        int getDuration() const;
-        void setDuration(int duration);
-        int getStartHour() const;
-        void setStartHour(int startHour);
-        const string &getType() const;
-        void setType(const string &type);
-        const string &getWeekday() const;
-        void setWeekday(const string &weekday);
-        const string &getUcCode() const;
+private:
+    float duration;
+    float startHour;
+    string type;
+    string weekday;
+    string UC_Code;
+public:
+
+    Lecture(const float &duration,const float &startHour, const string &type, const string &weekday, const string &Uc_Code);
+    void setDuration(float duration);
+    void setStartHour(float startHour);
+    const string &getType() const;
+    const float &getDuration() const;
+    void setType(const string &type);
+    const string &getWeekday() const;
+    void setWeekday(const string &weekday);
+    const string &getUcCode() const;
+    bool operator<(const Lecture& other) const;
+    const float &getStartHour() const;
 };
 
 #endif //AED_PROJECT_AULA_H

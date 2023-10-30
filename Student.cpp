@@ -30,3 +30,18 @@ bool Student::operator==(const Student &other) const {
 void Student::addClassUc(const Class_UC &classUc){
     classesUcs.insert(classUc);
 }
+
+const set<Class_UC> &Student::getClassesUcs() const {
+    return classesUcs;
+}
+
+string Student::getYear() const {
+    return id.substr(0,4);
+}
+string Student::getUcId() const {
+    return ucId;
+}
+
+string Student::getClassId() const {
+    return classId;
+}

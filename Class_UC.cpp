@@ -22,7 +22,7 @@ void Class_UC::setClassCode(const string &classCode) {
 }
 
 bool Class_UC::operator<(const Class_UC &other) const{
-    if(ucCode < other.ucCode ){
+    if(ucCode < other.ucCode){
         return true;
     }
     else{
@@ -31,4 +31,8 @@ bool Class_UC::operator<(const Class_UC &other) const{
         }
     }
     return false;
+}
+
+bool Class_UC::operator==(const Class_UC &other) const {
+    return other.ucCode == ucCode && other.classCode == classCode;
 }
