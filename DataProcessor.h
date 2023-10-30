@@ -35,6 +35,7 @@ class DataProcessor{
         void ucGreatestNumberStudents();
         void scheduleOfClass(const string &classCode);
         void scheduleOfStudent(const Student &student);
+        Schedule createStudentSchedule(const Student &student);
 };
 
 

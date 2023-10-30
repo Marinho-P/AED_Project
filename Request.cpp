@@ -9,6 +9,7 @@
 
 void Request::performRequest(Student &student, set<Class_UC> existingClassesUc, std::string type, std::string ) {
     // TODO: check if possible to remove and, if so, alter internal memory and files ( output: ACCEPTED or DENIED)
+
 }
 
 void Request::lookupAllRequests() {

@@ -228,16 +228,21 @@ void DataProcessor::scheduleOfClass(const string &classCode) {
 }
 
 void DataProcessor::scheduleOfStudent(const Student &student) {
-    Schedule new_schedule;
-        for (const Class_UC &classUc:student.getClassesUcs()){
-           auto it = schedules.find(Schedule(classUc.getClassCode()));
-           if (it != schedules.end()){
-               for (Lecture lecture:(*it).getLectures()){
-                   if (lecture.getUcCode() == classUc.getUcCode()){
-                       new_schedule.addLecture(lecture);
-                   }
-               }
-           }
-       }
+    Schedule new_schedule = createStudentSchedule(student);
+
     new_schedule.printSchedule();
+}
+Schedule DataProcessor:: createStudentSchedule(const Student &student){
+    Schedule new_schedule;
+    for (const Class_UC &classUc:student.getClassesUcs()){
+        auto it = schedules.find(Schedule(classUc.getClassCode()));
+        if (it != schedules.end()){
+            for (Lecture lecture:(*it).getLectures()){
+                if (lecture.getUcCode() == classUc.getUcCode()){
+                    new_schedule.addLecture(lecture);
+                }
+            }
+        }
+    }
+    return new_schedule;
 }
