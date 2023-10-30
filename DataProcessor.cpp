@@ -4,6 +4,7 @@
 DataProcessor::DataProcessor(){
     students_classes();
     classes();
+    classes_per_uc();
 }
 
 void DataProcessor::classes_per_uc() {
@@ -223,4 +224,8 @@ void DataProcessor::scheduleOfClass(const string &classCode) {
             break;
         }
     }
+}
+
+void DataProcessor::scheduleOfStudent(const Student &student) {
+
 }

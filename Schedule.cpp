@@ -15,8 +15,8 @@ void Schedule::printSchedule() const { // word (ucCode-type) in each slot must b
         vector<int> currentLine = {0,0,0,0,0};
         vector<int> linesOccupied = {-1,-1,-1,-1,-1};
         cout << "+-------------+-------------+-------------+-------------+-------------+-------------+\n" <<
-                "|             |   Monday    |   Tuesday   |  Wednesday  |  Thursday   |    Friday   |\n" <<
-                "+-------------+-------------+-------------+-------------+-------------+-------------+\n";
+             "|             |   Monday    |   Tuesday   |  Wednesday  |  Thursday   |    Friday   |\n" <<
+             "+-------------+-------------+-------------+-------------+-------------+-------------+\n";
 
 
         for (size_t k = 0; k < 48; k++) {
@@ -42,7 +42,7 @@ void Schedule::printSchedule() const { // word (ucCode-type) in each slot must b
 
         }
     }catch (const out_of_range& error){
-            cerr << error.what() << endl;
+        cerr << error.what() << endl;
     }
 
 }
@@ -52,7 +52,7 @@ Schedule::Schedule(const string &classCode) {
     this->classCode = classCode;
 }
 
-const vector<Lecture> &Schedule::getSchedule() const {
+const vector<Lecture> &Schedule::getLectures() const {
     return lectures;
 }
 

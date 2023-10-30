@@ -13,7 +13,7 @@ public:
     int options() const;
 //    int sorting() const;
     //  int requests() const;
-    //  void checkUcShedule() const;
+    //  void checkUcSchedule() const;
     //void checkUcStudents() const;
     //void checkClassSchedule() const;
     //void checkClassStudents() const;
