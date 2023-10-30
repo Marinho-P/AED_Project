@@ -11,10 +11,12 @@ int main(){
     //parseData.students_classes();
     //parseData.classes();
     //parseData.classes_per_uc();
-    auto it = parseData.getStudents().begin();
-    parseData.scheduleOfStudent(*it);
     //parseData.studentsInUc(9);
     //parseData.studentsInClass("1LEIC021");
+    for (const Student &student: parseData.getStudents()){
+        cout << student.getName() << endl;
+        parseData.scheduleOfStudent(student);
+    }
     //parseData.studentsInCourse("leiccc");
     //parseData.studentsInYear("2018");
     //parseData.ucGreatestNumberStudents();

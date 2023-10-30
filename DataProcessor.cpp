@@ -82,14 +82,14 @@ void DataProcessor::classes(){
         separate_comma.ignore();
         separate_comma >> type;
         Lecture lecture = Lecture(duration,startHour,type,weekday,ucCode);
-        auto it = schedules.find(Schedule(Class_UC(classCode,ucCode)));
+        auto it = schedules.find(classCode);
         if (it != schedules.end()) {
             Schedule modifiedSchedule = *it;
             modifiedSchedule.addLecture(lecture);
             it = schedules.erase(it);
             schedules.insert(modifiedSchedule);
         } else {
-            Schedule newSchedule(Class_UC(classCode,ucCode));
+            Schedule newSchedule(classCode);
             newSchedule.addLecture(lecture);
             schedules.insert(newSchedule);
         }
@@ -229,14 +229,15 @@ void DataProcessor::scheduleOfClass(const string &classCode) {
 
 void DataProcessor::scheduleOfStudent(const Student &student) {
     Schedule new_schedule;
-    for (Schedule schedule:schedules){
         for (const Class_UC &classUc:student.getClassesUcs()){
-            if (classUc == schedule.getClassUc()){
-                for (Lecture lecture:schedule.getLectures()){
-                    new_schedule.addLecture(lecture);
-                }
-            }
-        }
-    }
+           auto it = schedules.find(Schedule(classUc.getClassCode()));
+           if (it != schedules.end()){
+               for (Lecture lecture:(*it).getLectures()){
+                   if (lecture.getUcCode() == classUc.getUcCode()){
+                       new_schedule.addLecture(lecture);
+                   }
+               }
+           }
+       }
     new_schedule.printSchedule();
 }
