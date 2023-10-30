@@ -21,6 +21,4 @@ int main(){
     //for (Schedule schedule:parseData.getSchedules()){
     //    schedule.printSchedule();
     //}
-    Menu menu(Schedule("2LEIC02"));
-    menu.run();
 }

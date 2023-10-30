@@ -43,7 +43,7 @@ void DataProcessor::students_classes() {
         getline(separate_comma,studentCode,',');
         getline(separate_comma,studentName,',');
         getline(separate_comma,ucCode,',');
-        getline(separate_comma,classCode,',');
+        separate_comma >> classCode;
         if(first_it) {
             setOfClasses.insert(Class_UC(classCode, ucCode));
             lastSeenStudent = Student(studentName, studentCode, setOfClasses);

@@ -11,7 +11,9 @@ private:
 public:
     Menu();
     int run();
+    void ClassSchedule();
 //    void input() const;
+    void CheckStudent();
     int options() const;
 //    int sorting() const;
     //  int requests() const;
