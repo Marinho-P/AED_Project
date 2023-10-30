@@ -2,10 +2,9 @@
 #include <iostream>
 
 using namespace std;
-
-Menu::Menu(const Schedule &manager) {
-    this->manager = manager;
+Menu ::Menu() {
 }
+
 
 int Menu::run() {
         while (true) {
@@ -16,6 +15,7 @@ int Menu::run() {
                     return 0;
                 }
                 case 1: {
+
                     //checkUcShedule();
                     //input();
                     break;
@@ -26,7 +26,11 @@ int Menu::run() {
                     break;
                 }
                 case 3: {
-                    //checkClassSchedule();
+                    string classCode;
+                    cout << "Enter a Class code:";
+                    cin >> classCode;
+                    cout << "\n";
+                    dataProcessor.scheduleOfClass(classCode);
                     //input();
                     break;
                 }

@@ -220,7 +220,8 @@ void DataProcessor::scheduleOfClass(const string &classCode) {
     for(const Schedule& schedule:schedules){
         if (schedule.getClassCode() == classCode){
             schedule.printSchedule();
-            break;
+            return;
         }
     }
+    cout << "No schedule found." << endl;
 }

@@ -1,7 +1,8 @@
 #include "Menu.h"
 
 int main(){
-    DataProcessor parseData;
+    Menu menu;
+    menu.run();
     //parseData.getSchedules().begin()->printSchedule();
 
 

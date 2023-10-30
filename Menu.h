@@ -6,8 +6,10 @@
 #include "DataProcessor.h"
 
 class Menu{
+private:
+    DataProcessor dataProcessor;
 public:
-    explicit Menu(const Schedule &manager);
+    Menu();
     int run();
 //    void input() const;
     int options() const;
