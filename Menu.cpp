@@ -16,7 +16,8 @@ int Menu::run() {
                 }
                 case 1: {
 
-                    //checkUcShedule();
+                //checkUcSchedule();
+
                     //input();
                     break;
                 }

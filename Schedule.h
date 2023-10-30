@@ -15,7 +15,7 @@ class Schedule {
         string getSlotString(float time, string weekday,vector<Lecture> &toPrint,int &currentLine, int &linesOccupied, bool inSlot ) const;
         string timeFtS(float time) const;
         Schedule(const string &classCode = "");
-        const vector<Lecture> &getSchedule() const;
+        const vector<Lecture> &getLectures() const;
         const string &getClassCode() const;
         void addLecture(Lecture lecture);
         bool operator<(const Schedule& other) const;
