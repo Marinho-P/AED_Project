@@ -2,7 +2,8 @@
 
 int main(){
     Menu menu;
-    menu.run();
+    DataProcessor parseData;
+    //menu.run();
     //parseData.getSchedules().begin()->printSchedule();
     //parseData.students_classes();
     //parseData.classes();
@@ -10,9 +11,8 @@ int main(){
     //parseData.students_classes();
     //parseData.classes();
     //parseData.classes_per_uc();
-    //for (auto ball :parseData.getSchedule()){
-    //    cout << ball.getClassCode() << endl;
-    //}
+    auto it = parseData.getStudents().begin();
+    parseData.scheduleOfStudent(*it);
     //parseData.studentsInUc(9);
     //parseData.studentsInClass("1LEIC021");
     //parseData.studentsInCourse("leiccc");
@@ -21,6 +21,4 @@ int main(){
     //for (Schedule schedule:parseData.getSchedules()){
     //    schedule.printSchedule();
     //}
-    Menu menu(Schedule("2LEIC02"));
-    menu.run();
 }

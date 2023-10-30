@@ -47,9 +47,8 @@ void Schedule::printSchedule() const { // word (ucCode-type) in each slot must b
 
 }
 
-Schedule::Schedule(const string &classCode) {
-
-    this->classCode = classCode;
+Schedule::Schedule(const Class_UC &classUc) {
+    this->classUc = classUc;
 }
 
 const vector<Lecture> &Schedule::getLectures() const {
@@ -57,7 +56,7 @@ const vector<Lecture> &Schedule::getLectures() const {
 }
 
 const string &Schedule::getClassCode() const {
-    return classCode;
+    return classUc.getClassCode();
 }
 
 void Schedule::addLecture(Lecture lecture)  {
@@ -65,7 +64,7 @@ void Schedule::addLecture(Lecture lecture)  {
 }
 
 bool Schedule::operator<(const Schedule &other) const {
-    return classCode < other.classCode;
+    return classUc.getClassCode() < other.getClassCode();
 }
 
 string Schedule::getSlotString(float time, string weekday, vector<Lecture> &toPrint, int &currentLine, int &linesOccupied ,bool inSlot ) const{
@@ -119,10 +118,6 @@ string Schedule::getSlotString(float time, string weekday, vector<Lecture> &toPr
     }
 
 
-
-
-
-
 }
 string Schedule::timeFtS(float time) const{
     float remainder = time - (int)time;
@@ -148,5 +143,8 @@ string Schedule::centerString(string toFormat) const {
     return string(pad1, ' ') + toFormat + string(pad2, ' ');
 }
 
+const Class_UC &Schedule::getClassUc() const {
+    return classUc;
+}
 
 //L.EIC001-TP
