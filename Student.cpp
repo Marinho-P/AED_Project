@@ -35,6 +35,7 @@ const set<Class_UC> &Student::getClassesUcs() const {
     return classesUcs;
 }
 
+
 string Student::getYear() const {
      return id.substr(0,4);
 }
