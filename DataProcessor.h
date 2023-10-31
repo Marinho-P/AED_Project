@@ -29,13 +29,12 @@ public:
     const set<Class_UC> &getClassUc() const;
     const set<Schedule> &getSchedules() const;
     void studentsInUc(int n);
-    void studentsInClass(const string& classCode);
-    void studentsInCourse(string course);
-    void studentsInYear(const string &year);
+    void studentsInClass(const string& classCode,const string& sortOption);
+    void studentsInCourse(string course,const string& sortOption);
+    void studentsInYear(const string &year,const string& sortOption);
     void ucGreatestNumberStudents();
-    void scheduleOfClass(const string &classCode);
-    void scheduleOfStudent(const Student &student);
-    void printClassStudents(const UcClass& ucClass, const string& sortCriterion) const;
+    void scheduleOfClass(const string &classCode) const;
+    void scheduleOfStudent(const string &Id) const;
 };
 
 

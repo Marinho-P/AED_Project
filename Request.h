@@ -11,8 +11,6 @@ public:
     void performRequest(Student &student,set<Class_UC> existingClassesUc, string type, string I);
     void lookupAllRequests();
     void undoRequest(int RequestID);
-
-
     void saveRequest(Student &student, string type, string recipient, string startCode, string endCode);
 };
 

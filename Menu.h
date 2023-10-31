@@ -11,7 +11,6 @@ public:
     Menu();
     int run();
     void ClassSchedule();
-
     void CheckStudent();
     int options() const;
     int sorting() const;
@@ -19,6 +18,5 @@ public:
     void checkClassStudents() const;
     void checkStudentSchedule() const;
     //void save();
-
 };
 #endif //AED2324_P03_MENU_H

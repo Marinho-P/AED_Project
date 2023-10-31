@@ -144,5 +144,3 @@ string Schedule::centerString(string toFormat) const {
     return string(pad1, ' ') + toFormat + string(pad2, ' ');
 }
 
-
-//L.EIC001-TP

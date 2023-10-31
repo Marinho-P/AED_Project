@@ -34,8 +34,6 @@ int Menu::run() {
             case 5:{
                 break;
             }
-
-            }
             case 6: {
                 //save();
                 return 0;
@@ -118,14 +116,14 @@ int Menu::sorting() const {
     return option;
 }
 void Menu::checkClassStudents() const {
-    int option = sortingMenu();
+    int option = sorting();
     string ucCode, classCode;
     cout << "Please insert the uc code: ";
     cin >> ucCode;
     cout << "Please insert the class code: ";
     cin >> classCode;
     cout << endl;
-    UcClass ucClass = UcClass(ucCode, classCode);
+     Class_UC ucClass = Class_UC(classCode, ucCode);
     switch (option) {
         case 1:
             dataProcessor.printClassStudents(ucClass, "alphabetical");
@@ -146,11 +144,11 @@ void Menu::checkClassStudents() const {
 void Menu::checkClassSchedule() const{
     string classCode;
     cout << "Please insert the class code: "; cin >>classCode; cout<<endl;
-    manager.scheduleOfClass(classCode);
+    dataProcessor.scheduleOfClass(classCode); // está certo ver o porquê do erro
 }
 void Menu::checkStudentSchedule() const {
     string upNumber;
     cout << "Insert the student's UP number: ";
     cin >> upNumber;
-    manager.scheduleOfStudent(upNumber);
+    dataProcessor.scheduleOfStudent(upNumber); // mudar a função para receber o up number
 }
