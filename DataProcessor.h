@@ -14,12 +14,17 @@
 #include "Class_UC.h"
 #include "Lecture.h"
 using namespace std;
+/**
+ * @brief Class that stores and processes useful data from the csv files
+ */
 
 class DataProcessor{
 private:
     set<Student> students;
+    /** @brief A set where all students are stored in */
     set<Class_UC> existingClassesUc;
     set<Schedule> schedules;
+    /** @brief A set where all schedules of classes are stored in */
 public:
     DataProcessor();
     void classes_per_uc();
