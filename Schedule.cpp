@@ -5,9 +5,13 @@
 #include "Schedule.h"
 
 
+/**
+ * @brief Prints a Schedule in a table format
+ * word (ucCode-type) in each slot must be [0,13] characters long
+ * @details Time complexity - O(nlog(n)) with n being the number of Lectures to print
+ */
 
-
-void Schedule::printSchedule() const { // word (ucCode-type) in each slot must be [0,13] characters long
+void Schedule::printSchedule() const {
     try {
         vector<Lecture> toPrint = lectures;
         float time = 8.0;
@@ -46,27 +50,58 @@ void Schedule::printSchedule() const { // word (ucCode-type) in each slot must b
     }
 
 }
-
+/**
+ * @brief Constructor of class Schedule given a classCode
+ * @details Time complexity - O(1)
+ * @param classCode
+ */
 Schedule::Schedule(const string &classCode) {
     this->classCode = classCode;
 }
-
+/**
+ * @brief Getter of all lectures in a schedule
+ * @details Time complexity - O(1)
+ * @return lectures
+ */
 const vector<Lecture> &Schedule::getLectures() const {
     return lectures;
 }
-
+/**
+ * @brief Getter of the classCode of a Lecture
+ * @details Time complexity - O(1)
+ * @return classCode
+ */
 const string &Schedule::getClassCode() const {
     return classCode;
 }
-
+/**
+ * @brief Adds a Lecture to a certain schedule
+ * @details Time complexity - O(1)
+ * @param lecture
+ */
 void Schedule::addLecture(Lecture lecture)  {
     lectures.push_back(lecture);
 }
-
+/**
+ * @brief Checks if a schedule has a classCode less than the other
+ * @details Time complexity - O(1)
+ * @param other
+ * @return true if classCode is less than other.classCode else false
+ */
 bool Schedule::operator<(const Schedule &other) const {
     return classCode < other.classCode;
 }
-
+/**
+ * @brief Auxiliary function of printSchedule that indicates what type of slot is to be used
+ * @details Time complexity - O(n) with n being the number of Lectures in the vector toPrint
+ * @param time
+ * @param weekday
+ * @param toPrint
+ * @param currentLine
+ * @param linesOccupied
+ * @param inSlot
+ * @return timeSlot or a line of hyphens or blank spaces
+ */
 
 string Schedule::getSlotString(float time, string weekday, vector<Lecture> &toPrint, int &currentLine, int &linesOccupied ,bool inSlot ) const{
     int i = 0;
@@ -117,9 +152,14 @@ string Schedule::getSlotString(float time, string weekday, vector<Lecture> &toPr
         return "             ";
 
     }
-
-
 }
+/**
+ * @brief Auxiliary function of printSchedule that converts a float value to a string
+ * @details Time complexity - O(1)
+ * @param time
+ * @return time in the format XX:00 or XX:30
+ */
+
 string Schedule::timeFtS(float time) const{
     float remainder = time - (int)time;
     float hours = (int)time;
@@ -133,7 +173,12 @@ string Schedule::timeFtS(float time) const{
         return ss.str() + ":00";
     }
 }
-
+/**
+ * @brief Auxiliary function of printSchedule that centers a string
+ * @details Time complexity - O(1)
+ * @param toFormat
+ * @return centered string
+ */
 string Schedule::centerString(string toFormat) const {
     if( toFormat.size() > 13){
         throw out_of_range(toFormat + ": string too big for timeslot");

@@ -75,11 +75,16 @@ $(function() {
   <div class="headertitle"><div class="title">DataProcessor Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that stores and processes useful data from the csv files.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="DataProcessor_8h_source.html">DataProcessor.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa8b2355388d8179bd3ea1afef8280c0e" id="r_aa8b2355388d8179bd3ea1afef8280c0e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8b2355388d8179bd3ea1afef8280c0e">DataProcessor</a> ()</td></tr>
-<tr class="memdesc:aa8b2355388d8179bd3ea1afef8280c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of DataProcessor.Reads all data from the given csv files and stores them in the corresponding data structures.  <br /></td></tr>
+<tr class="memdesc:aa8b2355388d8179bd3ea1afef8280c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A set where all schedules of classes are stored in.  <br /></td></tr>
 <tr class="separator:aa8b2355388d8179bd3ea1afef8280c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a106a3f1ab92a1e0211f61398c65c63de" id="r_a106a3f1ab92a1e0211f61398c65c63de"><td class="memItemLeft" align="right" valign="top"><a id="a106a3f1ab92a1e0211f61398c65c63de" name="a106a3f1ab92a1e0211f61398c65c63de"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>classes_per_uc</b> ()</td></tr>
@@ -121,7 +126,9 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 <tr class="memdesc:a8eca4c98a9785761853810f1116f86ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the schedule of a student, given its Id and prints its schedule.  <br /></td></tr>
 <tr class="separator:a8eca4c98a9785761853810f1116f86ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class that stores and processes useful data from the csv files. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa8b2355388d8179bd3ea1afef8280c0e" name="aa8b2355388d8179bd3ea1afef8280c0e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8b2355388d8179bd3ea1afef8280c0e">&#9670;&#160;</a></span>DataProcessor()</h2>
 
@@ -137,8 +144,9 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
       </table>
 </div><div class="memdoc">
 
-<p>Constructor of DataProcessor.Reads all data from the given csv files and stores them in the corresponding data structures. </p>
-<p>Time complexity - O(n+m) with n and m being the number of lines of students_classes.csv and classes.csv respectively </p>
+<p>A set where all schedules of classes are stored in. </p>
+<p>Constructor of DataProcessor.Reads all data from the given csv files and stores them in the corresponding data structures.</p>
+<p>Time complexity - O(n+m*log(h)) with n and m being the number of lines of students_classes.csv , classes.csv respectively and h the number of all classes' schedules </p>
 
 </div>
 </div>
@@ -159,7 +167,7 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 </div><div class="memdoc">
 
 <p>Processes data of the file classes.csv. </p>
-<p>Time complexity - O(m) with m being the number of lines of the file </p>
+<p>Time complexity - O(m*log(n)) with m being the number of lines of the file and n the number of all classes' schedules </p>
 
 </div>
 </div>
@@ -246,7 +254,7 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 </div><div class="memdoc">
 
 <p>Checks the schedule of a student, given its Id and prints its schedule. </p>
-<p>Time complexity - O(n*k*log(k)*t+m*log(m)) with n being the number of classUCs of a student, k the number of schedules of a class, t the number of lectures in a schedule and m the number of existing students </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity - O(n*log(k)*t+log(m)) with n being the number of classUCs of a student, k the number of schedules of a class, t the number of lectures in a schedule and m the number of existing students </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Id</td><td>Given Id of a student </td></tr>
   </table>

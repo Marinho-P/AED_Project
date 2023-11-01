@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['class_5fuc_0',['Class_UC',['../classClass__UC.html#a6a65bb0c047e35a75fccb141b0f81265',1,'Class_UC']]],
-  ['classes_1',['classes',['../classDataProcessor.html#af693f0682add31b82a182634a76eb155',1,'DataProcessor']]]
+  ['addclassuc_0',['addClassUc',['../classStudent.html#acf4aa7500086a11ab261c69884c134ce',1,'Student']]],
+  ['addlecture_1',['addLecture',['../classSchedule.html#ad9266cb4a617498d9fb79c1ae507a3b0',1,'Schedule']]]
 ];
