@@ -15,9 +15,9 @@ public:
     void CheckStudent();
     int options() const;
     int sorting() const;
-    void checkClassSchedule() const;
-    void checkClassStudents() const;
-    void checkStudentSchedule() const;
+    void checkClassSchedule() ;
+    void checkClassStudents();
+    void checkStudentSchedule();
     //void save();
 
 };

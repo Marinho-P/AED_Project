@@ -117,8 +117,8 @@ int Menu::sorting() const {
     }
     return option;
 }
-void Menu::checkClassStudents() const {
-    int option = sortingMenu();
+void Menu::checkClassStudents() {
+    int option = sorting();
     string ucCode, classCode;
     cout << "Please insert the uc code: ";
     cin >> ucCode;
@@ -143,14 +143,14 @@ void Menu::checkClassStudents() const {
             cout << ">> Invalid option." << endl;
     }
 }
-void Menu::checkClassSchedule() const{
+void Menu::checkClassSchedule(){
     string classCode;
     cout << "Please insert the class code: "; cin >>classCode; cout<<endl;
-    manager.scheduleOfClass(classCode);
+    dataProcessor.scheduleOfClass(classCode);
 }
-void Menu::checkStudentSchedule() const {
+void Menu::checkStudentSchedule() {
     string upNumber;
     cout << "Insert the student's UP number: ";
     cin >> upNumber;
-    manager.scheduleOfStudent(upNumber);
+    dataProcessor.scheduleOfStudent(upNumber);
 }
