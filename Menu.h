@@ -30,6 +30,19 @@ public:
     //void printPendingRequests() const;
     //void save();
 private:
-    Schedule manager;
+
+    void requests();
+
+    void addRequestoList();
+
+    void processRequests();
+
+    void discardRequests();
+
+    void listPendingRequests();
+
+    void listSuccessfullRequests();
+
+    void undoRequest();
 };
 #endif //AED2324_P03_MENU_H

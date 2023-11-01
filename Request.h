@@ -1,60 +1,34 @@
 //
-// Created by sergio on 29-10-2023.
+// Created by sergio on 01-11-2023.
 //
 
 #ifndef AED_PROJECT_REQUEST_H
 #define AED_PROJECT_REQUEST_H
-
-
+#include <string>
 #include "Student.h"
-#include "DataProcessor.h"
 
+using namespace std;
 class Request {
 private:
-
-
-    Request(const DataProcessor &dataProcessor);
-
-    DataProcessor dataProcessor;
+    Student student;
+    string type;
+    string UcCode;
+    string startCode;
+    string endCode;
 public:
-    void lookupAllRequests();
-    void undoRequest(int RequestID);
+    Request(Student &student, const string &type, const string &ucCode,
+            const string &startCode, const string &endCode);
 
 
+    const string &getType() const;
 
+    const string &getUcCode() const;
 
-    void SwitchRequest(Student &student, string type, Class_UC start, Class_UC end);
+    const string &getStartCode() const;
 
+    const string &getEndCode() const;
 
-
-    bool checkScheduleCollisions(vector<Lecture> lectures);
-
-    vector<Lecture> FuseSchedules(const Schedule &old_schedule, const Schedule &schedule_to_add, string &UcCode);
-
-
-
-
-    void AddRequest(Student &student, string &UcCode);
-
-
-    void RemoveRequest(Student &student, const string& UcCode);
-
-
-    void saveRequest(const Student &student, const string &type, const string &recipient, const string &startCode,
-                     const string &endCode);
-
-
-
-    void ChangeFile(Student &student, const string &NewClassCode, const string &NewUcCode, const string &type);
-
-    bool checkBalanceAndCap(unordered_map<string, int> &numberOfStudentsPerClass) const;
-
-    unordered_map<string, int> &getNumberOfStudents(unordered_map<string, int> &numberOfStudentsPerClass);
-
-    bool checkAdd(const Student &studentToAdd, const string &classCode);
-
-
-    bool checkRemove(const Student &student, const string &classCode);
+    Student& getStudent();
 };
 
 
