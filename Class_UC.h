@@ -16,7 +16,9 @@ private:
     string classCode;
     /** @brief Code of a Class */
 public:
-    /** @brief Default Constructor of Class_UC. ClassCode and ucCode are set to empty strings */
+    /** @brief Default Constructor of Class_UC. ClassCode and ucCode are set to empty strings
+     *  @details Time complexity - O(1)
+     */
     Class_UC(const string &classCode_ ="" ,const string &ucCode_ = "");
     const string &getUcCode() const;
     void setUcCode(const string &ucCode);

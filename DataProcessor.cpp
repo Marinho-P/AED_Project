@@ -2,7 +2,7 @@
 
 /**
  * @brief Constructor of DataProcessor.Reads all data from the given csv files and stores them in the corresponding data structures
- * @details Time complexity - O(n+m) with n and m being the number of lines of students_classes.csv and classes.csv respectively
+ * @details Time complexity - O(n+m*log(h)) with n and m being the number of lines of students_classes.csv , classes.csv respectively and h the number of all classes' schedules
  */
 DataProcessor::DataProcessor(){
     students_classes();
@@ -75,7 +75,7 @@ void DataProcessor::students_classes() {
 }
 /**
  * @brief Processes data of the file classes.csv
- * @details Time complexity - O(m) with m being the number of lines of the file
+ * @details Time complexity - O(m*log(n)) with m being the number of lines of the file and n the number of all classes' schedules
  */
 void DataProcessor::classes(){
     ifstream file("classes.csv");
@@ -132,7 +132,7 @@ const set<Student> &DataProcessor::getStudents() const {
 }
 /**
  * @brief Auxiliary function to print a given vector of students.It is printed in a certain format regarding the sortOption
- * @details Time complexity - O(n) with n being number of students stored in a given vector
+ * @details Time complexity - O(n*log(n)) with n being number of students stored in a given vector
  * @param temp vector of students
  * @param sortOption has 4 different inputs : A to Z, Z to A, numerical and reversed numerical
  */
@@ -304,7 +304,7 @@ void DataProcessor::scheduleOfClass(const string &classCode)const {
 }
 /**
  * @brief Checks the schedule of a student, given its Id and prints its schedule
- * @details Time complexity - O(n*k*log(k)*t+m*log(m)) with n being the number of classUCs of a student, k the number of schedules of a class, t the number of lectures in a schedule and m the number of existing students
+ * @details Time complexity - O(n*log(k)*t+log(m)) with n being the number of classUCs of a student, k the number of schedules of a class, t the number of lectures in a schedule and m the number of existing students
  * @param Id Given Id of a student
  */
 
