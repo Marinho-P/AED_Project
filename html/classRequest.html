@@ -78,19 +78,185 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af9f65e8727c7550abcfeea22b995a21c" id="r_af9f65e8727c7550abcfeea22b995a21c"><td class="memItemLeft" align="right" valign="top"><a id="af9f65e8727c7550abcfeea22b995a21c" name="af9f65e8727c7550abcfeea22b995a21c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>performRequest</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; existingClassesUc, string type, string I)</td></tr>
-<tr class="separator:af9f65e8727c7550abcfeea22b995a21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a511f0fccbf74653c30a3809c953ac136" id="r_a511f0fccbf74653c30a3809c953ac136"><td class="memItemLeft" align="right" valign="top"><a id="a511f0fccbf74653c30a3809c953ac136" name="a511f0fccbf74653c30a3809c953ac136"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lookupAllRequests</b> ()</td></tr>
-<tr class="separator:a511f0fccbf74653c30a3809c953ac136"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bf02b5258f333e680b7aeab8c1bc1da" id="r_a9bf02b5258f333e680b7aeab8c1bc1da"><td class="memItemLeft" align="right" valign="top"><a id="a9bf02b5258f333e680b7aeab8c1bc1da" name="a9bf02b5258f333e680b7aeab8c1bc1da"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>undoRequest</b> (int RequestID)</td></tr>
-<tr class="separator:a9bf02b5258f333e680b7aeab8c1bc1da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a153a7da6827dc7f576640c53bcea5bbd" id="r_a153a7da6827dc7f576640c53bcea5bbd"><td class="memItemLeft" align="right" valign="top"><a id="a153a7da6827dc7f576640c53bcea5bbd" name="a153a7da6827dc7f576640c53bcea5bbd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>saveRequest</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, string type, string recipient, string startCode, string endCode)</td></tr>
-<tr class="separator:a153a7da6827dc7f576640c53bcea5bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6ca398899667784d7c375b8650c609a" id="r_ae6ca398899667784d7c375b8650c609a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6ca398899667784d7c375b8650c609a">Request</a> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;type, const string &amp;ucCode, const string &amp;startCode, const string &amp;endCode)</td></tr>
+<tr class="memdesc:ae6ca398899667784d7c375b8650c609a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor of <a class="el" href="classRequest.html">Request</a> given a student, type of request, ucCode, a startCode and an endCode.  <br /></td></tr>
+<tr class="separator:ae6ca398899667784d7c375b8650c609a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6896fd84bffe9d75d5529c1be21fc58b" id="r_a6896fd84bffe9d75d5529c1be21fc58b"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6896fd84bffe9d75d5529c1be21fc58b">getType</a> () const</td></tr>
+<tr class="memdesc:a6896fd84bffe9d75d5529c1be21fc58b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of type of request.  <br /></td></tr>
+<tr class="separator:a6896fd84bffe9d75d5529c1be21fc58b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6003537d0486ddec9974a3ff450bd5fe" id="r_a6003537d0486ddec9974a3ff450bd5fe"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6003537d0486ddec9974a3ff450bd5fe">getUcCode</a> () const</td></tr>
+<tr class="memdesc:a6003537d0486ddec9974a3ff450bd5fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of a request ucCode.  <br /></td></tr>
+<tr class="separator:a6003537d0486ddec9974a3ff450bd5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae64b060ee32389cbbe3407dce7cd3872" id="r_ae64b060ee32389cbbe3407dce7cd3872"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae64b060ee32389cbbe3407dce7cd3872">getStartCode</a> () const</td></tr>
+<tr class="memdesc:ae64b060ee32389cbbe3407dce7cd3872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of the startCode.  <br /></td></tr>
+<tr class="separator:ae64b060ee32389cbbe3407dce7cd3872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dae3a7ba2476eb670f4f30419cad907" id="r_a3dae3a7ba2476eb670f4f30419cad907"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dae3a7ba2476eb670f4f30419cad907">getEndCode</a> () const</td></tr>
+<tr class="memdesc:a3dae3a7ba2476eb670f4f30419cad907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of the endCode.  <br /></td></tr>
+<tr class="separator:a3dae3a7ba2476eb670f4f30419cad907"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c29ae265475bdc9480a8774e3f59880" id="r_a4c29ae265475bdc9480a8774e3f59880"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classStudent.html">Student</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c29ae265475bdc9480a8774e3f59880">getStudent</a> ()</td></tr>
+<tr class="memdesc:a4c29ae265475bdc9480a8774e3f59880"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the student doing a request.  <br /></td></tr>
+<tr class="separator:a4c29ae265475bdc9480a8774e3f59880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae6ca398899667784d7c375b8650c609a" name="ae6ca398899667784d7c375b8650c609a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6ca398899667784d7c375b8650c609a">&#9670;&#160;</a></span>Request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Request::Request </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classStudent.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>ucCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>startCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>endCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Class constructor of <a class="el" href="classRequest.html">Request</a> given a student, type of request, ucCode, a startCode and an endCode. </p>
+<p>Time complexity - O(1) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">student</td><td></td></tr>
+    <tr><td class="paramname">type</td><td></td></tr>
+    <tr><td class="paramname">ucCode</td><td></td></tr>
+    <tr><td class="paramname">startCode</td><td></td></tr>
+    <tr><td class="paramname">endCode</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3dae3a7ba2476eb670f4f30419cad907" name="a3dae3a7ba2476eb670f4f30419cad907"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dae3a7ba2476eb670f4f30419cad907">&#9670;&#160;</a></span>getEndCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string &amp; Request::getEndCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter of the endCode. </p>
+<p>Time complexity - O(1) </p><dl class="section return"><dt>Returns</dt><dd>endCode </dd></dl>
+
+</div>
+</div>
+<a id="ae64b060ee32389cbbe3407dce7cd3872" name="ae64b060ee32389cbbe3407dce7cd3872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae64b060ee32389cbbe3407dce7cd3872">&#9670;&#160;</a></span>getStartCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string &amp; Request::getStartCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter of the startCode. </p>
+<p>Time complexity - O(1) </p><dl class="section return"><dt>Returns</dt><dd>startCode </dd></dl>
+
+</div>
+</div>
+<a id="a4c29ae265475bdc9480a8774e3f59880" name="a4c29ae265475bdc9480a8774e3f59880"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c29ae265475bdc9480a8774e3f59880">&#9670;&#160;</a></span>getStudent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classStudent.html">Student</a> &amp; Request::getStudent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for the student doing a request. </p>
+<p>Time complexity - O(1) </p><dl class="section return"><dt>Returns</dt><dd>student </dd></dl>
+
+</div>
+</div>
+<a id="a6896fd84bffe9d75d5529c1be21fc58b" name="a6896fd84bffe9d75d5529c1be21fc58b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6896fd84bffe9d75d5529c1be21fc58b">&#9670;&#160;</a></span>getType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string &amp; Request::getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter of type of request. </p>
+<p>Time complexity - O(1) </p><dl class="section return"><dt>Returns</dt><dd>type of request </dd></dl>
+
+</div>
+</div>
+<a id="a6003537d0486ddec9974a3ff450bd5fe" name="a6003537d0486ddec9974a3ff450bd5fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6003537d0486ddec9974a3ff450bd5fe">&#9670;&#160;</a></span>getUcCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string &amp; Request::getUcCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter of a request ucCode. </p>
+<p>Time complexity - O(1) </p><dl class="section return"><dt>Returns</dt><dd>UcCode </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="Request_8h_source.html">Request.h</a></li>
 <li><b>Request.cpp</b></li>

@@ -84,7 +84,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa8b2355388d8179bd3ea1afef8280c0e" id="r_aa8b2355388d8179bd3ea1afef8280c0e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8b2355388d8179bd3ea1afef8280c0e">DataProcessor</a> ()</td></tr>
-<tr class="memdesc:aa8b2355388d8179bd3ea1afef8280c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A set where all schedules of classes are stored in.  <br /></td></tr>
+<tr class="memdesc:aa8b2355388d8179bd3ea1afef8280c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of DataProcessor.Reads all data from the given csv files and stores them in the corresponding data structures.  <br /></td></tr>
 <tr class="separator:aa8b2355388d8179bd3ea1afef8280c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a106a3f1ab92a1e0211f61398c65c63de" id="r_a106a3f1ab92a1e0211f61398c65c63de"><td class="memItemLeft" align="right" valign="top"><a id="a106a3f1ab92a1e0211f61398c65c63de" name="a106a3f1ab92a1e0211f61398c65c63de"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>classes_per_uc</b> ()</td></tr>
@@ -95,9 +95,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>classes_per_uc</b> ()
 <tr class="memitem:a03f2a99a104019e0a40a5219190969b4" id="r_a03f2a99a104019e0a40a5219190969b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03f2a99a104019e0a40a5219190969b4">students_classes</a> ()</td></tr>
 <tr class="memdesc:a03f2a99a104019e0a40a5219190969b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes data of the file students_classes.csv.  <br /></td></tr>
 <tr class="separator:a03f2a99a104019e0a40a5219190969b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1fa1be4d7693c6ad5808c16925875f0" id="r_ae1fa1be4d7693c6ad5808c16925875f0"><td class="memItemLeft" align="right" valign="top">const set&lt; <a class="el" href="classStudent.html">Student</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1fa1be4d7693c6ad5808c16925875f0">getStudents</a> () const</td></tr>
-<tr class="memdesc:ae1fa1be4d7693c6ad5808c16925875f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of all given students.  <br /></td></tr>
-<tr class="separator:ae1fa1be4d7693c6ad5808c16925875f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8afcb76f90aef493beda63210711b1d" id="r_ad8afcb76f90aef493beda63210711b1d"><td class="memItemLeft" align="right" valign="top"><a id="ad8afcb76f90aef493beda63210711b1d" name="ad8afcb76f90aef493beda63210711b1d"></a>
 const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getClassUc</b> () const</td></tr>
 <tr class="separator:ad8afcb76f90aef493beda63210711b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,21 +107,93 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 <tr class="memitem:a978e2864f4650a2810e60f1daa159953" id="r_a978e2864f4650a2810e60f1daa159953"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a978e2864f4650a2810e60f1daa159953">studentsInClass</a> (const string &amp;classCode, const string &amp;sortOption)</td></tr>
 <tr class="memdesc:a978e2864f4650a2810e60f1daa159953"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks which students are in a given class and prints them.  <br /></td></tr>
 <tr class="separator:a978e2864f4650a2810e60f1daa159953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8a923f9b2075fe5b06db82868459b94" id="r_ae8a923f9b2075fe5b06db82868459b94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8a923f9b2075fe5b06db82868459b94">studentsInCourse</a> (string course, const string &amp;sortOption)</td></tr>
-<tr class="memdesc:ae8a923f9b2075fe5b06db82868459b94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks how many students are in LEIC course and prints them.  <br /></td></tr>
-<tr class="separator:ae8a923f9b2075fe5b06db82868459b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3da4900adb0033bf48dd334da0f6bc5" id="r_ad3da4900adb0033bf48dd334da0f6bc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3da4900adb0033bf48dd334da0f6bc5">studentsInCourse</a> (const string course, const string &amp;sortOption)</td></tr>
+<tr class="memdesc:ad3da4900adb0033bf48dd334da0f6bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks how many students are in LEIC course and prints them.  <br /></td></tr>
+<tr class="separator:ad3da4900adb0033bf48dd334da0f6bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02772e8a62de59624ce2ac890709b769" id="r_a02772e8a62de59624ce2ac890709b769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02772e8a62de59624ce2ac890709b769">studentsInYear</a> (const string &amp;year, const string &amp;sortOption)</td></tr>
 <tr class="memdesc:a02772e8a62de59624ce2ac890709b769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the students from a given year and prints them.  <br /></td></tr>
 <tr class="separator:a02772e8a62de59624ce2ac890709b769"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08ba484bf35d7864b17d4ddf1fb4472c" id="r_a08ba484bf35d7864b17d4ddf1fb4472c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08ba484bf35d7864b17d4ddf1fb4472c">ucGreatestNumberStudents</a> ()</td></tr>
 <tr class="memdesc:a08ba484bf35d7864b17d4ddf1fb4472c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the Uc or Ucs with the most number of enrolled students and prints the ucCode and the number of students.  <br /></td></tr>
 <tr class="separator:a08ba484bf35d7864b17d4ddf1fb4472c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a345eda21896c15cc58bff8528ed3edc1" id="r_a345eda21896c15cc58bff8528ed3edc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a345eda21896c15cc58bff8528ed3edc1">scheduleOfClass</a> (const string &amp;classCode) const</td></tr>
-<tr class="memdesc:a345eda21896c15cc58bff8528ed3edc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the schedule of a given class and prints it.  <br /></td></tr>
-<tr class="separator:a345eda21896c15cc58bff8528ed3edc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8eca4c98a9785761853810f1116f86ef" id="r_a8eca4c98a9785761853810f1116f86ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8eca4c98a9785761853810f1116f86ef">scheduleOfStudent</a> (const string &amp;Id) const</td></tr>
-<tr class="memdesc:a8eca4c98a9785761853810f1116f86ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the schedule of a student, given its Id and prints its schedule.  <br /></td></tr>
-<tr class="separator:a8eca4c98a9785761853810f1116f86ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad197e65025943c73e8251c15d72a599a" id="r_ad197e65025943c73e8251c15d72a599a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad197e65025943c73e8251c15d72a599a">scheduleOfClass</a> (const string &amp;classCode)</td></tr>
+<tr class="memdesc:ad197e65025943c73e8251c15d72a599a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the schedule of a given class and prints it.  <br /></td></tr>
+<tr class="separator:ad197e65025943c73e8251c15d72a599a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf6e33adff94309899fd6ff87d4abbc4" id="r_acf6e33adff94309899fd6ff87d4abbc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf6e33adff94309899fd6ff87d4abbc4">scheduleOfStudent</a> (const <a class="el" href="classStudent.html">Student</a> &amp;student)</td></tr>
+<tr class="memdesc:acf6e33adff94309899fd6ff87d4abbc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the schedule of a given student and prints its schedule.  <br /></td></tr>
+<tr class="separator:acf6e33adff94309899fd6ff87d4abbc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49aa4b18b39775b5653a048b78d72dcc" id="r_a49aa4b18b39775b5653a048b78d72dcc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSchedule.html">Schedule</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49aa4b18b39775b5653a048b78d72dcc">createStudentSchedule</a> (const <a class="el" href="classStudent.html">Student</a> &amp;student)</td></tr>
+<tr class="memdesc:a49aa4b18b39775b5653a048b78d72dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the schedule for a student.  <br /></td></tr>
+<tr class="separator:a49aa4b18b39775b5653a048b78d72dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a851cfcb3453e1bdd7368bd09e7fa6678" id="r_a851cfcb3453e1bdd7368bd09e7fa6678"><td class="memItemLeft" align="right" valign="top"><a id="a851cfcb3453e1bdd7368bd09e7fa6678" name="a851cfcb3453e1bdd7368bd09e7fa6678"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>processRequest</b> (int i)</td></tr>
+<tr class="separator:a851cfcb3453e1bdd7368bd09e7fa6678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c1877c94072c6a5c03c7ff2fc1ee193" id="r_a7c1877c94072c6a5c03c7ff2fc1ee193"><td class="memItemLeft" align="right" valign="top"><a id="a7c1877c94072c6a5c03c7ff2fc1ee193" name="a7c1877c94072c6a5c03c7ff2fc1ee193"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ChangeFileSwitch</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;UcCodeToChange, const string &amp;newClassCode)</td></tr>
+<tr class="separator:a7c1877c94072c6a5c03c7ff2fc1ee193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a14fda347daaa7eccf868043917749b" id="r_a8a14fda347daaa7eccf868043917749b"><td class="memItemLeft" align="right" valign="top"><a id="a8a14fda347daaa7eccf868043917749b" name="a8a14fda347daaa7eccf868043917749b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ChangeFileRemove</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;UcCodeToRemove)</td></tr>
+<tr class="separator:a8a14fda347daaa7eccf868043917749b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a453bd116c2058522eeaa36c441db6ad7" id="r_a453bd116c2058522eeaa36c441db6ad7"><td class="memItemLeft" align="right" valign="top"><a id="a453bd116c2058522eeaa36c441db6ad7" name="a453bd116c2058522eeaa36c441db6ad7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ChangeFileAdd</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;NewClassCode, const string &amp;NewUcCode)</td></tr>
+<tr class="separator:a453bd116c2058522eeaa36c441db6ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac3e919de104c27f6bb5d5f77b0cf6b" id="r_a1ac3e919de104c27f6bb5d5f77b0cf6b"><td class="memItemLeft" align="right" valign="top"><a id="a1ac3e919de104c27f6bb5d5f77b0cf6b" name="a1ac3e919de104c27f6bb5d5f77b0cf6b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkScheduleCollisions</b> (vector&lt; <a class="el" href="classLecture.html">Lecture</a> &gt; lectures)</td></tr>
+<tr class="separator:a1ac3e919de104c27f6bb5d5f77b0cf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7301c9fdab782c1193b0d61d81b94297" id="r_a7301c9fdab782c1193b0d61d81b94297"><td class="memItemLeft" align="right" valign="top"><a id="a7301c9fdab782c1193b0d61d81b94297" name="a7301c9fdab782c1193b0d61d81b94297"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>undoRequest</b> (int RequestID)</td></tr>
+<tr class="separator:a7301c9fdab782c1193b0d61d81b94297"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f873e8f18e6ab428a2b5036ac19297b" id="r_a0f873e8f18e6ab428a2b5036ac19297b"><td class="memItemLeft" align="right" valign="top"><a id="a0f873e8f18e6ab428a2b5036ac19297b" name="a0f873e8f18e6ab428a2b5036ac19297b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>saveRequest</b> (const <a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;type, const string &amp;UcCode, const string &amp;startCode, const string &amp;endCode)</td></tr>
+<tr class="separator:a0f873e8f18e6ab428a2b5036ac19297b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76e947c803c82daf30d86ece1eb6907e" id="r_a76e947c803c82daf30d86ece1eb6907e"><td class="memItemLeft" align="right" valign="top"><a id="a76e947c803c82daf30d86ece1eb6907e" name="a76e947c803c82daf30d86ece1eb6907e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>lookupAllRequests</b> ()</td></tr>
+<tr class="separator:a76e947c803c82daf30d86ece1eb6907e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a440e57c31c45e69b427e690fb5ba68c9" id="r_a440e57c31c45e69b427e690fb5ba68c9"><td class="memItemLeft" align="right" valign="top"><a id="a440e57c31c45e69b427e690fb5ba68c9" name="a440e57c31c45e69b427e690fb5ba68c9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SwitchRequest</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;oldClassCode, const string &amp;newClassCode, const string &amp;UcCode, bool save)</td></tr>
+<tr class="separator:a440e57c31c45e69b427e690fb5ba68c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92138119ab41d068f87f276f56554a06" id="r_a92138119ab41d068f87f276f56554a06"><td class="memItemLeft" align="right" valign="top"><a id="a92138119ab41d068f87f276f56554a06" name="a92138119ab41d068f87f276f56554a06"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveRequest</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;UcCode, bool save)</td></tr>
+<tr class="separator:a92138119ab41d068f87f276f56554a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf8023964147cee03b6c70ba89aa271f" id="r_adf8023964147cee03b6c70ba89aa271f"><td class="memItemLeft" align="right" valign="top"><a id="adf8023964147cee03b6c70ba89aa271f" name="adf8023964147cee03b6c70ba89aa271f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddRequest</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;UcCode, bool save)</td></tr>
+<tr class="separator:adf8023964147cee03b6c70ba89aa271f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae01e4e4776f1a9a0dc08b2aebc2c5e15" id="r_ae01e4e4776f1a9a0dc08b2aebc2c5e15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae01e4e4776f1a9a0dc08b2aebc2c5e15">addPendingRequest</a> (const <a class="el" href="classRequest.html">Request</a> &amp;request)</td></tr>
+<tr class="memdesc:ae01e4e4776f1a9a0dc08b2aebc2c5e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a pending request to a csv file named RequestHistory.  <br /></td></tr>
+<tr class="separator:ae01e4e4776f1a9a0dc08b2aebc2c5e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b9ebd37c2848cf43552657aa90c8fb3" id="r_a5b9ebd37c2848cf43552657aa90c8fb3"><td class="memItemLeft" align="right" valign="top"><a id="a5b9ebd37c2848cf43552657aa90c8fb3" name="a5b9ebd37c2848cf43552657aa90c8fb3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>discardRequest</b> (int i)</td></tr>
+<tr class="separator:a5b9ebd37c2848cf43552657aa90c8fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb4f69806349211de0708b0521e358a3" id="r_acb4f69806349211de0708b0521e358a3"><td class="memItemLeft" align="right" valign="top"><a id="acb4f69806349211de0708b0521e358a3" name="acb4f69806349211de0708b0521e358a3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printPendingRequests</b> ()</td></tr>
+<tr class="separator:acb4f69806349211de0708b0521e358a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab44bbfe4e34b2b1474c17b729b62a008" id="r_ab44bbfe4e34b2b1474c17b729b62a008"><td class="memItemLeft" align="right" valign="top"><a id="ab44bbfe4e34b2b1474c17b729b62a008" name="ab44bbfe4e34b2b1474c17b729b62a008"></a>
+vector&lt; <a class="el" href="classLecture.html">Lecture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>FuseSchedules</b> (const <a class="el" href="classSchedule.html">Schedule</a> &amp;old_schedule, const <a class="el" href="classSchedule.html">Schedule</a> &amp;schedule_to_add, const string &amp;UcCode)</td></tr>
+<tr class="separator:ab44bbfe4e34b2b1474c17b729b62a008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6abae1158f30a247390ef88718457e14" id="r_a6abae1158f30a247390ef88718457e14"><td class="memItemLeft" align="right" valign="top"><a id="a6abae1158f30a247390ef88718457e14" name="a6abae1158f30a247390ef88718457e14"></a>
+vector&lt; <a class="el" href="classLecture.html">Lecture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>switchFuseSchedules</b> (const <a class="el" href="classSchedule.html">Schedule</a> &amp;old_schedule, const <a class="el" href="classSchedule.html">Schedule</a> &amp;schedule_to_add, const string &amp;UcCode, const string &amp;oldClassCode, const string &amp;newClassCode)</td></tr>
+<tr class="separator:a6abae1158f30a247390ef88718457e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae303e986e306f240c8f89557a4f77b2b" id="r_ae303e986e306f240c8f89557a4f77b2b"><td class="memItemLeft" align="right" valign="top"><a id="ae303e986e306f240c8f89557a4f77b2b" name="ae303e986e306f240c8f89557a4f77b2b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>performRequest</b> (<a class="el" href="classRequest.html">Request</a> &amp;request)</td></tr>
+<tr class="separator:ae303e986e306f240c8f89557a4f77b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf6dd005c7eb996efe5eb69aec28ed0f" id="r_adf6dd005c7eb996efe5eb69aec28ed0f"><td class="memItemLeft" align="right" valign="top">set&lt; <a class="el" href="classStudent.html">Student</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf6dd005c7eb996efe5eb69aec28ed0f">getStudents</a> ()</td></tr>
+<tr class="memdesc:adf6dd005c7eb996efe5eb69aec28ed0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of all given students.  <br /></td></tr>
+<tr class="separator:adf6dd005c7eb996efe5eb69aec28ed0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5dd93f15ed1061c87bcdd391438ff08" id="r_ae5dd93f15ed1061c87bcdd391438ff08"><td class="memItemLeft" align="right" valign="top"><a id="ae5dd93f15ed1061c87bcdd391438ff08" name="ae5dd93f15ed1061c87bcdd391438ff08"></a>
+map&lt; <a class="el" href="classClass__UC.html">Class_UC</a>, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getNumberOfStudents</b> (map&lt; <a class="el" href="classClass__UC.html">Class_UC</a>, int &gt; &amp;numberOfStudentsPerClass)</td></tr>
+<tr class="separator:ae5dd93f15ed1061c87bcdd391438ff08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6872099976a99e18b687f99c99b6bab9" id="r_a6872099976a99e18b687f99c99b6bab9"><td class="memItemLeft" align="right" valign="top"><a id="a6872099976a99e18b687f99c99b6bab9" name="a6872099976a99e18b687f99c99b6bab9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkAdd</b> (const <a class="el" href="classStudent.html">Student</a> &amp;studentToAdd, const <a class="el" href="classClass__UC.html">Class_UC</a> &amp;classUcToCheck)</td></tr>
+<tr class="separator:a6872099976a99e18b687f99c99b6bab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13c00dbae59a28085cac02566570a196" id="r_a13c00dbae59a28085cac02566570a196"><td class="memItemLeft" align="right" valign="top"><a id="a13c00dbae59a28085cac02566570a196" name="a13c00dbae59a28085cac02566570a196"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkBalanceAndCap</b> (map&lt; <a class="el" href="classClass__UC.html">Class_UC</a>, int &gt; &amp;numberOfStudentsPerClass) const</td></tr>
+<tr class="separator:a13c00dbae59a28085cac02566570a196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71eda763d4eb8f9af781d7b68414f43f" id="r_a71eda763d4eb8f9af781d7b68414f43f"><td class="memItemLeft" align="right" valign="top"><a id="a71eda763d4eb8f9af781d7b68414f43f" name="a71eda763d4eb8f9af781d7b68414f43f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkRemove</b> (const <a class="el" href="classStudent.html">Student</a> &amp;student, const <a class="el" href="classClass__UC.html">Class_UC</a> &amp;classUc)</td></tr>
+<tr class="separator:a71eda763d4eb8f9af781d7b68414f43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaabadc52dd647301ab5d96f9b2e9f1b" id="r_aaaabadc52dd647301ab5d96f9b2e9f1b"><td class="memItemLeft" align="right" valign="top"><a id="aaaabadc52dd647301ab5d96f9b2e9f1b" name="aaaabadc52dd647301ab5d96f9b2e9f1b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkSwitch</b> (const <a class="el" href="classStudent.html">Student</a> &amp;student, const <a class="el" href="classClass__UC.html">Class_UC</a> &amp;oldClassUc, const <a class="el" href="classClass__UC.html">Class_UC</a> &amp;newClassUc)</td></tr>
+<tr class="separator:aaaabadc52dd647301ab5d96f9b2e9f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that stores and processes useful data from the csv files. </p>
@@ -144,13 +213,38 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
       </table>
 </div><div class="memdoc">
 
-<p>A set where all schedules of classes are stored in. </p>
-<p>Constructor of DataProcessor.Reads all data from the given csv files and stores them in the corresponding data structures.</p>
+<p>Constructor of DataProcessor.Reads all data from the given csv files and stores them in the corresponding data structures. </p>
 <p>Time complexity - O(n+m*log(h)) with n and m being the number of lines of students_classes.csv , classes.csv respectively and h the number of all classes' schedules </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae01e4e4776f1a9a0dc08b2aebc2c5e15" name="ae01e4e4776f1a9a0dc08b2aebc2c5e15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae01e4e4776f1a9a0dc08b2aebc2c5e15">&#9670;&#160;</a></span>addPendingRequest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataProcessor::addPendingRequest </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classRequest.html">Request</a> &amp;&#160;</td>
+          <td class="paramname"><em>request</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a pending request to a csv file named RequestHistory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">request</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af693f0682add31b82a182634a76eb155" name="af693f0682add31b82a182634a76eb155"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af693f0682add31b82a182634a76eb155">&#9670;&#160;</a></span>classes()</h2>
 
@@ -168,6 +262,32 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 
 <p>Processes data of the file classes.csv. </p>
 <p>Time complexity - O(m*log(n)) with m being the number of lines of the file and n the number of all classes' schedules </p>
+
+</div>
+</div>
+<a id="a49aa4b18b39775b5653a048b78d72dcc" name="a49aa4b18b39775b5653a048b78d72dcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49aa4b18b39775b5653a048b78d72dcc">&#9670;&#160;</a></span>createStudentSchedule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSchedule.html">Schedule</a> DataProcessor::createStudentSchedule </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classStudent.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates the schedule for a student. </p>
+<p>Time complexity - O(n*log(m)) with n being the number of classUCs of a student and m the number of schedules of a class </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">student</td><td>Given a student </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -191,17 +311,17 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 
 </div>
 </div>
-<a id="ae1fa1be4d7693c6ad5808c16925875f0" name="ae1fa1be4d7693c6ad5808c16925875f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1fa1be4d7693c6ad5808c16925875f0">&#9670;&#160;</a></span>getStudents()</h2>
+<a id="adf6dd005c7eb996efe5eb69aec28ed0f" name="adf6dd005c7eb996efe5eb69aec28ed0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6dd005c7eb996efe5eb69aec28ed0f">&#9670;&#160;</a></span>getStudents()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const set&lt; <a class="el" href="classStudent.html">Student</a> &gt; &amp; DataProcessor::getStudents </td>
+          <td class="memname">set&lt; <a class="el" href="classStudent.html">Student</a> &gt; &amp; DataProcessor::getStudents </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -211,8 +331,8 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 
 </div>
 </div>
-<a id="a345eda21896c15cc58bff8528ed3edc1" name="a345eda21896c15cc58bff8528ed3edc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a345eda21896c15cc58bff8528ed3edc1">&#9670;&#160;</a></span>scheduleOfClass()</h2>
+<a id="ad197e65025943c73e8251c15d72a599a" name="ad197e65025943c73e8251c15d72a599a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad197e65025943c73e8251c15d72a599a">&#9670;&#160;</a></span>scheduleOfClass()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +342,7 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
           <td>(</td>
           <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>classCode</em></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -237,8 +357,8 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 
 </div>
 </div>
-<a id="a8eca4c98a9785761853810f1116f86ef" name="a8eca4c98a9785761853810f1116f86ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8eca4c98a9785761853810f1116f86ef">&#9670;&#160;</a></span>scheduleOfStudent()</h2>
+<a id="acf6e33adff94309899fd6ff87d4abbc4" name="acf6e33adff94309899fd6ff87d4abbc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf6e33adff94309899fd6ff87d4abbc4">&#9670;&#160;</a></span>scheduleOfStudent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,17 +366,17 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
         <tr>
           <td class="memname">void DataProcessor::scheduleOfStudent </td>
           <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>Id</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const <a class="el" href="classStudent.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Checks the schedule of a student, given its Id and prints its schedule. </p>
-<p>Time complexity - O(n*log(k)*t+log(m)) with n being the number of classUCs of a student, k the number of schedules of a class, t the number of lectures in a schedule and m the number of existing students </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Creates the schedule of a given student and prints its schedule. </p>
+<p>Time complexity - O(n*log(k)+m*log(m)) with n being the number of classUCs of a student, k the number of schedules of a class and m the number of Lectures to print </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Id</td><td>Given Id of a student </td></tr>
+    <tr><td class="paramname">student</td><td>Given a student </td></tr>
   </table>
   </dd>
 </dl>
@@ -310,7 +430,7 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 </div><div class="memdoc">
 
 <p>Checks which students are in a given class and prints them. </p>
-<p>Time complexity - O(n*m) with n being the number of existing students, and m the number of classes of each student </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity - O(n*log(n)) with n being number of students stored in the temp vector (Worst case scenario) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">classCode</td><td>The code of a given class </td></tr>
     <tr><td class="paramname">sortOption</td><td>has 4 different inputs : A to Z, Z to A, numerical and reversed numerical </td></tr>
@@ -320,8 +440,8 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 
 </div>
 </div>
-<a id="ae8a923f9b2075fe5b06db82868459b94" name="ae8a923f9b2075fe5b06db82868459b94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8a923f9b2075fe5b06db82868459b94">&#9670;&#160;</a></span>studentsInCourse()</h2>
+<a id="ad3da4900adb0033bf48dd334da0f6bc5" name="ad3da4900adb0033bf48dd334da0f6bc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3da4900adb0033bf48dd334da0f6bc5">&#9670;&#160;</a></span>studentsInCourse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -329,7 +449,7 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
         <tr>
           <td class="memname">void DataProcessor::studentsInCourse </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype">const string&#160;</td>
           <td class="paramname"><em>course</em>, </td>
         </tr>
         <tr>
@@ -347,7 +467,7 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 </div><div class="memdoc">
 
 <p>Checks how many students are in LEIC course and prints them. </p>
-<p>Time complexity - O(n) with n being the number of existing students </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity - O(n*log(n)) with n being number of students stored in the temp vector (Worst case scenario) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">course</td><td>A given course </td></tr>
     <tr><td class="paramname">sortOption</td><td>has 4 different inputs : A to Z, Z to A, numerical and reversed numerical </td></tr>
@@ -410,7 +530,7 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 </div><div class="memdoc">
 
 <p>Checks the students from a given year and prints them. </p>
-<p>Time complexity - O(n) with n being the number of existing students </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity - O(n*log(n)) with n being number of students stored in the temp vector (Worst case scenario) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">year</td><td>A given year (ex:2022) </td></tr>
     <tr><td class="paramname">sortOption</td><td>has 4 different inputs : A to Z, Z to A, numerical and reversed numerical </td></tr>
