@@ -78,7 +78,7 @@ void Menu::ClassSchedule(){
  * @brief Receives an input from the user from [1,3] else goes to the starting menu. Gives various options to search students such as:
  * See all students in a class/year/course.
  * It displays the students based on the selected option and sorting preference
- * @details Time complexity - O(
+ * @details Time complexity - O(n*log(n)) with n being number of students stored in the temp vector (Worst case scenario)
  */
 void Menu::CheckStudent() {
     cout << "1. See all students in a class" << endl;
@@ -124,6 +124,8 @@ void Menu::CheckStudent() {
         }
     }
 }
+
+
 void Menu :: requests(){
     cout << "1. Add new request to list of pending requests" << endl;
     cout << "2. Process request(s)" << endl;

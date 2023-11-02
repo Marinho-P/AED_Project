@@ -42,7 +42,7 @@ class DataProcessor{
         void scheduleOfClass(const string &classCode);
         void scheduleOfStudent(const Student &student);
         Schedule createStudentSchedule(const Student &student);
-        void processRequest(int i);
+        void processRequest(int RequestID);
         void ChangeFileSwitch(Student &student, const string &UcCodeToChange, const string &newClassCode);
         void ChangeFileRemove(Student &student, const string &UcCodeToRemove);
         void ChangeFileAdd(Student &student, const string &NewClassCode, const string &NewUcCode);
@@ -54,10 +54,10 @@ class DataProcessor{
         void RemoveRequest(Student &student, const string &UcCode, bool save);
         void AddRequest(Student &student, const string &UcCode, bool save);
         void addPendingRequest(const Request &request);
-        void discardRequest(int i);
+        void discardRequest(int RequestID);
         void printPendingRequests();
         vector<Lecture> FuseSchedules(const Schedule &old_schedule, const Schedule &schedule_to_add, const string &UcCode);
-        vector<Lecture>switchFuseSchedules(const Schedule &old_schedule, const Schedule &schedule_to_add, const string &UcCode,const string &oldClassCode, const string &newClassCode);
+        vector<Lecture>switchFuseSchedules(const Schedule &old_schedule, const Schedule &schedule_to_add, const string &UcCode);
         void performRequest(Request &request);
         set<Student> &getStudents();
         map<Class_UC, int> &getNumberOfStudents(map<Class_UC, int> &numberOfStudentsPerClass);
