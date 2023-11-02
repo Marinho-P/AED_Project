@@ -1,7 +1,3 @@
-//
-// Created by sergio on 01-11-2023.
-//
-
 #ifndef AED_PROJECT_REQUEST_H
 #define AED_PROJECT_REQUEST_H
 #include <string>
@@ -19,7 +15,6 @@ public:
     Request(Student &student, const string &type, const string &ucCode,
             const string &startCode, const string &endCode);
 
-
     const string &getType() const;
 
     const string &getUcCode() const;
@@ -30,6 +25,5 @@ public:
 
     Student& getStudent();
 };
-
 
 #endif //AED_PROJECT_REQUEST_H

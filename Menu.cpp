@@ -7,77 +7,53 @@ Menu ::Menu() {
 
 
 int Menu::run() {
-        while (true) {
-            int option = options();
-            switch (option) {
-                case 0:{
-                    cout << ">> Exiting the menu." << endl;
-                    return 0;
-                }
-                case 1: {
-
-                //checkUcSchedule();
-
-                    //input();
-                    break;
-                }
-                case 2: {
-                    CheckStudent();
-                    break;
-                }
-                case 3: {
-                    ClassSchedule();
-
-                    break;
-                }
-                case 4: {
-                    //checkClassStudents();
-                    //input();
-                    break;
-                }
-                case 5: {
-                    //checkStudentSchedule();
-                    //input();
-                    break;
-                }
-                case 6:{
-                    requests();
-                    break;
-                }
-                case 7: {
-                    //printPendingRequests();
-                    break;
-                }
-                case 8:{
-                    //processRequests();
-                    break;
-                }
-                case 9: {
-                    //save();
-                    return 0;
-                }
-                default:
-                    cout << ">> Invalid option try again." << endl;
+    while (true) {
+        int option = options();
+        switch (option) {
+            case 0: {
+                cout << ">> Exiting the menu." << endl;
+                return 0;
             }
+            case 1: {
+                //checkUcSchedule(); Isto não está implementado
+                //input();
+                break;
+            }
+            case 2: {
+                CheckStudent();
+                break;
+            }
+            case 3: {
+                ClassSchedule();
+                break;
+            }
+            case 4: {
+                checkStudentSchedule();
+                break;
+            }
+            case 5: {
+                requests();
+                break;
+            }
+            default:
+                cout << ">> Invalid option try again." << endl;
         }
     }
+}
 int Menu::options() const{
     int choice;
     cout << "Menu Options:" << endl;
     cout << "1. Check UC Schedule" << endl; // not possible? (overlapping schedules)
     cout << "2. Check Students" << endl;
     cout << "3. Check Class Schedule" << endl;
-    cout << "4. Check Class Students" << endl;
-    cout << "5. Check Student Schedule" << endl;
-    cout << "6. Requests" << endl;
-    cout << "7. Print Pending Requests" << endl;
-    cout << "8. Process Requests" << endl;
-    cout << "9. Save" << endl;
+    cout << "4. Check Student Schedule" << endl;
+    cout << "5. Requests" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter your choice:";
     cin >> choice;
     return choice;
 }
+
 void Menu::ClassSchedule() {
     string classCode;
     cout << "Enter a Class code:";
@@ -94,13 +70,18 @@ void Menu::CheckStudent() {
     int choice;
     cin >> choice;
     cout << endl;
+    string sort = sorting();
+    if (sort == "exit"){
+        cout << ">> Exiting the menu." << endl;
+        return;
+    }
     switch (choice) {
         case 1: {
             string classCode;
             cout << "Enter a class code:";
             cin >> classCode;
             cout << "\n";
-            dataProcessor.studentsInClass(classCode);
+            dataProcessor.studentsInClass(classCode,sort);
             break;
         }
         case 2:{
@@ -108,7 +89,7 @@ void Menu::CheckStudent() {
             cout << "Enter a year (ex. 2020):";
             cin >> year;
             cout << "\n";
-            dataProcessor.studentsInYear(year);
+            dataProcessor.studentsInYear(year,sort);
             break;
         }
         case 3:{
@@ -116,16 +97,12 @@ void Menu::CheckStudent() {
             cout << "Enter a course (ex. LEIC):";
             cin >> course;
             cout << "\n";
-            dataProcessor.studentsInCourse(course);
+            dataProcessor.studentsInCourse(course,sort);
             break;
         }
         default:{
             cout << ">> Returning to menu" << endl;
         }
-
-
-
-
     }
 }
 void Menu :: requests(){
@@ -134,7 +111,7 @@ void Menu :: requests(){
     cout << "3. Discard request(s)" << endl;
     cout << "4. List pending requests" << endl;
     cout << "5. List successful requests" << endl;
-    cout << "6. Undo Succesfull request" << endl;
+    cout << "6. Undo Successful request" << endl;
     cout << "Press any other key to return to menu" << endl;
     cout << "Enter your choice:" ;
     int option;
@@ -262,10 +239,44 @@ void Menu::listSuccessfullRequests() {
 
 void Menu::undoRequest() {
     int RequestId;
-    cout << "Enter a successfull Request Id:";
+    cout << "Enter a successful Request Id:";
     cin >> RequestId;
     dataProcessor.undoRequest(RequestId);
 
 }
 
+
+
+string Menu::sorting() const {
+    cout << "1. A to Z" << endl;
+    cout << "2. Z to A" << endl;
+    cout << "3. Numerical" << endl;
+    cout << "4. Numerical in reverse" << endl;
+    cout << "Press any other key to return to menu" << endl;
+    cout << "In which order do you want the students to be displayed? ";
+    int option; cin >> option; cout << endl;
+    switch (option) {
+        case 1:
+            return "A to Z";
+        case 2:
+            return "Z to A";
+        case 3:
+            return "numerical";
+        case 4:
+            return "reverse numerical";
+        default:{
+            return "exit";
+        }
+    }
+}
+
+void Menu::checkStudentSchedule()  {
+    string upNumber;
+    cout << "Insert the student's UP number: ";
+    cin >> upNumber;
+    cout << endl;
+    Student student = Student();
+    student.setId(upNumber);
+    dataProcessor.scheduleOfStudent(*(dataProcessor.getStudents().find(student)));
+}
 
