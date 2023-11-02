@@ -10,5 +10,6 @@ var searchData=
   ['studentsinclass_7',['studentsInClass',['../classDataProcessor.html#a978e2864f4650a2810e60f1daa159953',1,'DataProcessor']]],
   ['studentsincourse_8',['studentsInCourse',['../classDataProcessor.html#ad3da4900adb0033bf48dd334da0f6bc5',1,'DataProcessor']]],
   ['studentsinuc_9',['studentsInUc',['../classDataProcessor.html#a62f45a97f056530f6a891eba538fd009',1,'DataProcessor']]],
-  ['studentsinyear_10',['studentsInYear',['../classDataProcessor.html#a02772e8a62de59624ce2ac890709b769',1,'DataProcessor']]]
+  ['studentsinyear_10',['studentsInYear',['../classDataProcessor.html#a02772e8a62de59624ce2ac890709b769',1,'DataProcessor']]],
+  ['switchfuseschedules_11',['switchFuseSchedules',['../classDataProcessor.html#a0f7b38d0a8083c37dd125eac88d2ac03',1,'DataProcessor']]]
 ];

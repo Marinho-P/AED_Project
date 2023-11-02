@@ -125,14 +125,14 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 <tr class="memitem:a49aa4b18b39775b5653a048b78d72dcc" id="r_a49aa4b18b39775b5653a048b78d72dcc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSchedule.html">Schedule</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49aa4b18b39775b5653a048b78d72dcc">createStudentSchedule</a> (const <a class="el" href="classStudent.html">Student</a> &amp;student)</td></tr>
 <tr class="memdesc:a49aa4b18b39775b5653a048b78d72dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the schedule for a student.  <br /></td></tr>
 <tr class="separator:a49aa4b18b39775b5653a048b78d72dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a851cfcb3453e1bdd7368bd09e7fa6678" id="r_a851cfcb3453e1bdd7368bd09e7fa6678"><td class="memItemLeft" align="right" valign="top"><a id="a851cfcb3453e1bdd7368bd09e7fa6678" name="a851cfcb3453e1bdd7368bd09e7fa6678"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processRequest</b> (int i)</td></tr>
-<tr class="separator:a851cfcb3453e1bdd7368bd09e7fa6678"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c1877c94072c6a5c03c7ff2fc1ee193" id="r_a7c1877c94072c6a5c03c7ff2fc1ee193"><td class="memItemLeft" align="right" valign="top"><a id="a7c1877c94072c6a5c03c7ff2fc1ee193" name="a7c1877c94072c6a5c03c7ff2fc1ee193"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ChangeFileSwitch</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;UcCodeToChange, const string &amp;newClassCode)</td></tr>
+<tr class="memitem:a289ab3de67c41c51ee4869366a46f074" id="r_a289ab3de67c41c51ee4869366a46f074"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a289ab3de67c41c51ee4869366a46f074">processRequest</a> (int RequestID)</td></tr>
+<tr class="memdesc:a289ab3de67c41c51ee4869366a46f074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes one or all requests at once given a RequestId else doesn't do any if invalid RequestId RequestId = 0 (Process all requests)  <br /></td></tr>
+<tr class="separator:a289ab3de67c41c51ee4869366a46f074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c1877c94072c6a5c03c7ff2fc1ee193" id="r_a7c1877c94072c6a5c03c7ff2fc1ee193"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c1877c94072c6a5c03c7ff2fc1ee193">ChangeFileSwitch</a> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;UcCodeToChange, const string &amp;newClassCode)</td></tr>
+<tr class="memdesc:a7c1877c94072c6a5c03c7ff2fc1ee193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifies the csv file "students_classes" after processing a switch request. To do that we need to create a new file and copy the contents of the other, add the switch changes and then rename it to the name of the old file.  <br /></td></tr>
 <tr class="separator:a7c1877c94072c6a5c03c7ff2fc1ee193"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a14fda347daaa7eccf868043917749b" id="r_a8a14fda347daaa7eccf868043917749b"><td class="memItemLeft" align="right" valign="top"><a id="a8a14fda347daaa7eccf868043917749b" name="a8a14fda347daaa7eccf868043917749b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ChangeFileRemove</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;UcCodeToRemove)</td></tr>
+<tr class="memitem:a8a14fda347daaa7eccf868043917749b" id="r_a8a14fda347daaa7eccf868043917749b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a14fda347daaa7eccf868043917749b">ChangeFileRemove</a> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;UcCodeToRemove)</td></tr>
+<tr class="memdesc:a8a14fda347daaa7eccf868043917749b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifies the csv file "students_classes" after processing a remove request. To do that we need to create a new file and copy the contents of the other, skip the elements we want to remove and then rename it to the name of the old file.  <br /></td></tr>
 <tr class="separator:a8a14fda347daaa7eccf868043917749b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a453bd116c2058522eeaa36c441db6ad7" id="r_a453bd116c2058522eeaa36c441db6ad7"><td class="memItemLeft" align="right" valign="top"><a id="a453bd116c2058522eeaa36c441db6ad7" name="a453bd116c2058522eeaa36c441db6ad7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ChangeFileAdd</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;NewClassCode, const string &amp;NewUcCode)</td></tr>
@@ -148,6 +148,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>saveRequest</b> (cons
 <tr class="separator:a0f873e8f18e6ab428a2b5036ac19297b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76e947c803c82daf30d86ece1eb6907e" id="r_a76e947c803c82daf30d86ece1eb6907e"><td class="memItemLeft" align="right" valign="top"><a id="a76e947c803c82daf30d86ece1eb6907e" name="a76e947c803c82daf30d86ece1eb6907e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>lookupAllRequests</b> ()</td></tr>
+<tr class="memdesc:a76e947c803c82daf30d86ece1eb6907e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Looks up. <br /></td></tr>
 <tr class="separator:a76e947c803c82daf30d86ece1eb6907e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a440e57c31c45e69b427e690fb5ba68c9" id="r_a440e57c31c45e69b427e690fb5ba68c9"><td class="memItemLeft" align="right" valign="top"><a id="a440e57c31c45e69b427e690fb5ba68c9" name="a440e57c31c45e69b427e690fb5ba68c9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SwitchRequest</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;oldClassCode, const string &amp;newClassCode, const string &amp;UcCode, bool save)</td></tr>
@@ -159,20 +160,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveRequest</b> (<a
 void&#160;</td><td class="memItemRight" valign="bottom"><b>AddRequest</b> (<a class="el" href="classStudent.html">Student</a> &amp;student, const string &amp;UcCode, bool save)</td></tr>
 <tr class="separator:adf8023964147cee03b6c70ba89aa271f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae01e4e4776f1a9a0dc08b2aebc2c5e15" id="r_ae01e4e4776f1a9a0dc08b2aebc2c5e15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae01e4e4776f1a9a0dc08b2aebc2c5e15">addPendingRequest</a> (const <a class="el" href="classRequest.html">Request</a> &amp;request)</td></tr>
-<tr class="memdesc:ae01e4e4776f1a9a0dc08b2aebc2c5e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a pending request to a csv file named RequestHistory.  <br /></td></tr>
+<tr class="memdesc:ae01e4e4776f1a9a0dc08b2aebc2c5e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a pending request to a vector containing all pending requests.  <br /></td></tr>
 <tr class="separator:ae01e4e4776f1a9a0dc08b2aebc2c5e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b9ebd37c2848cf43552657aa90c8fb3" id="r_a5b9ebd37c2848cf43552657aa90c8fb3"><td class="memItemLeft" align="right" valign="top"><a id="a5b9ebd37c2848cf43552657aa90c8fb3" name="a5b9ebd37c2848cf43552657aa90c8fb3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>discardRequest</b> (int i)</td></tr>
-<tr class="separator:a5b9ebd37c2848cf43552657aa90c8fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb4f69806349211de0708b0521e358a3" id="r_acb4f69806349211de0708b0521e358a3"><td class="memItemLeft" align="right" valign="top"><a id="acb4f69806349211de0708b0521e358a3" name="acb4f69806349211de0708b0521e358a3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printPendingRequests</b> ()</td></tr>
+<tr class="memitem:ac567a043a77e3fd5b4284a75b80da859" id="r_ac567a043a77e3fd5b4284a75b80da859"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac567a043a77e3fd5b4284a75b80da859">discardRequest</a> (int RequestID)</td></tr>
+<tr class="memdesc:ac567a043a77e3fd5b4284a75b80da859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discards one or all pending requests stored in the vector PendingRequests.  <br /></td></tr>
+<tr class="separator:ac567a043a77e3fd5b4284a75b80da859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb4f69806349211de0708b0521e358a3" id="r_acb4f69806349211de0708b0521e358a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb4f69806349211de0708b0521e358a3">printPendingRequests</a> ()</td></tr>
+<tr class="memdesc:acb4f69806349211de0708b0521e358a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all current stored pending requests having two different formats between switch and add/remove.  <br /></td></tr>
 <tr class="separator:acb4f69806349211de0708b0521e358a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab44bbfe4e34b2b1474c17b729b62a008" id="r_ab44bbfe4e34b2b1474c17b729b62a008"><td class="memItemLeft" align="right" valign="top"><a id="ab44bbfe4e34b2b1474c17b729b62a008" name="ab44bbfe4e34b2b1474c17b729b62a008"></a>
 vector&lt; <a class="el" href="classLecture.html">Lecture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>FuseSchedules</b> (const <a class="el" href="classSchedule.html">Schedule</a> &amp;old_schedule, const <a class="el" href="classSchedule.html">Schedule</a> &amp;schedule_to_add, const string &amp;UcCode)</td></tr>
 <tr class="separator:ab44bbfe4e34b2b1474c17b729b62a008"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6abae1158f30a247390ef88718457e14" id="r_a6abae1158f30a247390ef88718457e14"><td class="memItemLeft" align="right" valign="top"><a id="a6abae1158f30a247390ef88718457e14" name="a6abae1158f30a247390ef88718457e14"></a>
-vector&lt; <a class="el" href="classLecture.html">Lecture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>switchFuseSchedules</b> (const <a class="el" href="classSchedule.html">Schedule</a> &amp;old_schedule, const <a class="el" href="classSchedule.html">Schedule</a> &amp;schedule_to_add, const string &amp;UcCode, const string &amp;oldClassCode, const string &amp;newClassCode)</td></tr>
-<tr class="separator:a6abae1158f30a247390ef88718457e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f7b38d0a8083c37dd125eac88d2ac03" id="r_a0f7b38d0a8083c37dd125eac88d2ac03"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classLecture.html">Lecture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f7b38d0a8083c37dd125eac88d2ac03">switchFuseSchedules</a> (const <a class="el" href="classSchedule.html">Schedule</a> &amp;old_schedule, const <a class="el" href="classSchedule.html">Schedule</a> &amp;schedule_to_add, const string &amp;UcCode)</td></tr>
+<tr class="memdesc:a0f7b38d0a8083c37dd125eac88d2ac03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the old Ucs from the student's current schedule and adds the new ones.  <br /></td></tr>
+<tr class="separator:a0f7b38d0a8083c37dd125eac88d2ac03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae303e986e306f240c8f89557a4f77b2b" id="r_ae303e986e306f240c8f89557a4f77b2b"><td class="memItemLeft" align="right" valign="top"><a id="ae303e986e306f240c8f89557a4f77b2b" name="ae303e986e306f240c8f89557a4f77b2b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>performRequest</b> (<a class="el" href="classRequest.html">Request</a> &amp;request)</td></tr>
 <tr class="separator:ae303e986e306f240c8f89557a4f77b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,10 +236,91 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkSwitch</b> (cons
       </table>
 </div><div class="memdoc">
 
-<p>Adds a pending request to a csv file named RequestHistory. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Adds a pending request to a vector containing all pending requests. </p>
+<p>Time complexity - O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">request</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8a14fda347daaa7eccf868043917749b" name="a8a14fda347daaa7eccf868043917749b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a14fda347daaa7eccf868043917749b">&#9670;&#160;</a></span>ChangeFileRemove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataProcessor::ChangeFileRemove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classStudent.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>UcCodeToRemove</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifies the csv file "students_classes" after processing a remove request. To do that we need to create a new file and copy the contents of the other, skip the elements we want to remove and then rename it to the name of the old file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">student</td><td></td></tr>
+    <tr><td class="paramname">UcCodeToRemove</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7c1877c94072c6a5c03c7ff2fc1ee193" name="a7c1877c94072c6a5c03c7ff2fc1ee193"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c1877c94072c6a5c03c7ff2fc1ee193">&#9670;&#160;</a></span>ChangeFileSwitch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataProcessor::ChangeFileSwitch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classStudent.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>UcCodeToChange</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>newClassCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifies the csv file "students_classes" after processing a switch request. To do that we need to create a new file and copy the contents of the other, add the switch changes and then rename it to the name of the old file. </p>
+<p>Time complexity - O(n) with n being the number of lines of the file students_classes.csv </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">student</td><td></td></tr>
+    <tr><td class="paramname">UcCodeToChange</td><td></td></tr>
+    <tr><td class="paramname">newClassCode</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -291,6 +373,32 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkSwitch</b> (cons
 
 </div>
 </div>
+<a id="ac567a043a77e3fd5b4284a75b80da859" name="ac567a043a77e3fd5b4284a75b80da859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac567a043a77e3fd5b4284a75b80da859">&#9670;&#160;</a></span>discardRequest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataProcessor::discardRequest </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RequestID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Discards one or all pending requests stored in the vector PendingRequests. </p>
+<p>Time complexity - O(n) with n being the number of all stored pending requests </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">RequestID</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a0a15f04093537488fff03c57b5d2e54e" name="a0a15f04093537488fff03c57b5d2e54e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a15f04093537488fff03c57b5d2e54e">&#9670;&#160;</a></span>getSchedules()</h2>
 
@@ -328,6 +436,52 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkSwitch</b> (cons
 
 <p>Getter of all given students. </p>
 <p>Time complexity - O(1) </p><dl class="section return"><dt>Returns</dt><dd>a set of the existing students </dd></dl>
+
+</div>
+</div>
+<a id="acb4f69806349211de0708b0521e358a3" name="acb4f69806349211de0708b0521e358a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb4f69806349211de0708b0521e358a3">&#9670;&#160;</a></span>printPendingRequests()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataProcessor::printPendingRequests </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints all current stored pending requests having two different formats between switch and add/remove. </p>
+<p>Time complexity - O(n) with n being the number of requests currently stored </p>
+
+</div>
+</div>
+<a id="a289ab3de67c41c51ee4869366a46f074" name="a289ab3de67c41c51ee4869366a46f074"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a289ab3de67c41c51ee4869366a46f074">&#9670;&#160;</a></span>processRequest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataProcessor::processRequest </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RequestID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Processes one or all requests at once given a RequestId else doesn't do any if invalid RequestId RequestId = 0 (Process all requests) </p>
+<p>Time complexity - O( </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">RequestID</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -537,6 +691,53 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkSwitch</b> (cons
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a0f7b38d0a8083c37dd125eac88d2ac03" name="a0f7b38d0a8083c37dd125eac88d2ac03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f7b38d0a8083c37dd125eac88d2ac03">&#9670;&#160;</a></span>switchFuseSchedules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="classLecture.html">Lecture</a> &gt; DataProcessor::switchFuseSchedules </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSchedule.html">Schedule</a> &amp;&#160;</td>
+          <td class="paramname"><em>old_schedule</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSchedule.html">Schedule</a> &amp;&#160;</td>
+          <td class="paramname"><em>schedule_to_add</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>UcCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes the old Ucs from the student's current schedule and adds the new ones. </p>
+<p>Time complexity - O(n+m) with n being the number of lectures of schedule1 and m the number of lectures of schedule2 </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">old_schedule</td><td></td></tr>
+    <tr><td class="paramname">schedule_to_add</td><td></td></tr>
+    <tr><td class="paramname">UcCode</td><td></td></tr>
+    <tr><td class="paramname">oldClassCode</td><td></td></tr>
+    <tr><td class="paramname">newClassCode</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>new updated vector of lectures </dd></dl>
 
 </div>
 </div>

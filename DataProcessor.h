@@ -34,7 +34,8 @@ class DataProcessor{
         void students_classes();
         const set<Class_UC> &getClassUc() const;
         const set<Schedule> &getSchedules() const;
-        void studentsInUc(int n);
+        void studentsInAtLeastNUCs(int n);
+        void studentsInUc(const string& ucCode,const string& sortOption);
         void studentsInClass(const string& classCode,const string& sortOption);
         void studentsInCourse(const string course,const string& sortOption);
         void studentsInYear(const string &year,const string& sortOption);

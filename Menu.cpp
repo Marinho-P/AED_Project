@@ -20,8 +20,7 @@ int Menu::run() {
                 return 0;
             }
             case 1: {
-                checkStudentsInUc();
-
+                countStudentsInAtLeastNUCs();
                 break;
             }
             case 2: {
@@ -50,7 +49,7 @@ int Menu::run() {
     }
 }
 /**
- * @brief Prints in the terminal which options the user has [0,5]
+ * @brief Prints in the terminal which options the user has [0,6]
  * @details Time complexity - O(1)
  * @return input of user
  */
@@ -89,6 +88,7 @@ void Menu::CheckStudent() {
     cout << "1. See all students in a class" << endl;
     cout << "2. See all students in a year" << endl;
     cout << "3. See all students in a course" << endl;
+    cout << "4. See all students in a UC" << endl;
     cout << "Press any other key to return to menu" << endl;
     cout << "Enter your choice:";
     int choice;
@@ -96,7 +96,7 @@ void Menu::CheckStudent() {
     cout << endl;
     string sort = sorting();
     if (sort == "exit"){
-        cout << ">> Exiting the menu." << endl;
+        cout << ">> Returning to menu." << endl;
         return;
     }
     switch (choice) {
@@ -123,6 +123,13 @@ void Menu::CheckStudent() {
             cout << "\n";
             dataProcessor.studentsInCourse(course,sort);
             break;
+        }
+        case 4:{
+            string UC;
+            cout << "Enter a UC (ex. L.EIC001):";
+            cin >> UC;
+            cout << "\n";
+            dataProcessor.studentsInUc(UC,sort);
         }
         default:{
             cout << ">> Returning to menu" << endl;
@@ -182,8 +189,7 @@ void Menu::addRequestoList() {
     cout << endl;
     Student find_Student = Student();
     find_Student.setId(id);
-    set<Student> test = dataProcessor.getStudents();
-    auto it  =  test.find(find_Student);
+    auto it  =  dataProcessor.getStudents().find(find_Student);
     if (it == dataProcessor.getStudents().end()) {
         cout << "Student not found" << endl;
         return;
@@ -306,16 +312,16 @@ void Menu::checkStudentSchedule()  {
     dataProcessor.scheduleOfStudent(*(dataProcessor.getStudents().find(student)));
 }
 
-void Menu::checkStudentsInUc() {
+void Menu::countStudentsInAtLeastNUCs() {
     int n;
     cout << "Enter n:";
     cin >> n;
     cout << endl;
-    dataProcessor.studentsInUc(n);
+    dataProcessor.studentsInAtLeastNUCs(n);
+    cout << ">> Returning to menu" << endl;
 }
 
 void Menu::checkGreatestUc() {
     dataProcessor.ucGreatestNumberStudents();
-
 }
 

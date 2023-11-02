@@ -119,14 +119,14 @@ void DataProcessor::classes(){
  * @details Time complexity - O(w) with w being the total number of existing students
  * @param n being the number of UCs
  */
-void DataProcessor::studentsInUc(int n) {
+void DataProcessor::studentsInAtLeastNUCs(int n) {
     int res = 0;
     for (const Student& student: students){
         if (student.getClassesUcs().size() >= n){
             res++;
         }
     }
-    cout << res << endl;
+    cout <<"There are currently " << res << " students enrolled in at least " << n << " UCs" << endl;
 }
 
 /**
@@ -207,7 +207,26 @@ void DataProcessor::studentsInClass(const string& classCode,const string& sortOp
         cout << "------------------------------------" << endl;
     }
 }
-
+void DataProcessor::studentsInUc(const std::string &ucCode, const std::string &sortOption) {
+    vector<Student> temp;
+    for(const Student& student:students){
+        for(const Class_UC& classUc:student.getClassesUcs()){
+            if(ucCode == classUc.getUcCode()){
+                temp.push_back(student);
+                break;
+            }
+        }
+    }
+    if (!temp.empty()){
+        cout << "There are " << temp.size() << " students enrolled in the UC " << ucCode << ", who are:" << endl;
+        printStudents(temp,sortOption);
+    }
+    else{
+        cout << "------------------------------------------" << endl;
+        cout << "There are no students enrolled in this UC." << endl;
+        cout << "------------------------------------------" << endl;
+    }
+}
 
 /**
  * @brief Checks how many students are in LEIC course and prints them
