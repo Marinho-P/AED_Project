@@ -28,6 +28,11 @@ const string &Student::getId() const {
 void Student::setName(const string &name) {
     Student::name = name;
 }
+/**
+ * @brief Sets the id of a student to the given Id
+ * @details Time complexity - O(1)
+ * @param id
+ */
 
 void Student::setId(const string &id) {
     Student::id = id;

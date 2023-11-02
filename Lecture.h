@@ -11,15 +11,15 @@ class Lecture{
     private:
         float duration;
         float startHour;
-        string type;
         /** @brief All types of a Uc:
         * P - Prática
         * T - Teórica
         * PL - Prática Laboratorial
         */
+        string type;
         string weekday;
-        string UC_Code;
         /** @brief UcCode of a Lecture */
+        string UC_Code;
     public:
         Lecture(const float &duration,const float &startHour, const string &type, const string &weekday, const string &Uc_Code);
         void setDuration(float duration);

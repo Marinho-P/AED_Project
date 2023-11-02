@@ -9,7 +9,7 @@
 /**
  * @brief Prints a Schedule in a table format
  * word (ucCode-type) in each slot must be [0,13] characters long
- * @details Time complexity - O(nlog(n)) with n being the number of Lectures to print
+ * @details Time complexity - O(n*log(n)) with n being the number of Lectures to print
  */
 
 void Schedule::printSchedule() const {

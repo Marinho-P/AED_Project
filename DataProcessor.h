@@ -19,11 +19,12 @@ using namespace std;
 
 class DataProcessor{
     private:
-        set<Student> students;
         /** @brief A set where all students are stored in */
+        set<Student> students;
         set<Class_UC> existingClassesUc;
-        set<Schedule> schedules;
         /** @brief A set where all schedules of classes are stored in */
+        set<Schedule> schedules;
+        /** @brief A vector where all pending requests are stored in */
         vector<Request> PendingRequests;
     public:
         DataProcessor();

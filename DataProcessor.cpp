@@ -184,7 +184,7 @@ void printStudents(vector<Student> students,const string& sortOption){
 }
 /**
  * @brief Checks which students are in a given class and prints them
- * @details Time complexity - O(n*m) with n being the number of existing students, and m the number of classes of each student
+ * @details Time complexity - O(n*log(n)) with n being number of students stored in the temp vector (Worst case scenario)
  * @param classCode The code of a given class
  * @param sortOption has 4 different inputs : A to Z, Z to A, numerical and reversed numerical
  */
@@ -212,7 +212,7 @@ void DataProcessor::studentsInClass(const string& classCode,const string& sortOp
 
 /**
  * @brief Checks how many students are in LEIC course and prints them
- * @details Time complexity - O(n) with n being the number of existing students
+ * @details Time complexity - O(n*log(n)) with n being number of students stored in the temp vector (Worst case scenario)
  * @param course A given course
  * @param sortOption has 4 different inputs : A to Z, Z to A, numerical and reversed numerical
  */
@@ -234,7 +234,7 @@ void DataProcessor::studentsInCourse(string course,const string& sortOption) {
 
 /**
  * @brief Checks the students from a given year and prints them
- * @details Time complexity - O(n) with n being the number of existing students
+ * @details Time complexity - O(n*log(n)) with n being number of students stored in the temp vector (Worst case scenario)
  * @param year A given year (ex:2022)
  * @param sortOption has 4 different inputs : A to Z, Z to A, numerical and reversed numerical
  */
@@ -317,8 +317,8 @@ void DataProcessor::scheduleOfClass(const string &classCode) {
     cout << "No schedule found." << endl;
 }
 /**
- * @brief Checks the schedule of a student and prints its schedule
- * @details Time complexity - O(n*log(k)*t+log(m)) with n being the number of classUCs of a student, k the number of schedules of a class, t the number of lectures in a schedule and m the number of existing students
+ * @brief Creates the schedule of a given student and prints its schedule
+ * @details Time complexity - O(n*log(k)+m*log(m)) with n being the number of classUCs of a student, k the number of schedules of a class and m the number of Lectures to print
  * @param student Given a student
  */
 
@@ -326,12 +326,18 @@ void DataProcessor::scheduleOfStudent(const Student &student) {
     Schedule new_schedule = createStudentSchedule(student);
     new_schedule.printSchedule();
 }
+/**
+ * @brief Creates the schedule for a student
+ * @details Time complexity - O(n*log(m)) with n being the number of classUCs of a student and m the number of schedules of a class
+ * @param student Given a student
+ */
+
 Schedule DataProcessor:: createStudentSchedule(const Student &student) {
     Schedule new_schedule;
     for (const Class_UC &classUc:student.getClassesUcs()){
         auto it = schedules.find(Schedule(classUc.getClassCode()));
         if (it != schedules.end()){
-            for (Lecture lecture:(*it).getLectures()){
+            for (const Lecture& lecture:(*it).getLectures()){
                 if (lecture.getUcCode() == classUc.getUcCode()){
                     new_schedule.addLecture(lecture);
                 }
@@ -340,12 +346,15 @@ Schedule DataProcessor:: createStudentSchedule(const Student &student) {
     }
     return new_schedule;
 }
-
+/**
+ * @brief Adds a pending request to a csv file named RequestHistory
+ * @details
+ * @param request
+ */
 void DataProcessor::addPendingRequest(const Request &request) {
     PendingRequests.push_back(request);
     cout << "Request added successfully" << endl;
     cout << ">> Returning to menu" << endl;
-
 }
 
 void DataProcessor::processRequest(int i) {
@@ -801,7 +810,6 @@ vector<Lecture> DataProcessor::switchFuseSchedules(const Schedule &old_schedule,
             result.push_back(lecture);
         }
     }
-
     return result;
 }
 

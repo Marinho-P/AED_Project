@@ -51,7 +51,12 @@ bool Class_UC::operator<(const Class_UC &other) const{
     return false;
 }
 
-
+/**
+ * @brief Checks if a Class_Uc is equal to other
+ * @details Time complexity - O(1)
+ * @param other
+ * @return true if ucCode is equal to other, ucCode else false
+ */
 bool Class_UC::operator==(const Class_UC &other) const {
     return other.ucCode == ucCode && other.classCode == classCode;
 }

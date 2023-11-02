@@ -2,7 +2,12 @@
 #include <iostream>
 
 using namespace std;
+/**
+ * @brief Class constructor of class Menu
+ */
+
 Menu ::Menu() {
+
 }
 
 
@@ -40,6 +45,11 @@ int Menu::run() {
         }
     }
 }
+/**
+ * @brief Prints in the terminal which options the user has [0,5]
+ * @details Time complexity - O(1)
+ * @return input of user
+ */
 int Menu::options() const{
     int choice;
     cout << "Menu Options:" << endl;
@@ -53,14 +63,23 @@ int Menu::options() const{
     cin >> choice;
     return choice;
 }
-
-void Menu::ClassSchedule() {
+/**
+ * @brief Receives a classCode from the user and prints the class Schedule
+ * @details Time complexity - O(n+m) with n being the number of all classes' schedules and m the number of lectures in a schedule
+ */
+void Menu::ClassSchedule(){
     string classCode;
     cout << "Enter a Class code:";
     cin >> classCode;
     cout << "\n";
     dataProcessor.scheduleOfClass(classCode);
 }
+/**
+ * @brief Receives an input from the user from [1,3] else goes to the starting menu. Gives various options to search students such as:
+ * See all students in a class/year/course.
+ * It displays the students based on the selected option and sorting preference
+ * @details Time complexity - O(
+ */
 void Menu::CheckStudent() {
     cout << "1. See all students in a class" << endl;
     cout << "2. See all students in a year" << endl;

@@ -4,8 +4,13 @@
 #include "Student.h"
 #include "DataProcessor.h"
 
+/**
+ * @brief Class that serves as the interactive menu for the user
+ */
+
 class Menu{
 private:
+    /** @brief Attribute that can access all data processed */
     DataProcessor dataProcessor;
 public:
     Menu();

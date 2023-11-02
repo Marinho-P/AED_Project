@@ -6,15 +6,15 @@
 
 using namespace std;
 /**
- * @brief Class that stores the ucCode of a given class
+ * @brief Class that stores the ucCode of a class
  */
 
 class Class_UC{
     private:
-        string ucCode;
         /** @brief Code of a Uc */
-        string classCode;
+        string ucCode;
         /** @brief Code of a Class */
+        string classCode;
     public:
         /** @brief Default Constructor of Class_UC. ClassCode and ucCode are set to empty strings
         *   @details Time complexity - O(1)
