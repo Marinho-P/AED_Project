@@ -20,8 +20,8 @@ int Menu::run() {
                 return 0;
             }
             case 1: {
-                //checkUcSchedule(); Isto não está implementado
-                //input();
+                checkStudentsInUc();
+
                 break;
             }
             case 2: {
@@ -40,6 +40,10 @@ int Menu::run() {
                 requests();
                 break;
             }
+            case 6:{
+                checkGreatestUc();
+                break;
+            }
             default:
                 cout << ">> Invalid option try again." << endl;
         }
@@ -53,11 +57,12 @@ int Menu::run() {
 int Menu::options() const{
     int choice;
     cout << "Menu Options:" << endl;
-    cout << "1. Check UC Schedule" << endl; // not possible? (overlapping schedules)
+    cout << "1. Check number of students in at least n UCs" << endl;
     cout << "2. Check Students" << endl;
     cout << "3. Check Class Schedule" << endl;
     cout << "4. Check Student Schedule" << endl;
     cout << "5. Requests" << endl;
+    cout << "6. Check the UCs with the greatest number of students" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter your choice:";
     cin >> choice;
@@ -299,5 +304,18 @@ void Menu::checkStudentSchedule()  {
     Student student = Student();
     student.setId(upNumber);
     dataProcessor.scheduleOfStudent(*(dataProcessor.getStudents().find(student)));
+}
+
+void Menu::checkStudentsInUc() {
+    int n;
+    cout << "Enter n:";
+    cin >> n;
+    cout << endl;
+    dataProcessor.studentsInUc(n);
+}
+
+void Menu::checkGreatestUc() {
+    dataProcessor.ucGreatestNumberStudents();
+
 }
 

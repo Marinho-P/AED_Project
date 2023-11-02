@@ -28,5 +28,9 @@ private:
     int options() const;
     string sorting() const;
     void checkStudentSchedule();
+
+    void checkStudentsInUc();
+
+    void checkGreatestUc();
 };
 #endif //AED2324_P03_MENU_H
