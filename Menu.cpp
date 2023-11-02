@@ -101,6 +101,8 @@ void Menu::CheckStudent() {
         }
     }
 
+}
+
 void Menu::checkClassSchedule() const{
     string classCode;
     cout << "Please insert the class code: "; cin >>classCode; cout<<endl;
