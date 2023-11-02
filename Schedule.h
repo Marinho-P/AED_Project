@@ -6,6 +6,9 @@
 #include <vector>
 #include <set>
 using namespace std;
+/**
+ * @brief Class that stores a Schedule with its lectures and its respective classCode
+ */
 
 class Schedule {
 private:

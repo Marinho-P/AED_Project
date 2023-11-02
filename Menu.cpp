@@ -34,8 +34,6 @@ int Menu::run() {
             case 5:{
                 break;
             }
-
-            }
             case 6: {
                 //save();
                 return 0;
@@ -102,55 +100,15 @@ void Menu::CheckStudent() {
             cout << "Invalid option" << endl;
         }
     }
-}
-int Menu::sorting() const {
-    cout << "1 Alphabetical" << endl;
-    cout << "2 Alphabetical in reverse" << endl;
-    cout << "3 Numerical" << endl;
-    cout << "4 Numerical in reverse" << endl;
-    cout << "In which order do you want to display the students? ";
-    int option; cin >> option; cout << endl;
-    if(cin.fail())
-        throw invalid_argument(">> Invalid number");
-    while(option < 1 || option > 4){
-        cout << ">> Please choose a valid option: "; cin >> option; cout << endl;
-    }
-    return option;
-}
-void Menu::checkClassStudents() {
-    int option = sorting();
-    string ucCode, classCode;
-    cout << "Please insert the uc code: ";
-    cin >> ucCode;
-    cout << "Please insert the class code: ";
-    cin >> classCode;
-    cout << endl;
-    UcClass ucClass = UcClass(ucCode, classCode);
-    switch (option) {
-        case 1:
-            dataProcessor.printClassStudents(ucClass, "alphabetical");
-            break;
-        case 2:
-            dataProcessor.printClassStudents(ucClass, "reverse alphabetical");
-            break;
-        case 3:
-            dataProcessor.printClassStudents(ucClass, "numerical");
-            break;
-        case 4:
-            dataProcessor.printClassStudents(ucClass, "reverse numerical");
-            break;
-        default:
-            cout << ">> Invalid option." << endl;
-    }
-}
-void Menu::checkClassSchedule(){
+
+void Menu::checkClassSchedule() const{
     string classCode;
     cout << "Please insert the class code: "; cin >>classCode; cout<<endl;
-    dataProcessor.scheduleOfClass(classCode);
+    dataProcessor.scheduleOfClass(classCode); // está certo ver o porquê do erro
 }
-void Menu::checkStudentSchedule() {
+void Menu::checkStudentSchedule() const {
     string upNumber;
     cout << "Insert the student's UP number: ";
     cin >> upNumber;
-    dataProcessor.scheduleOfStudent(upNumber);
+    dataProcessor.scheduleOfStudent(upNumber); // mudar a função para receber o up number
 }

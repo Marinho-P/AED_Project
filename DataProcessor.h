@@ -14,12 +14,17 @@
 #include "Class_UC.h"
 #include "Lecture.h"
 using namespace std;
+/**
+ * @brief Class that stores and processes useful data from the csv files
+ */
 
 class DataProcessor{
 private:
     set<Student> students;
+    /** @brief A set where all students are stored in */
     set<Class_UC> existingClassesUc;
     set<Schedule> schedules;
+    /** @brief A set where all schedules of classes are stored in */
 public:
     DataProcessor();
     void classes_per_uc();
@@ -29,13 +34,12 @@ public:
     const set<Class_UC> &getClassUc() const;
     const set<Schedule> &getSchedules() const;
     void studentsInUc(int n);
-    void studentsInClass(const string& classCode);
-    void studentsInCourse(string course);
-    void studentsInYear(const string &year);
+    void studentsInClass(const string& classCode,const string& sortOption);
+    void studentsInCourse(string course,const string& sortOption);
+    void studentsInYear(const string &year,const string& sortOption);
     void ucGreatestNumberStudents();
-    void scheduleOfClass(const string &classCode);
-    void scheduleOfStudent(const Student &student);
-    void printClassStudents(const UcClass& ucClass, const string& sortCriterion) const;
+    void scheduleOfClass(const string &classCode) const;
+    void scheduleOfStudent(const string &Id) const;
 };
 
 

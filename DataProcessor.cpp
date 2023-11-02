@@ -1,6 +1,9 @@
 #include "DataProcessor.h"
 
-
+/**
+ * @brief Constructor of DataProcessor.Reads all data from the given csv files and stores them in the corresponding data structures
+ * @details Time complexity - O(n+m*log(h)) with n and m being the number of lines of students_classes.csv , classes.csv respectively and h the number of all classes' schedules
+ */
 DataProcessor::DataProcessor(){
     students_classes();
     classes();
@@ -24,11 +27,18 @@ void DataProcessor::classes_per_uc() {
 const set<Class_UC> &DataProcessor::getClassUc() const{
     return existingClassesUc;
 }
-
+/**
+ * @brief Getter of all classes' schedules
+ * @details Time complexity - O(1)
+ * @return a set of schedules
+ */
 const set<Schedule> &DataProcessor::getSchedules() const{
     return schedules;
 }
-
+/**
+ * @brief Processes data of the file students_classes.csv
+ * @details Time complexity - O(n) with n being the number of lines of the file
+ */
 void DataProcessor::students_classes() {
     ifstream file("students_classes.csv");
     string header;
@@ -63,7 +73,10 @@ void DataProcessor::students_classes() {
     students.insert(lastSeenStudent);
 
 }
-
+/**
+ * @brief Processes data of the file classes.csv
+ * @details Time complexity - O(m*log(n)) with m being the number of lines of the file and n the number of all classes' schedules
+ */
 void DataProcessor::classes(){
     ifstream file("classes.csv");
     string header;
@@ -95,8 +108,12 @@ void DataProcessor::classes(){
         }
     }
 }
-
-void DataProcessor::studentsInUc(int n) { // IDK what this does
+/**
+ * @brief Checks the number of students registered in at least n UCs
+ * @details Time complexity - O(w) with w being the total number of existing students
+ * @param n being the number of UCs
+ */
+void DataProcessor::studentsInUc(int n) {
     int res = 0;
     for (const Student& student: students){
         if (student.getClassesUcs().size() >= n){
@@ -105,23 +122,65 @@ void DataProcessor::studentsInUc(int n) { // IDK what this does
     }
     cout << res << endl;
 }
-
+/**
+ * @brief Getter of all given students
+ * @details Time complexity - O(1)
+ * @return a set of the existing students
+ */
 const set<Student> &DataProcessor::getStudents() const {
     return students;
 }
-
-void printStudents(vector<Student> temp){
-    sort(temp.begin(),temp.end(),[](const Student& a ,const Student& b){return a.getName()<b.getName();});
+/**
+ * @brief Auxiliary function to print a given vector of students.It is printed in a certain format regarding the sortOption
+ * @details Time complexity - O(n*log(n)) with n being number of students stored in a given vector
+ * @param temp vector of students
+ * @param sortOption has 4 different inputs : A to Z, Z to A, numerical and reversed numerical
+ */
+void printStudents(vector<Student> students,const string& sortOption){
+    bool alphabetic = false;
+    if (sortOption == "A to Z") {
+        sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            return a.getName() < b.getName();
+        });
+        alphabetic = true;
+    } else if (sortOption == "Z to A") {
+        sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            return a.getName() > b.getName();
+        });
+        alphabetic = true;
+    } else if (sortOption == "numerical") {
+        sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            return a.getId() < b.getId();
+        });
+    } else if (sortOption == "reverse numerical") {
+        sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            return a.getId() > b.getId();
+        });
+    }
     cout << "------------------------------" << endl;
-    cout << "Name / ID" << endl;
-    cout << "------------------------------" << endl;
-    for (const Student& student : temp){
-        cout << student.getName() << " / " << student.getId() << endl;
+    if (alphabetic){
+        cout << "Name / ID" << endl;
+        cout << "------------------------------" << endl;
+        for (const Student& student : students){
+            cout << student.getName() << " / " << student.getId() << endl;
+        }
+    }
+    else{
+        cout << "ID / Name" << endl;
+        cout << "------------------------------" << endl;
+        for (const Student& student : students){
+            cout << student.getId() << " / " << student.getName() << endl;
+        }
     }
     cout << "------------------------------" << endl;
 }
-
-void DataProcessor::studentsInClass(const string& classCode) {
+/**
+ * @brief Checks which students are in a given class and prints them
+ * @details Time complexity - O(n*m) with n being the number of existing students, and m the number of classes of each student
+ * @param classCode The code of a given class
+ * @param sortOption has 4 different inputs : A to Z, Z to A, numerical and reversed numerical
+ */
+void DataProcessor::studentsInClass(const string& classCode,const string& sortOption) {
     vector<Student> temp;
     for (const Student& student:students){
         for (const Class_UC& classUc:student.getClassesUcs()){
@@ -133,7 +192,7 @@ void DataProcessor::studentsInClass(const string& classCode) {
     }
     if (!temp.empty()){
         cout << "Students in class " << classCode << " are:" << endl;
-        printStudents(temp);
+        printStudents(temp,sortOption);
     }
     else{
         cout << "------------------------------------" << endl;
@@ -141,23 +200,33 @@ void DataProcessor::studentsInClass(const string& classCode) {
         cout << "------------------------------------" << endl;
     }
 }
-
-void DataProcessor::studentsInCourse(string course) {
+/**
+ * @brief Checks how many students are in LEIC course and prints them
+ * @details Time complexity - O(n) with n being the number of existing students
+ * @param course A given course
+ * @param sortOption has 4 different inputs : A to Z, Z to A, numerical and reversed numerical
+ */
+void DataProcessor::studentsInCourse(string course,const string& sortOption) {
     transform(course.begin(), course.end(), course.begin(), ::toupper);
     if (course == "LEIC") {
         cout << "Students in course " << course << " are:" << endl;
         vector<Student> temp;
         copy(students.begin(),students.end(), back_inserter(temp));
-        printStudents(temp);
+        printStudents(temp,sortOption);
     }
     else{
         cout << "-------------------------------------" << endl;
         cout << "There are no students in that course." << endl;
         cout << "-------------------------------------" << endl;
     }
-
 }
-void DataProcessor::studentsInYear(const string &year) {
+/**
+ * @brief Checks the students from a given year and prints them
+ * @details Time complexity - O(n) with n being the number of existing students
+ * @param year A given year (ex:2022)
+ * @param sortOption has 4 different inputs : A to Z, Z to A, numerical and reversed numerical
+ */
+void DataProcessor::studentsInYear(const string &year,const string& sortOption) {
     vector<Student> temp;
     for (const Student& student:students){
         if(year == student.getYear()){
@@ -166,7 +235,7 @@ void DataProcessor::studentsInYear(const string &year) {
     }
     if (!temp.empty()){
         cout << "Students from " << year << " are:" << endl;
-        printStudents(temp);
+        printStudents(temp,sortOption);
     }
     else{
         cout << "-------------------------------------" << endl;
@@ -174,7 +243,10 @@ void DataProcessor::studentsInYear(const string &year) {
         cout << "-------------------------------------" << endl;
     }
 }
-
+/**
+ * @brief Checks the Uc or Ucs with the most number of enrolled students and prints the ucCode and the number of students
+ * @details Time complexity - O(n*m) with n being the number of existing students and m the number of ClassUcs of a student
+ */
 void DataProcessor::ucGreatestNumberStudents() {
     unordered_map<string,int> numberUcStudents;
     for (const Student& student:students){
@@ -205,7 +277,7 @@ void DataProcessor::ucGreatestNumberStudents() {
             }
             cout << ucs <<  "/";
         }
-        cout << "Having " << maxNumberStudent << " number of students." << endl;
+        cout << "Having " << maxNumberStudent << " enrolled students." << endl;
         cout << "-----------------------------------" << endl;
     } else{
         cout << "---------------------------------" << endl;
@@ -216,8 +288,12 @@ void DataProcessor::ucGreatestNumberStudents() {
         cout << "-----------------------------------" << endl;
     }
 }
-
-void DataProcessor::scheduleOfClass(const string &classCode) {
+/**
+ * @brief Checks the schedule of a given class and prints it
+ * @details Time complexity - O(n+m) with n being the number of all classes' schedules and m the number of lectures in a schedule
+ * @param classCode A given class
+ */
+void DataProcessor::scheduleOfClass(const string &classCode)const {
     for(const Schedule& schedule:schedules){
         if (schedule.getClassCode() == classCode){
             schedule.printSchedule();
@@ -226,49 +302,27 @@ void DataProcessor::scheduleOfClass(const string &classCode) {
     }
     cout << "No schedule found." << endl;
 }
+/**
+ * @brief Checks the schedule of a student, given its Id and prints its schedule
+ * @details Time complexity - O(n*log(k)*t+log(m)) with n being the number of classUCs of a student, k the number of schedules of a class, t the number of lectures in a schedule and m the number of existing students
+ * @param Id Given Id of a student
+ */
 
-void DataProcessor::scheduleOfStudent(const Student &student) {
+void DataProcessor::scheduleOfStudent(const string &Id)const {
     Schedule new_schedule;
-    for (const Class_UC &classUc:student.getClassesUcs()){
-        auto it = schedules.find(Schedule(classUc.getClassCode()));
-        if (it != schedules.end()){
-            for (Lecture lecture:(*it).getLectures()){
-                if (lecture.getUcCode() == classUc.getUcCode()){
-                    new_schedule.addLecture(lecture);
+    auto student = students.find(Id);
+    if (student != students.end()){
+        for (const Class_UC &classUc:(*student).getClassesUcs()){
+            auto it = schedules.find(Schedule(classUc.getClassCode()));
+            if (it != schedules.end()){
+                for (const Lecture& lecture:(*it).getLectures()){
+                    if (lecture.getUcCode() == classUc.getUcCode()){
+                        new_schedule.addLecture(lecture);
+                    }
                 }
             }
         }
-    }
-    new_schedule.printSchedule();
-}
-
-void DataProcessor::printClassStudents(const UcClass& ucClass, const string& sortCriterion) const {
-    vector<Student> studentsInUcClass;
-
-    for (const Student& student : students) {
-        if (student.isInUcClass(ucClass)) {
-            studentsInUcClass.push_back(student);
-        }
-    }
-    if (sortCriterion == "alphabetical") {
-        sort(studentsInUcClass.begin(), studentsInUcClass.end(), [](const Student& a, const Student& b) {
-            return a.getName() < b.getName();
-        });
-    } else if (sortCriterion == "reverse alphabetical") {
-        sort(studentsInUcClass.begin(), studentsInUcClass.end(), [](const Student& a, const Student& b) {
-            return a.getName() > b.getName();
-        });
-    } else if (sortCriterion == "numerical") {
-        sort(studentsInUcClass.begin(), studentsInUcClass.end(), [](const Student& a, const Student& b) {
-            return a.getId() < b.getId();
-        });
-    } else if (sortCriterion == "reverse numerical") {
-        sort(studentsInUcClass.begin(), studentsInUcClass.end(), [](const Student& a, const Student& b) {
-            return a.getId() > b.getId();
-        });
-    }
-
-    for (const Student& student : studentsInUcClass) {
-        cout << student.getName() << " / " << student.getId() << endl;
+        new_schedule.printSchedule();
     }
 }
+
