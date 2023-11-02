@@ -667,7 +667,12 @@ map<Class_UC, int> &DataProcessor::getNumberOfStudents(map<Class_UC, int> &numbe
     }
     return numberOfStudentsPerClass;
 }
-
+/**
+ * @brief Checks if the balance between classes is disturbed and if any class has more students than the cap.
+ * the balance between classes is disturbed when the difference between the class with the most students and the class with the least students is bigger than 4
+ * @details Time complexity - O(n) where n is the number of Class_UCs the students are assigned to
+ * @param numberOfStudentsPerClass
+ */
 bool DataProcessor::checkBalanceAndCap(map<Class_UC, int> &numberOfStudentsPerClass) const {
     Class_UC ClassWithMostStudents;
     Class_UC ClassWithLeastStudents;
@@ -690,7 +695,13 @@ bool DataProcessor::checkBalanceAndCap(map<Class_UC, int> &numberOfStudentsPerCl
         return true;
     }
 }
-
+/**
+ * @brief Adds Lectures from schedule_to_add that are associated with the UcCode to the lectures of old_schedule
+ * @details Time complexity - O(n) where n is the number of Lectures in schedule_to_add
+ * @param old_schedule
+ * @param schedule_to_add
+ * @param UcCode
+ */
 vector<Lecture> DataProcessor :: FuseSchedules(const Schedule &old_schedule, const Schedule &schedule_to_add, const string &UcCode){
     vector<Lecture> result = old_schedule.getLectures();
     for(const Lecture &lecture: schedule_to_add.getLectures()){
@@ -700,6 +711,14 @@ vector<Lecture> DataProcessor :: FuseSchedules(const Schedule &old_schedule, con
     }
     return  result;
 }
+/**
+ * @brief Modifies the csv file "students_classes" after processing a add request.
+ * To do that we need to create a new file and copy the contents of the other, skip the elements we want to remove and then rename it to the name of the old file
+ * @details Time complexity - O(n) with n being the number of lines of the file students_classes.csv
+ * @param student
+ * @param NewClassCode
+ * @param NewUcCode
+ */
 void DataProcessor :: ChangeFileAdd(Student &student, const string &NewClassCode, const string &NewUcCode) {
     ifstream file("students_classes.csv");
     ofstream temp("tempFile.csv");
@@ -750,6 +769,7 @@ bool DataProcessor::checkSwitch(const Student &student, const Class_UC &oldClass
 /**
  * @brief Modifies the csv file "students_classes" after processing a remove request.
  * To do that we need to create a new file and copy the contents of the other, skip the elements we want to remove and then rename it to the name of the old file
+ * @details Time complexity - O(n) with n being the number of lines of the file students_classes.csv
  * @param student
  * @param UcCodeToRemove
  */
