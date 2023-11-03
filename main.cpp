@@ -5,4 +5,4 @@ int main(){
     menu.run();
 }
 
-//TODO Falta guard rails for input , use of greatestUcStudents and remove check UC schedule
+//TODO Falta guard rails for input

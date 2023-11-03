@@ -3,7 +3,7 @@
 
 /**
  * @brief Constructor of DataProcessor.Reads all data from the given csv files and stores them in the corresponding data structures
- * @details Time complexity - O(n+m*log(h)) with n and m being the number of lines of students_classes.csv , classes.csv respectively and h the number of all classes' schedules
+ * @details Time complexity - O(n+m*log(h)+w) with n, m, w being the number of lines of students_classes.csv, classes.csv, classes_per_uc.csv respectively and h the number of all classes' schedules
  */
 
 DataProcessor::DataProcessor(){
@@ -11,7 +11,10 @@ DataProcessor::DataProcessor(){
     classes();
     classes_per_uc();
 }
-
+/**
+ * @brief Processes data of the file "classes_per_uc.csv".Stores all existing ClassesUcs in a set.
+ * @details Time complexity - O(n) with n being the number of lines of the processed file
+ */
 
 void DataProcessor::classes_per_uc() {
     ifstream file("classes_per_uc.csv");
@@ -39,7 +42,7 @@ const set<Schedule> &DataProcessor::getSchedules() const{
     return schedules;
 }
 /**
- * @brief Processes data of the file students_classes.csv
+ * @brief Processes data of the file "students_classes.csv".Stores all students in a set and their corresponding ClassesUCs.
  * @details Time complexity - O(n) with n being the number of lines of the file
  */
 void DataProcessor::students_classes() {
@@ -78,7 +81,7 @@ void DataProcessor::students_classes() {
 }
 
 /**
- * @brief Processes data of the file classes.csv
+ * @brief Processes data of the file "classes.csv". Stores the information about each classes' schedule
  * @details Time complexity - O(m*log(n)) with m being the number of lines of the file and n the number of all classes' schedules
  */
 
@@ -207,6 +210,12 @@ void DataProcessor::studentsInClass(const string& classCode,const string& sortOp
         cout << "------------------------------------" << endl;
     }
 }
+/**
+ * @brief Checks how many and which students are enrolled in a given UC
+ * @details Time complexity - O(n*log(n)) with n being number of students stored in the temp vector (Worst case scenario)
+ * @param ucCode
+ * @param sortOption
+ */
 void DataProcessor::studentsInUc(const std::string &ucCode, const std::string &sortOption) {
     vector<Student> temp;
     for(const Student& student:students){
@@ -348,6 +357,7 @@ void DataProcessor::scheduleOfStudent(const Student &student) {
  * @brief Creates the schedule for a student
  * @details Time complexity - O(n*log(m)) with n being the number of classUCs of a student and m the number of schedules of a class
  * @param student Given a student
+ * @return a student's schedule
  */
 
 Schedule DataProcessor:: createStudentSchedule(const Student &student) {
@@ -377,7 +387,7 @@ void DataProcessor::addPendingRequest(const Request &request) {
 /**
  * @brief Processes one or all requests at once given a RequestId else doesn't do any if invalid RequestId
  * RequestId = 0 (Process all requests)
- * @details Time complexity - O(
+ * @details Time complexity - O(n) with n being the number of pending requests
  * @param RequestID
  */
 void DataProcessor::processRequest(int RequestID) {
@@ -398,7 +408,11 @@ void DataProcessor::processRequest(int RequestID) {
     }
 
 }
-
+/**
+ * @brief Perform a given request of type: add, remove or switch
+ * @details O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * @param request
+ */
 void DataProcessor::performRequest(Request &request) {
     if(request.getType() == "add"){
         AddRequest(request.getStudent(),request.getUcCode(),true);
@@ -410,10 +424,16 @@ void DataProcessor::performRequest(Request &request) {
         SwitchRequest(request.getStudent(),request.getStartCode(),request.getEndCode(),request.getUcCode(),true);
     }
 }
-/**
- *
- */
+
 static int Cap = 30;
+/**
+ * @brief Executes an add request given a student, UcCode and "save" boolean that determines whether the request is saved or not
+ * @details Time complexity - O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * (Worst case scenario where checkAdd is time dominant)
+ * @param student
+ * @param UcCode
+ * @param save
+ */
 // each line of RequestHistory.csv goes : id, StudentName, type (add, remove or switch), UcCode, startCode(if any), endCode(if any)
 void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save ) {
     for(const Class_UC &classUc: student.getClassesUcs()){
@@ -425,7 +445,7 @@ void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save 
         cout << "RequestOperations denied: A student cannot be registered in more than 7 UCs at any given time" << endl;
         return;
     }
-    for(  const Schedule &schedule: schedules){
+    for( const Schedule &schedule: schedules){
         Schedule old_schedule = createStudentSchedule(student);
         Class_UC classUcToCheck(schedule.getClassCode(),UcCode);
         if(checkAdd(student,classUcToCheck)){
@@ -444,8 +464,15 @@ void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save 
     }
     cout << "Request denied: No class with vacancy found" << endl;
 
-
 }
+/**
+ * @brief Executes a remove request given a student, UcCode and "save" boolean that determines whether the request is saved or not
+ * @details Time complexity - O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * (Worst case scenario where checkRemove is time dominant)
+ * @param student
+ * @param UcCode
+ * @param save
+ */
 void DataProcessor::RemoveRequest(Student &student, const string& UcCode, bool save){
     bool check = false;
     string classCode; // class for the UC enrolled
@@ -479,8 +506,17 @@ void DataProcessor::RemoveRequest(Student &student, const string& UcCode, bool s
     else{
         cout << "Request denied: removing Student from UC would disturb the balance between classes" << endl;
     }
-
 }
+/**
+ * @brief Executes a switch request given a student, their currentClassCode and newClassCode, the corresponding UcCode and a "save" boolean that determines whether the request is saved or not
+ * @details Time complexity - O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * (Worst case scenario where checkSwitch is time dominant)
+ * @param student
+ * @param oldClassCode
+ * @param newClassCode
+ * @param UcCode
+ * @param save
+ */
 void DataProcessor::SwitchRequest(Student &student, const string &oldClassCode, const string &newClassCode, const string &UcCode, bool save) {
 
     if (existingClassesUc.find(Class_UC(oldClassCode, UcCode)) != existingClassesUc.end() ||
@@ -574,7 +610,12 @@ void DataProcessor::saveRequest(const Student &student, const string &type, cons
     file.close();
 
 }
-
+/**
+ * @brief Given a RequestId it removes from the RequestHistory.csv file the request with that Id and undoes the changes made by that add/remove/switch request
+ * @details Time complexity - O(n) with n being the number of lines of the RequestHistory.csv file.
+ * (Having in mind that when n->+∞ the time complexity of n overshadows the operations made within the loop)
+ * @param RequestID
+ */
 void DataProcessor::undoRequest(int RequestID) {
     int counter = 1;
     ifstream file("RequestHistory.csv");
@@ -625,7 +666,9 @@ void DataProcessor::undoRequest(int RequestID) {
  * @details Time complexity - O(1)
  * @param a
  * @param b
+ * @return true if Lecture a starts first then Lecture b else false
  */
+
 bool compareLectures(const Lecture& a, const Lecture& b) {
     if (a.getWeekday() == b.getWeekday()) {
         return a.getStartHour() < b.getStartHour();
@@ -636,8 +679,9 @@ bool compareLectures(const Lecture& a, const Lecture& b) {
  * @brief Checks if there are collisions between lectures on a given vector of lectures.
  * @details Time complexity - O(n) where n is the number of lectures
  * @param lectures
+ * @return true if there are overlapping lectures else false
  */
-bool DataProcessor :: checkScheduleCollisions(vector<Lecture> lectures){
+bool DataProcessor::checkScheduleCollisions(vector<Lecture> lectures){
     sort(lectures.begin(),lectures.end(),compareLectures);
     for (size_t i = 0; i < lectures.size() - 1; ++i) {
         const Lecture& currentLecture = lectures[i];
@@ -647,14 +691,20 @@ bool DataProcessor :: checkScheduleCollisions(vector<Lecture> lectures){
         if (currentLecture.getWeekday() == nextLecture.getWeekday()) {
             float currentEndTime = currentLecture.getStartHour() + currentLecture.getDuration();
             if (currentEndTime > nextLecture.getStartHour()) {
-                return true; // Overlapping lectures found
+                return true;
             }
         }
     }
 
-    return false; // No overlapping lectures found
-
+    return false;
 }
+/**
+ * @brief Checks if an add request is going to disturb the balance between ClassUcs
+ * @details Time complexity - O(n+w*m+k) with n being the size of the given map numberOfStudentsPerClass, w the number of students, m the number of Class_UCs per student and k the number of classes associated with the student to be added
+ * @param studentToAdd
+ * @param classUcToCheck
+ * @return true if doesn't disturb the balance else false
+ */
 bool DataProcessor:: checkAdd(const Student &studentToAdd, const Class_UC &classUcToCheck ){
     for( const Class_UC &classUc : studentToAdd.getClassesUcs()){ // if student is already in a class then it's always available
         if(classUc == classUcToCheck){
@@ -676,12 +726,12 @@ bool DataProcessor:: checkAdd(const Student &studentToAdd, const Class_UC &class
     }
 
 
-
 }
 /**
  * @brief Returns a map that associates each Class_UC with the number of students associated with it.
  * @details Time complexity - O(n*m) where n is the number of students and m is the number of Class_UCs per student
  * @param numberOfStudentsPerClass
+ * @return map with Class_UC and number of students
  */
 map<Class_UC, int> &DataProcessor::getNumberOfStudents(map<Class_UC, int> &numberOfStudentsPerClass) {
     for (const Student& student: students){ // get number of students per class
@@ -690,7 +740,6 @@ map<Class_UC, int> &DataProcessor::getNumberOfStudents(map<Class_UC, int> &numbe
             ClassesPerStudent.insert(classUc);
         }
 
-
         for(const Class_UC &classUc : ClassesPerStudent ){
             numberOfStudentsPerClass[classUc]++;
         }
@@ -698,8 +747,13 @@ map<Class_UC, int> &DataProcessor::getNumberOfStudents(map<Class_UC, int> &numbe
     }
     return numberOfStudentsPerClass;
 }
-
-pair<int, int>  DataProcessor::getMostAndLeastStudents(map<Class_UC, int> &numberOfStudentsPerClass) const {
+/**
+ * @brief Checks the ClassesUcs with the most and least students enrolled
+ * @details Time complexity - O(n) with n being the size of the given map numberOfStudentsPerClass
+ * @param numberOfStudentsPerClass
+ * @return a pair with the biggest and least number of students in a ClassUc
+ */
+pair<int, int> DataProcessor::getMostAndLeastStudents(map<Class_UC, int> &numberOfStudentsPerClass) const {
     Class_UC ClassWithMostStudents;
     Class_UC ClassWithLeastStudents;
     int MostStudents = INT_MIN;
@@ -722,6 +776,7 @@ pair<int, int>  DataProcessor::getMostAndLeastStudents(map<Class_UC, int> &numbe
  * @param old_schedule
  * @param schedule_to_add
  * @param UcCode
+ * @return updated vector of Lectures
  */
 vector<Lecture> DataProcessor :: FuseSchedules(const Schedule &old_schedule, const Schedule &schedule_to_add, const string &UcCode){
     vector<Lecture> result = old_schedule.getLectures();
@@ -730,7 +785,7 @@ vector<Lecture> DataProcessor :: FuseSchedules(const Schedule &old_schedule, con
             result.push_back(lecture);
         }
     }
-    return  result;
+    return result;
 }
 /**
  * @brief Modifies the csv file "students_classes" after processing a add request.
@@ -763,7 +818,13 @@ void DataProcessor :: ChangeFileAdd(Student &student, const string &NewClassCode
     remove("student_classes.csv");
     rename("tempFile.csv","students_classes.csv");
 }
-
+/**
+ * @brief Checks if a remove request is going to disturb the balance between ClassUcs
+ * @details Time complexity - O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * @param student
+ * @param classUc
+ * @return true if doesn't disturb the balance else false
+ */
 bool DataProcessor::checkRemove(const Student &student, const Class_UC &classUc) {
     map<Class_UC,int> numberOfStudentsPerClass;
     numberOfStudentsPerClass = getNumberOfStudents(numberOfStudentsPerClass);
@@ -779,7 +840,14 @@ bool DataProcessor::checkRemove(const Student &student, const Class_UC &classUc)
         return true;
     }
 }
-
+/**
+ * @brief Checks if a switch request is going to disturb the balance between ClassUcs
+ * @details Time complexity - O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * @param student
+ * @param oldClassUc
+ * @param newClassUc
+ * @return true if doesn't disturb the balance else false
+ */
 bool DataProcessor::checkSwitch(const Student &student, const Class_UC &oldClassUc, const Class_UC &newClassUc) {
     map<Class_UC,int> numberOfStudentsPerClass;
     numberOfStudentsPerClass = getNumberOfStudents(numberOfStudentsPerClass);

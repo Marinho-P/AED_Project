@@ -1,5 +1,22 @@
 var searchData=
 [
-  ['lecture_0',['lecture',['../classLecture.html',1,'Lecture'],['../classLecture.html#a320774caefe23460af1a2dc4f165ffb4',1,'Lecture::Lecture()']]],
-  ['lookupallrequests_1',['lookupAllRequests',['../classDataProcessor.html#a76e947c803c82daf30d86ece1eb6907e',1,'DataProcessor']]]
+  ['getclasscode_0',['getclasscode',['../classSchedule.html#a114b491e8441dc7687a9a04ca79b197a',1,'Schedule::getClassCode()'],['../classClass__UC.html#a1c9bf36ad596bbc346b4ff07f5161c99',1,'Class_UC::getClassCode()']]],
+  ['getclassesucs_1',['getClassesUcs',['../classStudent.html#a85cbb9d430169f0965c5ccc5edf3b298',1,'Student']]],
+  ['getduration_2',['getDuration',['../classLecture.html#ac594661c911027761ea69d5d117f31ad',1,'Lecture']]],
+  ['getendcode_3',['getEndCode',['../classRequest.html#a3dae3a7ba2476eb670f4f30419cad907',1,'Request']]],
+  ['getid_4',['getId',['../classStudent.html#a0c7ee59cb997c80c0717fe976b8a5360',1,'Student']]],
+  ['getlectures_5',['getLectures',['../classSchedule.html#abf17b543a5bc0d6a01ba16b998170a92',1,'Schedule']]],
+  ['getmostandleaststudents_6',['getMostAndLeastStudents',['../classDataProcessor.html#aabfcdde0af9482a456ee65543d6177e5',1,'DataProcessor']]],
+  ['getname_7',['getName',['../classStudent.html#aa5ca1e7d0a176edb5b7e53f4b657f0f0',1,'Student']]],
+  ['getnumberofstudents_8',['getNumberOfStudents',['../classDataProcessor.html#ae5dd93f15ed1061c87bcdd391438ff08',1,'DataProcessor']]],
+  ['getschedules_9',['getSchedules',['../classDataProcessor.html#a0a15f04093537488fff03c57b5d2e54e',1,'DataProcessor']]],
+  ['getslotstring_10',['getSlotString',['../classSchedule.html#a787ad43a5695f46ed3220b80735676a7',1,'Schedule']]],
+  ['getstartcode_11',['getStartCode',['../classRequest.html#ae64b060ee32389cbbe3407dce7cd3872',1,'Request']]],
+  ['getstarthour_12',['getStartHour',['../classLecture.html#a113cc88e832729276a885e890fb3466c',1,'Lecture']]],
+  ['getstudent_13',['getStudent',['../classRequest.html#a4c29ae265475bdc9480a8774e3f59880',1,'Request']]],
+  ['getstudents_14',['getStudents',['../classDataProcessor.html#adf6dd005c7eb996efe5eb69aec28ed0f',1,'DataProcessor']]],
+  ['gettype_15',['gettype',['../classLecture.html#a8a05b0e1faedc9b656116e39c21efefd',1,'Lecture::getType()'],['../classRequest.html#a6896fd84bffe9d75d5529c1be21fc58b',1,'Request::getType()']]],
+  ['getuccode_16',['getuccode',['../classClass__UC.html#a523d877cd05430e485376d0ecd967321',1,'Class_UC::getUcCode()'],['../classLecture.html#add13e59633181304efb326adaf252549',1,'Lecture::getUcCode()'],['../classRequest.html#a6003537d0486ddec9974a3ff450bd5fe',1,'Request::getUcCode()']]],
+  ['getweekday_17',['getWeekday',['../classLecture.html#a09c9fc89e3a341c3b5d4ac4167c06197',1,'Lecture']]],
+  ['getyear_18',['getYear',['../classStudent.html#a4bf07c37540c5004f69404f49946e2a0',1,'Student']]]
 ];

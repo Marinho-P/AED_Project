@@ -248,7 +248,6 @@ void Menu::processRequests() {
     cin >> RequestId;
     dataProcessor.processRequest(RequestId);
 
-
 }
 
 void Menu::discardRequests() {
@@ -277,7 +276,11 @@ void Menu::undoRequest() {
 
 }
 
-
+/**
+ * @brief Gives the user a sorting option
+ * @details Time complexity - O(1)
+ * @return type of sorting : "A to Z", "Z to A", "Numerical", "Numerical in reverse"
+ */
 
 string Menu::sorting() const {
     cout << "1. A to Z" << endl;
@@ -301,7 +304,10 @@ string Menu::sorting() const {
         }
     }
 }
-
+/**
+ * @brief Checks a student's schedule given their Id/UpNumber
+ * @details Time complexity - O(n*log(k)+m*log(m)) with n being the number of classUCs of a student, k the number of schedules of a class and m the number of Lectures to print
+ */
 void Menu::checkStudentSchedule()  {
     string upNumber;
     cout << "Insert the student's UP number: ";
@@ -311,7 +317,10 @@ void Menu::checkStudentSchedule()  {
     student.setId(upNumber);
     dataProcessor.scheduleOfStudent(*(dataProcessor.getStudents().find(student)));
 }
-
+/**
+ * @brief Checks how many students are in at least N UCs. N is a given input by the user
+ * @details Time complexity - O(w) with w being the total number of existing students
+ */
 void Menu::countStudentsInAtLeastNUCs() {
     int n;
     cout << "Enter n:";
@@ -320,7 +329,10 @@ void Menu::countStudentsInAtLeastNUCs() {
     dataProcessor.studentsInAtLeastNUCs(n);
     cout << ">> Returning to menu" << endl;
 }
-
+/**
+ * @brief Checks the UC with the most students enrolled
+ * @details Time complexity - O(n*m) with n being the number of existing students and m the number of ClassUcs of a student
+ */
 void Menu::checkGreatestUc() {
     dataProcessor.ucGreatestNumberStudents();
 }

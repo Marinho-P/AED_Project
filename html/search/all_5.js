@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['menu_0',['menu',['../classMenu.html',1,'Menu'],['../classMenu.html#ad466dd83355124a6ed958430450bfe94',1,'Menu::Menu()']]]
+  ['lecture_0',['lecture',['../classLecture.html',1,'Lecture'],['../classLecture.html#a320774caefe23460af1a2dc4f165ffb4',1,'Lecture::Lecture()']]],
+  ['lookupallrequests_1',['lookupAllRequests',['../classDataProcessor.html#a76e947c803c82daf30d86ece1eb6907e',1,'DataProcessor']]]
 ];
