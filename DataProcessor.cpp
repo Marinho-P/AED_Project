@@ -391,7 +391,7 @@ void DataProcessor::addPendingRequest(const Request &request) {
  * @param RequestID
  */
 void DataProcessor::processRequest(int RequestID) {
-    if( RequestID< 0 && RequestID > PendingRequests.size() ){
+    if( RequestID< 0 || RequestID > PendingRequests.size() ){
         cout << "Request Id match not found";
         return;
     }
@@ -410,9 +410,10 @@ void DataProcessor::processRequest(int RequestID) {
 }
 /**
  * @brief Perform a given request of type: add, remove or switch
- * @details O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * @details O(n+w*m) with n being the number of unique Class_UCs, w the number of students and m the number of Class_UCs per student
  * @param request
  */
+ // flagged
 void DataProcessor::performRequest(Request &request) {
     if(request.getType() == "add"){
         AddRequest(request.getStudent(),request.getUcCode(),true);
@@ -428,7 +429,7 @@ void DataProcessor::performRequest(Request &request) {
 static int Cap = 30;
 /**
  * @brief Executes an add request given a student, UcCode and "save" boolean that determines whether the request is saved or not
- * @details Time complexity - O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * @details Time complexity - O(n+w*m) with n being the number of unique Class_UCs, w the number of students and m the number of Class_UCs per student
  * (Worst case scenario where checkAdd is time dominant)
  * @param student
  * @param UcCode
@@ -467,7 +468,7 @@ void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save 
 }
 /**
  * @brief Executes a remove request given a student, UcCode and "save" boolean that determines whether the request is saved or not
- * @details Time complexity - O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * @details Time complexity - O(n+w*m) with n being the number of unique Class_UCs, w the number of students and m the number of Class_UCs per student
  * (Worst case scenario where checkRemove is time dominant)
  * @param student
  * @param UcCode
@@ -484,7 +485,7 @@ void DataProcessor::RemoveRequest(Student &student, const string& UcCode, bool s
         }
     }
     if(!(check)){
-        cout << "Request denied: Student isn't enrolled on specified UC";
+        cout << "Request denied: Student isn't enrolled on specified UC" << endl;
         return;
     }
     Class_UC classUcToCheck(classCode,UcCode);
@@ -509,7 +510,7 @@ void DataProcessor::RemoveRequest(Student &student, const string& UcCode, bool s
 }
 /**
  * @brief Executes a switch request given a student, their currentClassCode and newClassCode, the corresponding UcCode and a "save" boolean that determines whether the request is saved or not
- * @details Time complexity - O(n+w*m) with n being the size of the given map numberOfStudentsPerClass, w the number of students and m the number of Class_UCs per student
+ * @details Time complexity - O(n+w*m) with n being the number of unique Class_UCs , w the number of students and m the number of Class_UCs per student
  * (Worst case scenario where checkSwitch is time dominant)
  * @param student
  * @param oldClassCode
@@ -569,7 +570,7 @@ void DataProcessor::lookupAllRequests() {
             getline(separate_comma, UcCode, ',');
             getline(separate_comma, startCode, ',');
             separate_comma >> endCode;
-            cout <<"RequestID:" << RequestID << " Student Name:" <<  StudentName << "(" << id << ") Type: switch(" << UcCode<< ") " << startCode << " -> " << endCode;
+            cout <<"RequestID:" << RequestID << " Student Name:" <<  StudentName << "(" << id << ") Type: switch(" << UcCode<< ") " << startCode << " -> " << endCode << endl;
         }
         else{
             getline(separate_comma, id, ',');
@@ -583,7 +584,7 @@ void DataProcessor::lookupAllRequests() {
 
 
     }
-
+    cout << "Total number of requests: " << RequestID-1 << " >> Returning to menu" << endl;
 
 
 }
@@ -928,7 +929,7 @@ void DataProcessor::ChangeFileSwitch(Student &student, const string &UcCodeToCha
  * @param RequestID
  */
 void DataProcessor::discardRequest(int RequestID) {
-    if(RequestID < 0 && RequestID > PendingRequests.size()){
+    if(RequestID < 0 || RequestID > PendingRequests.size()){
         cout << "Request id match not found" << endl;
         return;
     }
@@ -955,6 +956,7 @@ void DataProcessor::printPendingRequests() {
         }
         requestId++;
     }
+    cout << "Total number of requests: " << requestId-1 << " >> Returning to menu" << endl;
 }
 /**
  * @brief Removes the old Ucs from the student's current schedule and adds the new ones

@@ -1,6 +1,6 @@
 #include "Menu.h"
 #include <iostream>
-
+#include <limits>
 using namespace std;
 /**
  * @brief Class constructor of class Menu
@@ -181,7 +181,10 @@ void Menu :: requests(){
 
     }
 }
-
+/**
+ * @brief Adds a pending request to a vector containing all pending requests
+ * @details Time complexity - O(1)
+ */
 void Menu::addRequestoList() {
     string id;
     cout << "Enter student id:";
@@ -213,7 +216,10 @@ void Menu::addRequestoList() {
             cin >> endCode;
             cout << endl;
 
+
             dataProcessor.addPendingRequest(Request(const_cast<Student&> (*it),"switch",UcCode,startCode, endCode ));
+
+
             break;
         }
         case 2:{
@@ -221,7 +227,10 @@ void Menu::addRequestoList() {
             cout << "Enter a UcCode:";
             cin >> UcCode;
             cout << endl;
+
+
             dataProcessor.addPendingRequest(Request(const_cast<Student&> (*it),"add",UcCode,"-", "-" ));
+
             break;
 
         }
@@ -230,7 +239,9 @@ void Menu::addRequestoList() {
             cout << "Enter a UcCode:";
             cin >> UcCode;
             cout << endl;
+
             dataProcessor.addPendingRequest(Request(const_cast<Student&> (*it),"remove",UcCode,"-", "-" ));
+
             break;
         }
         default:{
@@ -241,38 +252,76 @@ void Menu::addRequestoList() {
 
 
 }
-
+/**
+ * @brief Processes one or all requests at once given a RequestId else doesn't do any if invalid RequestId
+ * RequestId = 0 (Process all requests)
+ * @details Time complexity - O(n) with n being the number of pending requests
+ */
 void Menu::processRequests() {
     int RequestId;
     cout << "Enter a Pending Request Id ( or 0 for all requests):";
     cin >> RequestId;
-    dataProcessor.processRequest(RequestId);
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Incorrect input >> Returning to menu" << endl;
+    }
+    else{
+        dataProcessor.processRequest(RequestId);
+    }
 
 }
-
+/**
+ * @brief Discards one or all pending requests stored in the vector PendingRequests
+ * @details Time complexity - O(n) with n being the number of all stored pending requests
+ */
 void Menu::discardRequests() {
     int RequestId;
     cout << "Enter a Pending Request Id ( or 0 for all requests):";
     cin >> RequestId;
     cout << endl;
-    dataProcessor.discardRequest(RequestId);
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Incorrect input >> Returning to menu" << endl;
+    }
+    else{
+        dataProcessor.discardRequest(RequestId);
+    }
 }
-
+/**
+ * @brief Prints all current stored pending requests having two different formats between switch and add/remove
+ * @details Time complexity - O(n) with n being the number of requests currently stored
+ */
 void Menu::listPendingRequests() {
     dataProcessor.printPendingRequests();
 
 }
-
+/**
+ * @brief Lists all successful requests saved in 'RequestHistory.csv'
+ * @details Time complexity - O(n) where n is the number of lines in 'RequestHistory.csv'
+ */
 void Menu::listSuccessfullRequests() {
     dataProcessor.lookupAllRequests();
 
 }
-
+/**
+ * @brief Given a request id, it undoes that request
+ * @details Time complexity - O(n) where n is the number of successful request kept in 'RequestHistory.csv'
+ */
 void Menu::undoRequest() {
     int RequestId;
     cout << "Enter a successful Request Id:";
     cin >> RequestId;
-    dataProcessor.undoRequest(RequestId);
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Incorrect input >> Returning to menu" << endl;
+    }
+    else{
+        dataProcessor.undoRequest(RequestId);
+
+    }
 
 }
 
@@ -315,7 +364,14 @@ void Menu::checkStudentSchedule()  {
     cout << endl;
     Student student = Student();
     student.setId(upNumber);
-    dataProcessor.scheduleOfStudent(*(dataProcessor.getStudents().find(student)));
+    auto it = dataProcessor.getStudents().find(student);
+    if(it == dataProcessor.getStudents().end()){
+        cout << "Student not found >> Returning to menu" << endl;
+    }
+    else{
+        dataProcessor.scheduleOfStudent(*(it));
+
+    }
 }
 /**
  * @brief Checks how many students are in at least N UCs. N is a given input by the user
@@ -326,8 +382,16 @@ void Menu::countStudentsInAtLeastNUCs() {
     cout << "Enter n:";
     cin >> n;
     cout << endl;
-    dataProcessor.studentsInAtLeastNUCs(n);
-    cout << ">> Returning to menu" << endl;
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Incorrect input >> Returning to menu" << endl;
+    }
+    else{
+        dataProcessor.studentsInAtLeastNUCs(n);
+        cout << ">> Returning to menu" << endl;
+    }
+
 }
 /**
  * @brief Checks the UC with the most students enrolled
