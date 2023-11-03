@@ -413,7 +413,7 @@ void DataProcessor::performRequest(Request &request) {
 /**
  *
  */
-static int Cap = 25;
+static int Cap = 30;
 // each line of RequestHistory.csv goes : id, StudentName, type (add, remove or switch), UcCode, startCode(if any), endCode(if any)
 void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save ) {
     for(const Class_UC &classUc: student.getClassesUcs()){
@@ -511,7 +511,8 @@ void DataProcessor::SwitchRequest(Student &student, const string &oldClassCode, 
     }
 }
 /**
- * @brief Looks up
+ * @brief Lists all successful requests saved in 'RequestHistory.csv'
+ * @details Time complexity - O(n) where n is the number of lines in 'RequestHistory.csv'
  */
 void DataProcessor::lookupAllRequests() {
     ifstream file("RequestHistory.csv");
@@ -552,7 +553,15 @@ void DataProcessor::lookupAllRequests() {
 }
 
 
-
+/**
+ * @brief Saves a request to the file 'RequestHistory.csv'.
+ * @details Time complexity - O(1)
+ * @param student
+ * @param type
+ * @param UcCode
+ * @param startCode
+ * @param endCode
+ */
 void DataProcessor::saveRequest(const Student &student, const string &type, const string &UcCode, const  string &startCode, const string &endCode) {
     ofstream file("RequestHistory.csv");
     if(!(file.is_open())) {
@@ -611,12 +620,23 @@ void DataProcessor::undoRequest(int RequestID) {
     remove("RequestHistory.csv");
     rename("tempFile.csv","RequestHistory.csv");
 }
+/**
+ * @brief Compares two lectures based on startHour and Weekday.
+ * @details Time complexity - O(1)
+ * @param a
+ * @param b
+ */
 bool compareLectures(const Lecture& a, const Lecture& b) {
     if (a.getWeekday() == b.getWeekday()) {
         return a.getStartHour() < b.getStartHour();
     }
     return a.getWeekday() < b.getWeekday();
 }
+/**
+ * @brief Checks if there are collisions between lectures on a given vector of lectures.
+ * @details Time complexity - O(n) where n is the number of lectures
+ * @param lectures
+ */
 bool DataProcessor :: checkScheduleCollisions(vector<Lecture> lectures){
     sort(lectures.begin(),lectures.end(),compareLectures);
     for (size_t i = 0; i < lectures.size() - 1; ++i) {
@@ -643,15 +663,26 @@ bool DataProcessor:: checkAdd(const Student &studentToAdd, const Class_UC &class
     }
     map<Class_UC,int> numberOfStudentsPerClass;
     numberOfStudentsPerClass = getNumberOfStudents(numberOfStudentsPerClass);
-
+    pair<int, int > result = getMostAndLeastStudents(numberOfStudentsPerClass);
+    int Pre_Add_MostStudents = result.first;
+    int Pre_Add_LeastStudents = result.second;
     numberOfStudentsPerClass[classUcToCheck]++; // add student to desired class
+    result = getMostAndLeastStudents(numberOfStudentsPerClass);
+    if(result.first-result.second > Pre_Add_MostStudents-Pre_Add_LeastStudents ||result.first > Cap ){
+        return false;
+    }
+    else{
+        return true;
+    }
 
 
-
-    return checkBalanceAndCap(numberOfStudentsPerClass);
 
 }
-
+/**
+ * @brief Returns a map that associates each Class_UC with the number of students associated with it.
+ * @details Time complexity - O(n*m) where n is the number of students and m is the number of Class_UCs per student
+ * @param numberOfStudentsPerClass
+ */
 map<Class_UC, int> &DataProcessor::getNumberOfStudents(map<Class_UC, int> &numberOfStudentsPerClass) {
     for (const Student& student: students){ // get number of students per class
         set<Class_UC> ClassesPerStudent;
@@ -667,13 +698,8 @@ map<Class_UC, int> &DataProcessor::getNumberOfStudents(map<Class_UC, int> &numbe
     }
     return numberOfStudentsPerClass;
 }
-/**
- * @brief Checks if the balance between classes is disturbed and if any class has more students than the cap.
- * the balance between classes is disturbed when the difference between the class with the most students and the class with the least students is bigger than 4
- * @details Time complexity - O(n) where n is the number of Class_UCs the students are assigned to
- * @param numberOfStudentsPerClass
- */
-bool DataProcessor::checkBalanceAndCap(map<Class_UC, int> &numberOfStudentsPerClass) const {
+
+pair<int, int>  DataProcessor::getMostAndLeastStudents(map<Class_UC, int> &numberOfStudentsPerClass) const {
     Class_UC ClassWithMostStudents;
     Class_UC ClassWithLeastStudents;
     int MostStudents = INT_MIN;
@@ -688,12 +714,7 @@ bool DataProcessor::checkBalanceAndCap(map<Class_UC, int> &numberOfStudentsPerCl
             LeastStudents = pair.second;
         }
     }
-    if(MostStudents-LeastStudents > 4 || MostStudents > Cap){
-        return false;
-    }
-    else{
-        return true;
-    }
+    return {MostStudents,LeastStudents};
 }
 /**
  * @brief Adds Lectures from schedule_to_add that are associated with the UcCode to the lectures of old_schedule
@@ -746,25 +767,34 @@ void DataProcessor :: ChangeFileAdd(Student &student, const string &NewClassCode
 bool DataProcessor::checkRemove(const Student &student, const Class_UC &classUc) {
     map<Class_UC,int> numberOfStudentsPerClass;
     numberOfStudentsPerClass = getNumberOfStudents(numberOfStudentsPerClass);
-
-    numberOfStudentsPerClass[classUc]--; // remove  student from desired class
-
-
-
-    return checkBalanceAndCap(numberOfStudentsPerClass);
+    pair<int, int > result = getMostAndLeastStudents(numberOfStudentsPerClass);
+    int Pre_Add_MostStudents = result.first;
+    int Pre_Add_LeastStudents = result.second;
+    numberOfStudentsPerClass[classUc]--; // remove student from desired class
+    result = getMostAndLeastStudents(numberOfStudentsPerClass);
+    if(result.first-result.second > Pre_Add_MostStudents-Pre_Add_LeastStudents ||result.first > Cap ){
+        return false;
+    }
+    else{
+        return true;
+    }
 }
 
 bool DataProcessor::checkSwitch(const Student &student, const Class_UC &oldClassUc, const Class_UC &newClassUc) {
-
     map<Class_UC,int> numberOfStudentsPerClass;
     numberOfStudentsPerClass = getNumberOfStudents(numberOfStudentsPerClass);
-
+    pair<int, int > result = getMostAndLeastStudents(numberOfStudentsPerClass);
+    int Pre_Add_MostStudents = result.first;
+    int Pre_Add_LeastStudents = result.second;
     numberOfStudentsPerClass[oldClassUc]--; // remove student from old class
     numberOfStudentsPerClass[newClassUc]++; // add student to new class
-
-
-
-    return checkBalanceAndCap(numberOfStudentsPerClass);
+    result = getMostAndLeastStudents(numberOfStudentsPerClass);
+    if(result.first-result.second > Pre_Add_MostStudents-Pre_Add_LeastStudents ||result.first > Cap ){
+        return false;
+    }
+    else{
+        return true;
+    }
 }
 /**
  * @brief Modifies the csv file "students_classes" after processing a remove request.

@@ -63,9 +63,11 @@ class DataProcessor{
         set<Student> &getStudents();
         map<Class_UC, int> &getNumberOfStudents(map<Class_UC, int> &numberOfStudentsPerClass);
         bool checkAdd(const Student &studentToAdd, const Class_UC &classUcToCheck);
-        bool checkBalanceAndCap(map<Class_UC, int> &numberOfStudentsPerClass) const;
         bool checkRemove(const Student &student, const Class_UC &classUc);
         bool checkSwitch(const Student &student, const Class_UC &oldClassUc, const Class_UC &newClassUc);
+
+
+    pair<int, int> getMostAndLeastStudents(map<Class_UC, int> &numberOfStudentsPerClass) const;
 };
 
 
