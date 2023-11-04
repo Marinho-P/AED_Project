@@ -19,10 +19,6 @@ Lecture::Lecture(const float &duration,const float &startHour, const string &typ
 }
 
 
-void Lecture::setDuration(float duration) {
-    Lecture::duration = duration;
-}
-
 /**
  * @brief Sets the startHour of a Lecture
  * @details Time complexity - O(1)
@@ -44,9 +40,7 @@ const string &Lecture::getType() const {
     return type;
 }
 
-void Lecture::setType(const string &type) {
-    Lecture::type = type;
-}
+
 /**
  * @brief Getter for the weekday of a Lecture
  * @details Time complexity - O(1)
@@ -56,9 +50,7 @@ const string &Lecture::getWeekday() const {
     return weekday;
 }
 
-void Lecture::setWeekday(const string &weekday) {
-    Lecture::weekday = weekday;
-}
+
 /**
  * @brief Getter for the ucCode of a Lecture
  * @details Time complexity - O(1)

@@ -21,7 +21,6 @@ class Student {
         const string &getName() const;
         const string &getId() const;
         const set<Class_UC> &getClassesUcs() const;
-        void setName(const string &name);
         void setId(const string &id);
         bool operator<(const Student &other) const;
         bool operator==(const Student &other) const;

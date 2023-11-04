@@ -29,7 +29,11 @@ void DataProcessor::classes_per_uc() {
         existingClassesUc.insert(Class_UC(classCode,ucCode));
     }
 }
-
+/**
+ * @brief Getter for all ClassesUcs available
+ * @details Time complexity - O(1)
+ * @return a set of all ClassesUcs
+ */
 const set<Class_UC> &DataProcessor::getClassUc() const{
     return existingClassesUc;
 }
@@ -957,14 +961,13 @@ void DataProcessor::printPendingRequests() {
     }
     cout << "Total number of requests: " << requestId-1 << " >> Returning to menu" << endl;
 }
+
 /**
  * @brief Removes the old Ucs from the student's current schedule and adds the new ones
  * @details Time complexity - O(n+m) with n being the number of lectures of schedule1 and m the number of lectures of schedule2
  * @param old_schedule
  * @param schedule_to_add
  * @param UcCode
- * @param oldClassCode
- * @param newClassCode
  * @return new updated vector of lectures
  */
 vector<Lecture> DataProcessor::switchFuseSchedules(const Schedule &old_schedule, const Schedule &schedule_to_add, const string &UcCode) {

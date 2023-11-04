@@ -18,9 +18,6 @@ const string &Class_UC::getUcCode() const {
     return ucCode;
 }
 
-void Class_UC::setUcCode(const string &ucCode) {
-    Class_UC::ucCode = ucCode;
-}
 /**
  * @brief Getter of the classCode
  * @details Time complexity - O(1)
@@ -30,9 +27,6 @@ const string &Class_UC::getClassCode() const {
     return classCode;
 }
 
-void Class_UC::setClassCode(const string &classCode) {
-    Class_UC::classCode = classCode;
-}
 /**
  * @brief Operator that gives a sort ascending order option. First compares by ucCode and then by classCode
  * @details Time complexity - O(1)

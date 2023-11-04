@@ -22,6 +22,7 @@ class DataProcessor{
     private:
         /** @brief A set where all students are stored in */
         set<Student> students;
+        /** @brief a set where all existing ClassesUc are stored in */
         set<Class_UC> existingClassesUc;
         /** @brief A set where all schedules of classes are stored in */
         set<Schedule> schedules;

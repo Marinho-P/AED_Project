@@ -2,11 +2,10 @@
 #define AED_PROJECT_REQUEST_H
 #include <string>
 #include "Student.h"
-
+using namespace std;
 /**
  * @brief Class that stores the information of a Request with a given student, type of request, the wanted or unwanted UcCode, and a startCode/endCode having meaning only in a switch request
  */
-using namespace std;
 class Request {
 private:
     Student student;

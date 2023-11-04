@@ -25,9 +25,6 @@ const string &Student::getId() const {
     return id;
 }
 
-void Student::setName(const string &name) {
-    Student::name = name;
-}
 /**
  * @brief Sets the id of a student to the given Id
  * @details Time complexity - O(1)
@@ -81,5 +78,4 @@ const set<Class_UC> &Student::getClassesUcs() const {
  */
 string Student::getYear() const {
     return id.substr(0,4);
-
 }

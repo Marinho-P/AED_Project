@@ -95,8 +95,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a03f2a99a104019e0a40a5219190969b4" id="r_a03f2a99a104019e0a40a5219190969b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03f2a99a104019e0a40a5219190969b4">students_classes</a> ()</td></tr>
 <tr class="memdesc:a03f2a99a104019e0a40a5219190969b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes data of the file "students_classes.csv".Stores all students in a set and their corresponding ClassesUCs.  <br /></td></tr>
 <tr class="separator:a03f2a99a104019e0a40a5219190969b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8afcb76f90aef493beda63210711b1d" id="r_ad8afcb76f90aef493beda63210711b1d"><td class="memItemLeft" align="right" valign="top"><a id="ad8afcb76f90aef493beda63210711b1d" name="ad8afcb76f90aef493beda63210711b1d"></a>
-const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getClassUc</b> () const</td></tr>
+<tr class="memitem:ad8afcb76f90aef493beda63210711b1d" id="r_ad8afcb76f90aef493beda63210711b1d"><td class="memItemLeft" align="right" valign="top">const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8afcb76f90aef493beda63210711b1d">getClassUc</a> () const</td></tr>
+<tr class="memdesc:ad8afcb76f90aef493beda63210711b1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for all ClassesUcs available.  <br /></td></tr>
 <tr class="separator:ad8afcb76f90aef493beda63210711b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a15f04093537488fff03c57b5d2e54e" id="r_a0a15f04093537488fff03c57b5d2e54e"><td class="memItemLeft" align="right" valign="top">const set&lt; <a class="el" href="classSchedule.html">Schedule</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a15f04093537488fff03c57b5d2e54e">getSchedules</a> () const</td></tr>
 <tr class="memdesc:a0a15f04093537488fff03c57b5d2e54e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of all classes' schedules.  <br /></td></tr>
@@ -703,6 +703,26 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
 
 </div>
 </div>
+<a id="ad8afcb76f90aef493beda63210711b1d" name="ad8afcb76f90aef493beda63210711b1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8afcb76f90aef493beda63210711b1d">&#9670;&#160;</a></span>getClassUc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp; DataProcessor::getClassUc </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for all ClassesUcs available. </p>
+<p>Time complexity - O(1) </p><dl class="section return"><dt>Returns</dt><dd>a set of all ClassesUcs </dd></dl>
+
+</div>
+</div>
 <a id="aabfcdde0af9482a456ee65543d6177e5" name="aabfcdde0af9482a456ee65543d6177e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aabfcdde0af9482a456ee65543d6177e5">&#9670;&#160;</a></span>getMostAndLeastStudents()</h2>
 
@@ -1275,8 +1295,6 @@ const set&lt; <a class="el" href="classClass__UC.html">Class_UC</a> &gt; &amp;&#
     <tr><td class="paramname">old_schedule</td><td></td></tr>
     <tr><td class="paramname">schedule_to_add</td><td></td></tr>
     <tr><td class="paramname">UcCode</td><td></td></tr>
-    <tr><td class="paramname">oldClassCode</td><td></td></tr>
-    <tr><td class="paramname">newClassCode</td><td></td></tr>
   </table>
   </dd>
 </dl>
