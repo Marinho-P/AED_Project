@@ -59,7 +59,7 @@ bool Student::operator==(const Student &other) const {
  * @param classUc
  */
 
-void Student::addClassUc( const Class_UC &classUc){
+void Student::addClassUc( const Class_UC &classUc) const {
     classesUcs.insert(classUc);
 }
 
@@ -68,7 +68,7 @@ void Student::addClassUc( const Class_UC &classUc){
  * @details Time complexity - O(1)
  * @return classesUcs
  */
-const set<Class_UC> &Student::getClassesUcs() const{
+set<Class_UC> &Student::getClassesUcs() const{
     return classesUcs;
 }
 /**
@@ -84,6 +84,6 @@ _Rb_tree_const_iterator<Class_UC> Student::removeClassUc(_Rb_tree_const_iterator
     return classesUcs.erase(it);
 }
 
-void Student::removeClassUc(const Class_UC &classUc){
+void Student::removeClassUc(const Class_UC &classUc)const {
     classesUcs.erase(classUc);
 }

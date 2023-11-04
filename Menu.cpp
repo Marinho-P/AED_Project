@@ -258,7 +258,7 @@ void Menu::addRequestoList() {
             cout << endl;
 
 
-            dataProcessor.addPendingRequest(Request(const_cast<Student&> (*it),"switch",UcCode,startCode, endCode ));
+            dataProcessor.addPendingRequest(Request((*it),"switch",UcCode,startCode, endCode ));
 
 
             break;
@@ -270,7 +270,7 @@ void Menu::addRequestoList() {
             cout << endl;
 
 
-            dataProcessor.addPendingRequest(Request(const_cast<Student&> (*it),"add",UcCode,"-", "-" ));
+            dataProcessor.addPendingRequest(Request( (*it),"add",UcCode,"-", "-" ));
 
             break;
 
@@ -281,7 +281,7 @@ void Menu::addRequestoList() {
             cin >> UcCode;
             cout << endl;
 
-            dataProcessor.addPendingRequest(Request(const_cast<Student&> (*it),"remove",UcCode,"-", "-" ));
+            dataProcessor.addPendingRequest(Request( (*it),"remove",UcCode,"-", "-" ));
 
             break;
         }

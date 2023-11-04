@@ -8,7 +8,7 @@ using namespace std;
  */
 class Request {
 private:
-    Student student;
+    const Student& student;
     /** @brief There are three types of requests:
      * add/remove - Lets a student to either leave/join a certain Uc or class
      * switch - Lets a student trade their old Uc or class for a new one
@@ -20,12 +20,12 @@ private:
     /** @brief In a switch request the endCode represents the newly registered classCode. If not that type of request its represented by a "-" */
     string endCode;
 public:
-    Request(Student &student, const string &type, const string &ucCode,const string &startCode, const string &endCode);
+    Request(const Student &student, const string &type, const string &ucCode,const string &startCode, const string &endCode);
     const string &getType() const;
     const string &getUcCode() const;
     const string &getStartCode() const;
     const string &getEndCode() const;
-    Student& getStudent();
+    const Student* getStudent() const;
 };
 
 #endif //AED_PROJECT_REQUEST_H

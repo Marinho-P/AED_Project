@@ -384,6 +384,7 @@ Schedule DataProcessor:: createStudentSchedule(const Student &student) {
  * @param request
  */
 void DataProcessor::addPendingRequest(const Request &request) {
+
     PendingRequests.push_back(request);
     cout << "Request added successfully" << endl;
     cout << ">> Returning to menu" << endl;
@@ -418,14 +419,15 @@ void DataProcessor::processRequest(int RequestID) {
  * @param request
  */
 void DataProcessor::performRequest(Request &request) {
+
     if(request.getType() == "add"){
-        AddRequest(request.getStudent(),request.getUcCode(),true);
+        AddRequest(*(request.getStudent()),request.getUcCode(),true);
     }
     if(request.getType() == "remove"){
-        RemoveRequest(request.getStudent(),request.getUcCode(),true);
+        RemoveRequest(*(request.getStudent()),request.getUcCode(),true);
     }
     if(request.getType() == "switch"){
-        SwitchRequest(request.getStudent(),request.getStartCode(),request.getEndCode(),request.getUcCode(),true);
+        SwitchRequest(*(request.getStudent()),request.getStartCode(),request.getEndCode(),request.getUcCode(),true);
     }
 }
 
@@ -439,7 +441,8 @@ static int Cap = 30;
  * @param save
  */
 // each line of RequestHistory.csv goes : id, StudentName, type (add, remove or switch), UcCode, startCode(if any), endCode(if any)
-void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save ) {
+void DataProcessor::AddRequest(const Student &student,const string &UcCode, bool save ) {
+
     for(const Class_UC &classUc: student.getClassesUcs()){
         if(classUc.getUcCode() == UcCode){
             cout << "Request denied: Student is already enrolled in specified UC" << endl;
@@ -467,9 +470,7 @@ void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save 
         if(checkAdd(student,classUcToCheck)){
             if(checkScheduleCollisions( FuseSchedules(old_schedule,schedule,UcCode) )){
 
-                students.erase(student);
                 student.addClassUc(Class_UC(schedule.getClassCode(), UcCode));
-                students.insert(student);
                 if(save){
                     saveRequest(student,  "add",  UcCode, "-", "-");
 
@@ -492,7 +493,7 @@ void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save 
  * @param UcCode
  * @param save
  */
-void DataProcessor::RemoveRequest(Student &student, const string& UcCode, bool save){
+void DataProcessor::RemoveRequest(const Student &student, const string& UcCode, bool save){
     bool check = false;
     string classCode; // class for the UC enrolled
     for( const Class_UC &classUc: student.getClassesUcs()){
@@ -502,26 +503,14 @@ void DataProcessor::RemoveRequest(Student &student, const string& UcCode, bool s
             break;
         }
     }
-    bool checkExistence = false;
-    for( const Class_UC &classUc: existingClassesUc){
-        if(classUc.getUcCode() == UcCode){
-            checkExistence = true;
-            break;
-        }
-    }
-    if(!(checkExistence)){
-        cout << "Request denied: No matching UcCode" << endl;
-        return;
-    }
     if(!(check)){
         cout << "Request denied: Student isn't enrolled on specified UC" << endl;
         return;
     }
+
     Class_UC classUcToCheck(classCode,UcCode);
     if(checkRemove(student,classUcToCheck)){
-        students.erase(student);
         student.removeClassUc(classUcToCheck);
-        students.insert(student);
         if(save){
             saveRequest(student,  "remove",  UcCode, "-", "-");
         }
@@ -542,7 +531,7 @@ void DataProcessor::RemoveRequest(Student &student, const string& UcCode, bool s
  * @param UcCode
  * @param save
  */
-void DataProcessor::SwitchRequest(Student &student, const string &oldClassCode, const string &newClassCode, const string &UcCode, bool save) {
+void DataProcessor::SwitchRequest(const Student &student, const string &oldClassCode, const string &newClassCode, const string &UcCode, bool save) {
 
     if (existingClassesUc.find(Class_UC(oldClassCode, UcCode)) != existingClassesUc.end() ||
         existingClassesUc.find(Class_UC(newClassCode, UcCode)) != existingClassesUc.end()) {
@@ -555,11 +544,9 @@ void DataProcessor::SwitchRequest(Student &student, const string &oldClassCode, 
         Schedule new_schedule = *(schedules.find(newClassCode));
         Schedule old_schedule = createStudentSchedule(student);
         if(checkScheduleCollisions(switchFuseSchedules(old_schedule,new_schedule,UcCode))){
-            students.erase(student);
 
             student.removeClassUc(Class_UC(oldClassCode,UcCode));
             student.addClassUc(Class_UC(newClassCode,UcCode));
-            students.insert(student);
             if(save){
                 saveRequest(student,"switch",UcCode, oldClassCode,newClassCode);
 
@@ -567,7 +554,9 @@ void DataProcessor::SwitchRequest(Student &student, const string &oldClassCode, 
             ChangeFileSwitch(student,UcCode,newClassCode);
             cout << "Request accepted" << endl;
         }
-
+        else{
+            cout << "Request denied: schedule collision" << endl;
+        }
 
     }
     else{
@@ -627,15 +616,15 @@ void DataProcessor::lookupAllRequests() {
  * @param endCode
  */
 void DataProcessor::saveRequest(const Student &student, const string &type, const string &UcCode, const  string &startCode, const string &endCode) {
-    ofstream file("RequestHistory.csv");
-    if(!(file.is_open())) {
+    ofstream adder("RequestHistory.csv",std::ios_base::app | std::ios_base::out);
+    if(!(adder.is_open())) {
         cout << "Couldn't find 'RequestHistory.csv' file";
         return;
     }
 
-    file << student.getId() <<"," <<student.getName() << "," <<type << ","<< UcCode << "," << startCode << "," << endCode << "\n";
+    adder << student.getId() <<"," <<student.getName() << "," <<type << ","<< UcCode << "," << startCode << "," << endCode << "\n";
 
-    file.close();
+    adder.close();
 
 }
 /**
@@ -647,7 +636,7 @@ void DataProcessor::saveRequest(const Student &student, const string &type, cons
 void DataProcessor::undoRequest(int RequestID) {
     int counter = 1;
     ifstream file("RequestHistory.csv");
-    ofstream temp("tempFile.csv");
+    ofstream temp("tempFile_undo.csv");
     if(!(file.is_open())) {
         cout << "Couldn't find 'RequestHistory.csv' file";
         return;
@@ -668,16 +657,14 @@ void DataProcessor::undoRequest(int RequestID) {
             find_student.setId(id); // search criterion for student class
             if(type == "switch"){
 
-                Student student = *(students.find(find_student));
-                SwitchRequest( student ,endCode,startCode,UcCode,false) ;
+
+                SwitchRequest( *(students.find(find_student)) ,endCode,startCode,UcCode,false) ;
             }
             if(type == "remove"){
-                Student student = *(students.find(find_student));
-                AddRequest( student ,UcCode,false) ;
+                AddRequest( *(students.find(find_student)) ,UcCode,false) ;
             }
             if(type=="add"){
-                Student student = *(students.find(find_student));
-                RemoveRequest( student ,UcCode,false) ;
+                RemoveRequest( *(students.find(find_student)) ,UcCode,false) ;
             }
 
 
@@ -685,9 +672,11 @@ void DataProcessor::undoRequest(int RequestID) {
         else{
             temp << line << "\n";
         }
+        counter++;
     }
     remove("RequestHistory.csv");
-    rename("tempFile.csv","RequestHistory.csv");
+    rename("tempFile_undo.csv","RequestHistory.csv");
+    file.close();
 }
 /**
  * @brief Compares two lectures based on startHour and Weekday.
@@ -823,7 +812,7 @@ vector<Lecture> DataProcessor :: FuseSchedules(const Schedule &old_schedule, con
  * @param NewClassCode
  * @param NewUcCode
  */
-void DataProcessor :: ChangeFileAdd(Student &student, const string &NewClassCode, const string &NewUcCode) {
+void DataProcessor :: ChangeFileAdd(const Student &student, const string &NewClassCode, const string &NewUcCode) {
     ifstream file("students_classes.csv");
     ofstream temp("tempFile.csv");
     string line;
@@ -845,6 +834,7 @@ void DataProcessor :: ChangeFileAdd(Student &student, const string &NewClassCode
     }
     remove("student_classes.csv");
     rename("tempFile.csv","students_classes.csv");
+    file.close();
 }
 /**
  * @brief Checks if a remove request is going to disturb the balance between ClassUcs
@@ -899,7 +889,7 @@ bool DataProcessor::checkSwitch(const Student &student, const Class_UC &oldClass
  * @param student
  * @param UcCodeToRemove
  */
-void DataProcessor::ChangeFileRemove(Student &student, const string &UcCodeToRemove) {
+void DataProcessor::ChangeFileRemove(const Student &student, const string &UcCodeToRemove) {
     ifstream file("students_classes.csv");
     ofstream temp("tempFile.csv");
     string line;
@@ -919,6 +909,7 @@ void DataProcessor::ChangeFileRemove(Student &student, const string &UcCodeToRem
     }
     remove("student_classes.csv");
     rename("tempFile.csv","students_classes.csv");
+    file.close();
 }
 /**
  * @brief Modifies the csv file "students_classes" after processing a switch request.
@@ -928,7 +919,7 @@ void DataProcessor::ChangeFileRemove(Student &student, const string &UcCodeToRem
  * @param UcCodeToChange
  * @param newClassCode
  */
-void DataProcessor::ChangeFileSwitch(Student &student, const string &UcCodeToChange, const string &newClassCode) {
+void DataProcessor::ChangeFileSwitch(const Student &student, const string &UcCodeToChange, const string &newClassCode) {
     ifstream file("students_classes.csv");
     ofstream temp("tempFile.csv");
     string line;
@@ -949,6 +940,7 @@ void DataProcessor::ChangeFileSwitch(Student &student, const string &UcCodeToCha
     }
     remove("student_classes.csv");
     rename("tempFile.csv","students_classes.csv");
+    file.close();
 }
 /**
  * @brief Discards one or all pending requests stored in the vector PendingRequests
@@ -964,7 +956,7 @@ void DataProcessor::discardRequest(int RequestID) {
         PendingRequests.clear();
     }
     else{
-        PendingRequests.erase(PendingRequests.begin() + RequestID -1);
+        //PendingRequests.erase(PendingRequests.begin() + RequestID -1);
     }
 }
 /**
@@ -975,10 +967,10 @@ void DataProcessor::printPendingRequests() {
     int requestId = 1;
     for( Request &request : PendingRequests){
         if(request.getType() == "switch") {
-            cout <<"RequestID:" << requestId << " Student Name:" <<  request.getStudent().getName() << "(" << request.getStudent().getId() << ") Type: switch(" << request.getUcCode()<< ") " << request.getStartCode() << " -> " << request.getEndCode() <<endl;
+            cout <<"RequestID:" << requestId << " Student Name:" <<  (request.getStudent())->getName() << "(" << (request.getStudent())->getId() << ") Type: switch(" << request.getUcCode()<< ") " << request.getStartCode() << " -> " << request.getEndCode() <<endl;
         }
         else{
-            cout <<"RequestID:" << requestId << " Student Name:" << request.getStudent().getName() << "(" << request.getStudent().getId() << ") Type: "<< request.getType() << "(" << request.getUcCode() << ")" << endl;
+            cout <<"RequestID:" << requestId << " Student Name:" << (request.getStudent())->getName() << "(" << (request.getStudent())->getId() << ") Type: "<< request.getType() << "(" << request.getUcCode() << ")" << endl;
 
         }
         requestId++;

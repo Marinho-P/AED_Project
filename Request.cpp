@@ -9,7 +9,7 @@
  * @param endCode
  */
 
-Request::Request( Student &student, const string &type, const string &ucCode,
+Request::Request(const Student &student, const string &type, const string &ucCode,
                  const string &startCode, const string &endCode) : student(student),
                                                                                    type(type), UcCode(ucCode),
                                                                                    startCode(startCode),
@@ -52,6 +52,6 @@ const string &Request::getEndCode() const {
  * @details Time complexity - O(1)
  * @return student
  */
-Student & Request::getStudent() {
-    return student;
+const Student* Request::getStudent() const {
+    return &student;
 }

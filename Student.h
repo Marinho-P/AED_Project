@@ -20,14 +20,14 @@ class Student {
         Student(const string &name = "", const string &id = "", set<Class_UC> classesUcs = set<Class_UC>());
         const string &getName() const;
         const string &getId() const;
-        const set<Class_UC> &getClassesUcs()const ;
+         set<Class_UC> &getClassesUcs()const ;
         void setId(const string &id);
         bool operator<(const Student &other) const;
         bool operator==(const Student &other) const;
-        void addClassUc(const Class_UC &classUc);
+        void addClassUc(const Class_UC &classUc) const ;
         string getYear() const;
         _Rb_tree_const_iterator<Class_UC> removeClassUc(_Rb_tree_const_iterator<Class_UC> it);
-        void removeClassUc(const Class_UC &classUc);
+        void removeClassUc(const Class_UC &classUc)const ;
 };
 
 #endif
