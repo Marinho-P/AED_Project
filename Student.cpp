@@ -80,9 +80,11 @@ string Student::getYear() const {
     return id.substr(0,4);
 }
 
-_Rb_tree_const_iterator<Class_UC> Student::removeClassUc(_Rb_tree_const_iterator<Class_UC> it){
-    return classesUcs.erase(it);
-}
+/**
+ * @brief Removes a Student's classUc
+ * @details Time complexity - O(n) with n being the number of ClassesUc of a Student
+ * @param classUc
+ */
 
 void Student::removeClassUc(const Class_UC &classUc)const {
     classesUcs.erase(classUc);
