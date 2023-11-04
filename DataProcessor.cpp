@@ -956,7 +956,7 @@ void DataProcessor::discardRequest(int RequestID) {
         PendingRequests.clear();
     }
     else{
-        //PendingRequests.erase(PendingRequests.begin() + RequestID -1);
+        PendingRequests.erase(PendingRequests.begin() + RequestID -1);
     }
 }
 /**

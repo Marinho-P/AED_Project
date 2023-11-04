@@ -9,8 +9,8 @@
  * @param endCode
  */
 
-Request::Request(const Student &student, const string &type, const string &ucCode,
-                 const string &startCode, const string &endCode) : student(student),
+Request::Request(Student &student, const string &type, const string &ucCode,
+                 const string &startCode, const string &endCode) : student((student)),
                                                                                    type(type), UcCode(ucCode),
                                                                                    startCode(startCode),
                                                                                    endCode(endCode) {}
@@ -55,3 +55,21 @@ const string &Request::getEndCode() const {
 const Student* Request::getStudent() const {
     return &student;
 }
+Request& Request::operator=(const Request& other) {
+    if (this == &other) {
+        return *this; // Self-assignment check
+    }
+
+    // Copy the reference to the Student
+    student = other.student; // Assuming "student" is a const Student& member
+
+    // Copy any other members if needed
+    // ...
+
+    return *this;
+}
+
+
+
+
+

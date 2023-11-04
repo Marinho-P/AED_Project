@@ -27,6 +27,7 @@ class Student {
         void addClassUc(const Class_UC &classUc) const ;
         string getYear() const;
         void removeClassUc(const Class_UC &classUc)const ;
+
 };
 
 #endif
