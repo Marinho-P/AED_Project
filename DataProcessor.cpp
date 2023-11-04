@@ -442,11 +442,23 @@ static int Cap = 30;
 void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save ) {
     for(const Class_UC &classUc: student.getClassesUcs()){
         if(classUc.getUcCode() == UcCode){
-            cout << "RequestOperations denied: Student is already enrolled in specified UC" << endl;
+            cout << "Request denied: Student is already enrolled in specified UC" << endl;
+            return;
         }
     }
+    bool checkExistence = false;
+    for( const Class_UC &classUc: existingClassesUc){
+        if(classUc.getUcCode() == UcCode){
+            checkExistence = true;
+            break;
+        }
+    }
+    if(!(checkExistence)){
+        cout << "Request denied: No matching UcCode" << endl;
+        return;
+    }
     if(student.getClassesUcs().size() >= 7){
-        cout << "RequestOperations denied: A student cannot be registered in more than 7 UCs at any given time" << endl;
+        cout << "Request denied: A student cannot be registered in more than 7 UCs at any given time" << endl;
         return;
     }
     for( const Schedule &schedule: schedules){
@@ -454,7 +466,10 @@ void DataProcessor::AddRequest(Student &student,const string &UcCode, bool save 
         Class_UC classUcToCheck(schedule.getClassCode(),UcCode);
         if(checkAdd(student,classUcToCheck)){
             if(checkScheduleCollisions( FuseSchedules(old_schedule,schedule,UcCode) )){
+
+                students.erase(student);
                 student.addClassUc(Class_UC(schedule.getClassCode(), UcCode));
+                students.insert(student);
                 if(save){
                     saveRequest(student,  "add",  UcCode, "-", "-");
 
@@ -487,20 +502,26 @@ void DataProcessor::RemoveRequest(Student &student, const string& UcCode, bool s
             break;
         }
     }
+    bool checkExistence = false;
+    for( const Class_UC &classUc: existingClassesUc){
+        if(classUc.getUcCode() == UcCode){
+            checkExistence = true;
+            break;
+        }
+    }
+    if(!(checkExistence)){
+        cout << "Request denied: No matching UcCode" << endl;
+        return;
+    }
     if(!(check)){
         cout << "Request denied: Student isn't enrolled on specified UC" << endl;
         return;
     }
     Class_UC classUcToCheck(classCode,UcCode);
     if(checkRemove(student,classUcToCheck)){
-        for(auto it = student.getClassesUcs().begin();it != student.getClassesUcs().end();){ // removes Uc from student
-            if(it->getUcCode() == UcCode){
-                it = student.removeClassUc(it);
-            }
-            else{
-                ++it;
-            }
-        }
+        students.erase(student);
+        student.removeClassUc(classUcToCheck);
+        students.insert(student);
         if(save){
             saveRequest(student,  "remove",  UcCode, "-", "-");
         }
@@ -525,7 +546,7 @@ void DataProcessor::SwitchRequest(Student &student, const string &oldClassCode, 
 
     if (existingClassesUc.find(Class_UC(oldClassCode, UcCode)) != existingClassesUc.end() ||
         existingClassesUc.find(Class_UC(newClassCode, UcCode)) != existingClassesUc.end()) {
-        cout << "RequestOperations denied: Classes given don't have a matching UC" << endl;
+        cout << "Request denied: Classes given don't have a matching UC" << endl;
         return;
     }
     Class_UC oldClassUc(oldClassCode,UcCode);
@@ -534,8 +555,11 @@ void DataProcessor::SwitchRequest(Student &student, const string &oldClassCode, 
         Schedule new_schedule = *(schedules.find(newClassCode));
         Schedule old_schedule = createStudentSchedule(student);
         if(checkScheduleCollisions(switchFuseSchedules(old_schedule,new_schedule,UcCode))){
+            students.erase(student);
+
             student.removeClassUc(Class_UC(oldClassCode,UcCode));
             student.addClassUc(Class_UC(newClassCode,UcCode));
+            students.insert(student);
             if(save){
                 saveRequest(student,"switch",UcCode, oldClassCode,newClassCode);
 
@@ -683,7 +707,7 @@ bool compareLectures(const Lecture& a, const Lecture& b) {
  * @brief Checks if there are collisions between lectures on a given vector of lectures.
  * @details Time complexity - O(n) where n is the number of lectures
  * @param lectures
- * @return true if there are overlapping lectures else false
+ * @return false if there are overlapping lectures else true
  */
 bool DataProcessor::checkScheduleCollisions(vector<Lecture> lectures){
     sort(lectures.begin(),lectures.end(),compareLectures);
@@ -695,12 +719,12 @@ bool DataProcessor::checkScheduleCollisions(vector<Lecture> lectures){
         if (currentLecture.getWeekday() == nextLecture.getWeekday()) {
             float currentEndTime = currentLecture.getStartHour() + currentLecture.getDuration();
             if (currentEndTime > nextLecture.getStartHour()) {
-                return true;
+                return false;
             }
         }
     }
 
-    return false;
+    return true;
 }
 /**
  * @brief Checks if an add request is going to disturb the balance between ClassUcs

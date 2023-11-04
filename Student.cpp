@@ -7,7 +7,7 @@
  * @param classesUcs
  */
 
-Student::Student(const string &name, const string &id,const set<Class_UC> &classesUcs) : name(name),id(id),classesUcs(classesUcs) {}
+Student::Student(const string &name, const string &id, set<Class_UC> classesUcs) : name(name), id(id), classesUcs(classesUcs) {}
 /**
  * @brief Getter of the name of a student
  * @details Time complexity - O(1)
@@ -59,7 +59,7 @@ bool Student::operator==(const Student &other) const {
  * @param classUc
  */
 
-void Student::addClassUc(const Class_UC &classUc){
+void Student::addClassUc( const Class_UC &classUc){
     classesUcs.insert(classUc);
 }
 
@@ -68,7 +68,7 @@ void Student::addClassUc(const Class_UC &classUc){
  * @details Time complexity - O(1)
  * @return classesUcs
  */
-const set<Class_UC> &Student::getClassesUcs() const {
+const set<Class_UC> &Student::getClassesUcs() const{
     return classesUcs;
 }
 /**
