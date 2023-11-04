@@ -26,8 +26,8 @@ class Student {
         bool operator==(const Student &other) const;
         void addClassUc(const Class_UC &classUc);
         string getYear() const;
-        _Rb_tree_const_iterator<Class_UC> removeClassUc(const _Rb_tree_const_iterator<Class_UC> it){ return classesUcs.erase(it);}
-        void removeClassUc(const Class_UC &classUc){ classesUcs.erase(classUc);};
+        _Rb_tree_const_iterator<Class_UC> removeClassUc(_Rb_tree_const_iterator<Class_UC> it);
+        void removeClassUc(const Class_UC &classUc);
 };
 
 #endif

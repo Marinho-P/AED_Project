@@ -79,3 +79,11 @@ const set<Class_UC> &Student::getClassesUcs() const {
 string Student::getYear() const {
     return id.substr(0,4);
 }
+
+_Rb_tree_const_iterator<Class_UC> Student::removeClassUc(_Rb_tree_const_iterator<Class_UC> it){
+    return classesUcs.erase(it);
+}
+
+void Student::removeClassUc(const Class_UC &classUc){
+    classesUcs.erase(classUc);
+}
