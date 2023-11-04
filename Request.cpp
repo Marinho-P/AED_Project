@@ -55,6 +55,12 @@ const string &Request::getEndCode() const {
 const Student* Request::getStudent() const {
     return &student;
 }
+/**
+ * @brief Returns a copy of a request
+ * @details Time complexity - O(1)
+ * @param other
+ * @return copy of a request
+ */
 Request& Request::operator=(const Request& other) {
     if (this == &other) {
         return *this; // Self-assignment check
@@ -62,9 +68,6 @@ Request& Request::operator=(const Request& other) {
 
     // Copy the reference to the Student
     student = other.student; // Assuming "student" is a const Student& member
-
-    // Copy any other members if needed
-    // ...
 
     return *this;
 }
