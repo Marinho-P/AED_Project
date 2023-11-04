@@ -3,14 +3,23 @@
 #include <limits>
 using namespace std;
 /**
- * @brief Class constructor of class Menu
+ * @brief Class constructor of class Menu - call the constructor of DataProcessor implicitly
+ * @details Time complexity - O(n+m*log(h)+w) with n, m, w being the number of lines of students_classes.csv, classes.csv, classes_per_uc.csv respectively and h the number of all classes' schedules
  */
 
 Menu ::Menu() {
 
 }
 
-
+/**
+ * @brief Menu that handles all of the program's functionality
+ * @details If option 1 is picked : Time complexity - O(w) where w is the number of existing students
+ * If option 2 is picked: Time complexity - O(n*log(n)) with n being number of students that fit a given restriction (Class,year,course,Uc) (Worst case scenario)
+ * If option 3 is picked: Time complexity - O(n+m) with n being the number of all classes' schedules and m the number of lectures in a schedule
+ * If option 4 is picked: Time complexity - O(n*log(k)+m*log(m)) with n being the number of classUCs of a student, k the number of schedules of a class and m the number of Lectures to print
+ * If option 5 is picked: Time complexity - Refer to time complexity of requests()
+ * If option 6 is picked: Time complexity - O(n*m) with n being the number of existing students and m the number of ClassUcs of a student
+ */
 int Menu::run() {
     while (true) {
         int option = options();
@@ -65,6 +74,11 @@ int Menu::options() const{
     cout << "0. Exit" << endl;
     cout << "Enter your choice:";
     cin >> choice;
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return 7;
+    }
     return choice;
 }
 /**
@@ -82,7 +96,7 @@ void Menu::ClassSchedule(){
  * @brief Receives an input from the user from [1,3] else goes to the starting menu. Gives various options to search students such as:
  * See all students in a class/year/course.
  * It displays the students based on the selected option and sorting preference
- * @details Time complexity - O(n*log(n)) with n being number of students stored in the temp vector (Worst case scenario)
+ * @details Time complexity - O(n*log(n)) with n being number of students that fit a given restriction (Class,year,course,Uc) (Worst case scenario)
  */
 void Menu::CheckStudent() {
     cout << "1. See all students in a class" << endl;
@@ -94,17 +108,18 @@ void Menu::CheckStudent() {
     int choice;
     cin >> choice;
     cout << endl;
-    string sort = sorting();
-    if (sort == "exit"){
-        cout << ">> Returning to menu." << endl;
-        return;
-    }
+
     switch (choice) {
         case 1: {
             string classCode;
             cout << "Enter a class code:";
             cin >> classCode;
             cout << "\n";
+            string sort = sorting();
+            if (sort == "exit"){
+                cout << ">> Returning to menu." << endl;
+                return;
+            }
             dataProcessor.studentsInClass(classCode,sort);
             break;
         }
@@ -113,6 +128,11 @@ void Menu::CheckStudent() {
             cout << "Enter a year (ex. 2020):";
             cin >> year;
             cout << "\n";
+            string sort = sorting();
+            if (sort == "exit"){
+                cout << ">> Returning to menu." << endl;
+                return;
+            }
             dataProcessor.studentsInYear(year,sort);
             break;
         }
@@ -121,6 +141,11 @@ void Menu::CheckStudent() {
             cout << "Enter a course (ex. LEIC):";
             cin >> course;
             cout << "\n";
+            string sort = sorting();
+            if (sort == "exit"){
+                cout << ">> Returning to menu." << endl;
+                return;
+            }
             dataProcessor.studentsInCourse(course,sort);
             break;
         }
@@ -129,6 +154,11 @@ void Menu::CheckStudent() {
             cout << "Enter a UC (ex. L.EIC001):";
             cin >> UC;
             cout << "\n";
+            string sort = sorting();
+            if (sort == "exit"){
+                cout << ">> Returning to menu." << endl;
+                return;
+            }
             dataProcessor.studentsInUc(UC,sort);
         }
         default:{
@@ -136,7 +166,12 @@ void Menu::CheckStudent() {
         }
     }
 }
-
+/**
+ * @brief Menu that handles all request functionality
+ * @details If option 1 is picked : Time complexity - O(1)
+ * If option 2,3 or 4  is picked: Time complexity - O(n) where n is the number of pending requests
+ * If option 5 or 6 is picked: Time complexity - O(k) where k is the number of successful requests in 'RequestHistory.csv'
+ */
 
 void Menu :: requests(){
     cout << "1. Add new request to list of pending requests" << endl;
@@ -150,6 +185,12 @@ void Menu :: requests(){
     int option;
     cin >> option;
     cout << endl;
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Incorrect input >> Returning to menu" << endl;
+        return;
+    }
     switch(option){
         case 1:{
             addRequestoList();

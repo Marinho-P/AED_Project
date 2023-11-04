@@ -325,7 +325,7 @@ void DataProcessor::ucGreatestNumberStudents() {
         cout << "---------------------------------" << endl;
         cout << ucMax.front() << endl;
         cout << "Having " << maxNumberStudent << " enrolled students." << endl;
-        cout << "-----------------------------------" << endl;
+        cout << "---------------------------------" << endl;
     }
 }
 
@@ -413,7 +413,6 @@ void DataProcessor::processRequest(int RequestID) {
  * @details O(n+w*m) with n being the number of unique Class_UCs, w the number of students and m the number of Class_UCs per student
  * @param request
  */
- // flagged
 void DataProcessor::performRequest(Request &request) {
     if(request.getType() == "add"){
         AddRequest(request.getStudent(),request.getUcCode(),true);
