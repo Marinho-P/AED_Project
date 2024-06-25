@@ -1,0 +1,93 @@
+\doxysection{Country Class Reference}
+\hypertarget{classCountry}{}\label{classCountry}\index{Country@{Country}}
+
+
+Class that represents a country, name and cities.  
+
+
+
+
+{\ttfamily \#include $<$Country.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCountry_ad232d7490dc6904f0525ea75008c3b75}{Country}} (const string \&name)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classCountry}{Country} class that initializes an object with a name. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classCountry_a2f7add57828e032e4549d7d81d180fae}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the name of the country. \end{DoxyCompactList}\item 
+const set$<$ string $>$ \& \mbox{\hyperlink{classCountry_a5244a1a79baeede05da4dbaa8cb6a6a7}{get\+Cities}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the set of cities in the country. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_a58744a74577743b85feca5b6c6aacdcd}{add\+City}} (const string \&city)
+\begin{DoxyCompactList}\small\item\em Adds a city to the set of cities in the country. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that represents a country, name and cities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCountry_ad232d7490dc6904f0525ea75008c3b75}\label{classCountry_ad232d7490dc6904f0525ea75008c3b75} 
+\index{Country@{Country}!Country@{Country}}
+\index{Country@{Country}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{Country()}{Country()}}
+{\footnotesize\ttfamily Country\+::\+Country (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{classCountry}{Country} class that initializes an object with a name. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the country. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCountry_a58744a74577743b85feca5b6c6aacdcd}\label{classCountry_a58744a74577743b85feca5b6c6aacdcd} 
+\index{Country@{Country}!addCity@{addCity}}
+\index{addCity@{addCity}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{addCity()}{addCity()}}
+{\footnotesize\ttfamily void Country\+::add\+City (\begin{DoxyParamCaption}\item[{const string \&}]{city }\end{DoxyParamCaption})}
+
+
+
+Adds a city to the set of cities in the country. 
+
+Time complexity -\/ O(log n), where n is the number of cities in the set. 
+\begin{DoxyParams}{Parameters}
+{\em city} & The name of the city to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCountry_a5244a1a79baeede05da4dbaa8cb6a6a7}\label{classCountry_a5244a1a79baeede05da4dbaa8cb6a6a7} 
+\index{Country@{Country}!getCities@{getCities}}
+\index{getCities@{getCities}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getCities()}{getCities()}}
+{\footnotesize\ttfamily const set$<$ string $>$ \& Country\+::get\+Cities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the set of cities in the country. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+A constant reference to the set of cities. 
+\end{DoxyReturn}
+\Hypertarget{classCountry_a2f7add57828e032e4549d7d81d180fae}\label{classCountry_a2f7add57828e032e4549d7d81d180fae} 
+\index{Country@{Country}!getName@{getName}}
+\index{getName@{getName}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Country\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the name of the country. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+The name of the country. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Country.\+h\item 
+Country.\+cpp\end{DoxyCompactItemize}

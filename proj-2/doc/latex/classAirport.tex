@@ -1,0 +1,184 @@
+\doxysection{Airport Class Reference}
+\hypertarget{classAirport}{}\label{classAirport}\index{Airport@{Airport}}
+
+
+Class that represents the airports, code, name, city and coordinates.  
+
+
+
+
+{\ttfamily \#include $<$Airport.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAirport_aad562a1e94acbaa00fa2c34d8042a160}{Airport}} (string code, string name, \mbox{\hyperlink{classCity}{City}} \texorpdfstring{$\ast$}{*}city, double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classAirport}{Airport} class that initializes an object with a code, name, city, and coordinates. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classAirport_add9b3ea6f8849f6167f5a70a9280781a}{get\+Code}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the airport code. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classAirport_a939b886a8a9675e22418f2c9a490bdcb}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the name of the airport. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCity}{City}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classAirport_abaa142b7ad0c02e6fda172ba46c8db26}{get\+City}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{classCity}{City} object to which the airport belongs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCoordinate}{Coordinate}} \mbox{\hyperlink{classAirport_a9a4bbcf71095dceebcfda56760683d4c}{get\+Coordinate}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the coordinates of the airport. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAirport_afd6aa58170e56847bf99f8eae553e491}{set\+Code}} (string code)
+\begin{DoxyCompactList}\small\item\em Setter for the airport code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAirport_a064fd9435cd179b04d94c04a18a96583}{set\+Name}} (string name)
+\begin{DoxyCompactList}\small\item\em Setter for the name of the airport. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAirport_adce299d710058d1dc2e7ee15370ac54c}{set\+City}} (\mbox{\hyperlink{classCity}{City}} \texorpdfstring{$\ast$}{*}city)
+\begin{DoxyCompactList}\small\item\em Setter for the \doxylink{classCity}{City} object to which the airport belongs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAirport_a1816ebdbb6587bdddbeeba26a0885301}{set\+Coordinate}} (double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Setter for the coordinates of the airport. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that represents the airports, code, name, city and coordinates. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classAirport_aad562a1e94acbaa00fa2c34d8042a160}\label{classAirport_aad562a1e94acbaa00fa2c34d8042a160} 
+\index{Airport@{Airport}!Airport@{Airport}}
+\index{Airport@{Airport}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{Airport()}{Airport()}}
+{\footnotesize\ttfamily Airport\+::\+Airport (\begin{DoxyParamCaption}\item[{string}]{code,  }\item[{string}]{name,  }\item[{\mbox{\hyperlink{classCity}{City}} \texorpdfstring{$\ast$}{*}}]{city,  }\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{classAirport}{Airport} class that initializes an object with a code, name, city, and coordinates. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em code} & The airport code. \\
+\hline
+{\em name} & The name of the airport. \\
+\hline
+{\em city} & A pointer to the \doxylink{classCity}{City} object to which the airport belongs. \\
+\hline
+{\em latitude} & The latitude coordinate of the airport. \\
+\hline
+{\em longitude} & The longitude coordinate of the airport. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAirport_abaa142b7ad0c02e6fda172ba46c8db26}\label{classAirport_abaa142b7ad0c02e6fda172ba46c8db26} 
+\index{Airport@{Airport}!getCity@{getCity}}
+\index{getCity@{getCity}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCity()}{getCity()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCity}{City}} \texorpdfstring{$\ast$}{*} Airport\+::get\+City (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the \doxylink{classCity}{City} object to which the airport belongs. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+A pointer to the \doxylink{classCity}{City} object. 
+\end{DoxyReturn}
+\Hypertarget{classAirport_add9b3ea6f8849f6167f5a70a9280781a}\label{classAirport_add9b3ea6f8849f6167f5a70a9280781a} 
+\index{Airport@{Airport}!getCode@{getCode}}
+\index{getCode@{getCode}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily string Airport\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the airport code. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+The airport code. 
+\end{DoxyReturn}
+\Hypertarget{classAirport_a9a4bbcf71095dceebcfda56760683d4c}\label{classAirport_a9a4bbcf71095dceebcfda56760683d4c} 
+\index{Airport@{Airport}!getCoordinate@{getCoordinate}}
+\index{getCoordinate@{getCoordinate}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCoordinate()}{getCoordinate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCoordinate}{Coordinate}} Airport\+::get\+Coordinate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the coordinates of the airport. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+The \doxylink{classCoordinate}{Coordinate} object representing the latitude and longitude. 
+\end{DoxyReturn}
+\Hypertarget{classAirport_a939b886a8a9675e22418f2c9a490bdcb}\label{classAirport_a939b886a8a9675e22418f2c9a490bdcb} 
+\index{Airport@{Airport}!getName@{getName}}
+\index{getName@{getName}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Airport\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the name of the airport. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+The name of the airport. 
+\end{DoxyReturn}
+\Hypertarget{classAirport_adce299d710058d1dc2e7ee15370ac54c}\label{classAirport_adce299d710058d1dc2e7ee15370ac54c} 
+\index{Airport@{Airport}!setCity@{setCity}}
+\index{setCity@{setCity}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{setCity()}{setCity()}}
+{\footnotesize\ttfamily void Airport\+::set\+City (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCity}{City}} \texorpdfstring{$\ast$}{*}}]{city }\end{DoxyParamCaption})}
+
+
+
+Setter for the \doxylink{classCity}{City} object to which the airport belongs. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em city} & A pointer to the new \doxylink{classCity}{City} object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAirport_afd6aa58170e56847bf99f8eae553e491}\label{classAirport_afd6aa58170e56847bf99f8eae553e491} 
+\index{Airport@{Airport}!setCode@{setCode}}
+\index{setCode@{setCode}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{setCode()}{setCode()}}
+{\footnotesize\ttfamily void Airport\+::set\+Code (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})}
+
+
+
+Setter for the airport code. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em code} & The new airport code. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAirport_a1816ebdbb6587bdddbeeba26a0885301}\label{classAirport_a1816ebdbb6587bdddbeeba26a0885301} 
+\index{Airport@{Airport}!setCoordinate@{setCoordinate}}
+\index{setCoordinate@{setCoordinate}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{setCoordinate()}{setCoordinate()}}
+{\footnotesize\ttfamily void Airport\+::set\+Coordinate (\begin{DoxyParamCaption}\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Setter for the coordinates of the airport. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em latitude} & The new latitude coordinate. \\
+\hline
+{\em longitude} & The new longitude coordinate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAirport_a064fd9435cd179b04d94c04a18a96583}\label{classAirport_a064fd9435cd179b04d94c04a18a96583} 
+\index{Airport@{Airport}!setName@{setName}}
+\index{setName@{setName}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Airport\+::set\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Setter for the name of the airport. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em name} & The new name of the airport. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Airport.\+h\item 
+Airport.\+cpp\end{DoxyCompactItemize}

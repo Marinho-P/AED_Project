@@ -1,0 +1,79 @@
+\doxysection{Vertex\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classVertex}{}\label{classVertex}\index{Vertex$<$ T $>$@{Vertex$<$ T $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classVertex_ad38f04187f15195e654aa88a3feffa98}{add\+Edge}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ \texorpdfstring{$\ast$}{*}dest, double w, string airline)
+\item 
+\Hypertarget{classVertex_afcbdd4d4198b672356559cb8fa088408}\label{classVertex_afcbdd4d4198b672356559cb8fa088408} 
+{\bfseries Vertex} (T in)
+\item 
+\Hypertarget{classVertex_a48eae2f7af2362634adab02b7b2dbec6}\label{classVertex_a48eae2f7af2362634adab02b7b2dbec6} 
+T {\bfseries get\+Info} () const
+\item 
+\Hypertarget{classVertex_a68c9c8792b2752b7540e2f8c14f686a4}\label{classVertex_a68c9c8792b2752b7540e2f8c14f686a4} 
+void {\bfseries set\+Info} (T in)
+\item 
+\Hypertarget{classVertex_aa2bb17f6ebd98a67f8da1f689b22fadc}\label{classVertex_aa2bb17f6ebd98a67f8da1f689b22fadc} 
+bool {\bfseries is\+Visited} () const
+\item 
+\Hypertarget{classVertex_aa1a1921cded8cb209382407b5a9433f3}\label{classVertex_aa1a1921cded8cb209382407b5a9433f3} 
+void {\bfseries set\+Visited} (bool v)
+\item 
+\Hypertarget{classVertex_aaa41dfa4ce1a19b4e529cc6cdc23b764}\label{classVertex_aaa41dfa4ce1a19b4e529cc6cdc23b764} 
+bool {\bfseries is\+Processing} () const
+\item 
+\Hypertarget{classVertex_ac7b2e53890abfbcd4d7ce3b7d34ee932}\label{classVertex_ac7b2e53890abfbcd4d7ce3b7d34ee932} 
+void {\bfseries set\+Processing} (bool p)
+\item 
+\Hypertarget{classVertex_a0b0341340972782503ff5065f46673fe}\label{classVertex_a0b0341340972782503ff5065f46673fe} 
+const vector$<$ \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$ $>$ \& {\bfseries get\+Adj} () const
+\item 
+\Hypertarget{classVertex_aacc5763deca4f0f308756b69f9598584}\label{classVertex_aacc5763deca4f0f308756b69f9598584} 
+void {\bfseries set\+Adj} (const vector$<$ \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$ $>$ \&adj)
+\item 
+\Hypertarget{classVertex_ac78980191ea1f9d22e6617e9e511b755}\label{classVertex_ac78980191ea1f9d22e6617e9e511b755} 
+int {\bfseries get\+Indegree} () const
+\item 
+\Hypertarget{classVertex_ad1602c48fedae2d3d5a3949594dc5ab8}\label{classVertex_ad1602c48fedae2d3d5a3949594dc5ab8} 
+void {\bfseries set\+Indegree} (int indegree)
+\item 
+\Hypertarget{classVertex_ab2916c006fa35b918910a2232095e785}\label{classVertex_ab2916c006fa35b918910a2232095e785} 
+int {\bfseries get\+Num} () const
+\item 
+\Hypertarget{classVertex_a7eecd09188d8f959b1c0ac9332c14218}\label{classVertex_a7eecd09188d8f959b1c0ac9332c14218} 
+void {\bfseries set\+Num} (int num)
+\item 
+\Hypertarget{classVertex_a3b8e12b4d9805979321212dd6db05961}\label{classVertex_a3b8e12b4d9805979321212dd6db05961} 
+int {\bfseries get\+Low} () const
+\item 
+\Hypertarget{classVertex_ada7d878fff0c3d585fce0a51cffa6435}\label{classVertex_ada7d878fff0c3d585fce0a51cffa6435} 
+void {\bfseries set\+Low} (int low)
+\item 
+\Hypertarget{classVertex_ae39fb3706b4802eebec8eb8e456c312d}\label{classVertex_ae39fb3706b4802eebec8eb8e456c312d} 
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ \texorpdfstring{$\ast$}{*} {\bfseries get\+Parent} () const
+\item 
+\Hypertarget{classVertex_a24219c9be72b9047e7a39f8f8968694b}\label{classVertex_a24219c9be72b9047e7a39f8f8968694b} 
+void {\bfseries set\+Parent} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ \texorpdfstring{$\ast$}{*}parent)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVertex_aefa9b76cd57411c5354e5620dc2d84dd}\label{classVertex_aefa9b76cd57411c5354e5620dc2d84dd} 
+class {\bfseries Graph$<$ T $>$}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVertex_ad38f04187f15195e654aa88a3feffa98}\label{classVertex_ad38f04187f15195e654aa88a3feffa98} 
+\index{Vertex$<$ T $>$@{Vertex$<$ T $>$}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Vertex$<$ T $>$@{Vertex$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ \texorpdfstring{$\ast$}{*}}]{d,  }\item[{double}]{w,  }\item[{string}]{airline }\end{DoxyParamCaption})}
+
+Auxiliary function to add an outgoing edge to a vertex (this), with a given destination vertex (d) and edge weight (w). 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\end{DoxyCompactItemize}

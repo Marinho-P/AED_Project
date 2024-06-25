@@ -1,0 +1,130 @@
+\doxysection{Coordinate Class Reference}
+\hypertarget{classCoordinate}{}\label{classCoordinate}\index{Coordinate@{Coordinate}}
+
+
+Class that represents the coordinates, latitude and longitude.  
+
+
+
+
+{\ttfamily \#include $<$Coordinate.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCoordinate_a1035ece2a0f4081ecc34fcaa020cfc04}{Coordinate}} (double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classCoordinate}{Coordinate} class that initializes an object with latitude and longitude. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCoordinate_aac6f323a685fc1e88fbea9c86f1e600d}{Coordinate}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{classCoordinate}{Coordinate} class. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCoordinate_a864e4dc23d8f0e2cdf8510557bdd946d}{get\+Latitude}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the latitude coordinate. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCoordinate_ac49dfc528b35bb76e376ea696213e8a4}{get\+Longitude}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the longitude coordinate. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCoordinate_ad44fd94810a5a987ad5740d597eace7e}{to\+Radians}} (double degrees) const
+\begin{DoxyCompactList}\small\item\em Converts degrees to radians. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCoordinate_a322617320bb7f272cc1d3eb87d4449f3}{dist\+\_\+coordinates}} (\mbox{\hyperlink{classCoordinate}{Coordinate}} cord2) const
+\begin{DoxyCompactList}\small\item\em Calculates the distance between two coordinates using the Haversine formula. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that represents the coordinates, latitude and longitude. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCoordinate_a1035ece2a0f4081ecc34fcaa020cfc04}\label{classCoordinate_a1035ece2a0f4081ecc34fcaa020cfc04} 
+\index{Coordinate@{Coordinate}!Coordinate@{Coordinate}}
+\index{Coordinate@{Coordinate}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{Coordinate()}{Coordinate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Coordinate\+::\+Coordinate (\begin{DoxyParamCaption}\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{classCoordinate}{Coordinate} class that initializes an object with latitude and longitude. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em latitude} & The latitude coordinate. \\
+\hline
+{\em longitude} & The longitude coordinate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCoordinate_aac6f323a685fc1e88fbea9c86f1e600d}\label{classCoordinate_aac6f323a685fc1e88fbea9c86f1e600d} 
+\index{Coordinate@{Coordinate}!Coordinate@{Coordinate}}
+\index{Coordinate@{Coordinate}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{Coordinate()}{Coordinate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Coordinate\+::\+Coordinate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for the \doxylink{classCoordinate}{Coordinate} class. 
+
+Time complexity -\/ O(1) Initializes the object with default values (0.\+0, 0.\+0). 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCoordinate_a322617320bb7f272cc1d3eb87d4449f3}\label{classCoordinate_a322617320bb7f272cc1d3eb87d4449f3} 
+\index{Coordinate@{Coordinate}!dist\_coordinates@{dist\_coordinates}}
+\index{dist\_coordinates@{dist\_coordinates}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{dist\_coordinates()}{dist\_coordinates()}}
+{\footnotesize\ttfamily double Coordinate\+::dist\+\_\+coordinates (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCoordinate}{Coordinate}}}]{cord2 }\end{DoxyParamCaption}) const}
+
+
+
+Calculates the distance between two coordinates using the Haversine formula. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em cord2} & The second coordinate to calculate the distance to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the coordinates in meters. 
+\end{DoxyReturn}
+\Hypertarget{classCoordinate_a864e4dc23d8f0e2cdf8510557bdd946d}\label{classCoordinate_a864e4dc23d8f0e2cdf8510557bdd946d} 
+\index{Coordinate@{Coordinate}!getLatitude@{getLatitude}}
+\index{getLatitude@{getLatitude}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{getLatitude()}{getLatitude()}}
+{\footnotesize\ttfamily double Coordinate\+::get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the latitude coordinate. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+The latitude coordinate. 
+\end{DoxyReturn}
+\Hypertarget{classCoordinate_ac49dfc528b35bb76e376ea696213e8a4}\label{classCoordinate_ac49dfc528b35bb76e376ea696213e8a4} 
+\index{Coordinate@{Coordinate}!getLongitude@{getLongitude}}
+\index{getLongitude@{getLongitude}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{getLongitude()}{getLongitude()}}
+{\footnotesize\ttfamily double Coordinate\+::get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the longitude coordinate. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+The longitude coordinate. 
+\end{DoxyReturn}
+\Hypertarget{classCoordinate_ad44fd94810a5a987ad5740d597eace7e}\label{classCoordinate_ad44fd94810a5a987ad5740d597eace7e} 
+\index{Coordinate@{Coordinate}!toRadians@{toRadians}}
+\index{toRadians@{toRadians}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{toRadians()}{toRadians()}}
+{\footnotesize\ttfamily double Coordinate\+::to\+Radians (\begin{DoxyParamCaption}\item[{double}]{degrees }\end{DoxyParamCaption}) const}
+
+
+
+Converts degrees to radians. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em degrees} & The angle in degrees. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The angle in radians. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Coordinate.\+h\item 
+Coordinate.\+cpp\end{DoxyCompactItemize}

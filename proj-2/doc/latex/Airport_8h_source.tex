@@ -1,0 +1,39 @@
+\doxysection{Airport.\+h}
+\hypertarget{Airport_8h_source}{}\label{Airport_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ aqueiros22\ on\ 18-\/12-\/2023.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PROJETO\_AED\_2\_AIRPORT\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PROJETO\_AED\_2\_AIRPORT\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Coordinate.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}City.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAirport}{Airport}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ code\_;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{string}\ name\_;}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classCity}{City}}*\ city\_;}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{classCoordinate}{Coordinate}}\ coordinate\_;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classAirport}{Airport}}(\textcolor{keywordtype}{string}\ code,\ \textcolor{keywordtype}{string}\ name,\ \mbox{\hyperlink{classCity}{City}}*\ city,\ \textcolor{keywordtype}{double}\ latitude,\ \textcolor{keywordtype}{double}\ longitude);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classAirport_add9b3ea6f8849f6167f5a70a9280781a}{getCode}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classAirport_a939b886a8a9675e22418f2c9a490bdcb}{getName}}();}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classCity}{City}}*\ \mbox{\hyperlink{classAirport_abaa142b7ad0c02e6fda172ba46c8db26}{getCity}}();}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{classCoordinate}{Coordinate}}\ \mbox{\hyperlink{classAirport_a9a4bbcf71095dceebcfda56760683d4c}{getCoordinate}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAirport_afd6aa58170e56847bf99f8eae553e491}{setCode}}(\textcolor{keywordtype}{string}\ code);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAirport_a064fd9435cd179b04d94c04a18a96583}{setName}}(\textcolor{keywordtype}{string}\ name);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAirport_adce299d710058d1dc2e7ee15370ac54c}{setCity}}(\mbox{\hyperlink{classCity}{City}}*\ city);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAirport_a1816ebdbb6587bdddbeeba26a0885301}{setCoordinate}}(\textcolor{keywordtype}{double}\ latitude,\ \textcolor{keywordtype}{double}\ longitude);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJETO\_AED\_2\_AIRPORT\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,144 @@
+\doxysection{City Class Reference}
+\hypertarget{classCity}{}\label{classCity}\index{City@{City}}
+
+
+Class that represents a city, name, country and the airports.  
+
+
+
+
+{\ttfamily \#include $<$City.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCity_ab76161f52855d76d43892564e42f0f26}{City}} (const string \&name, const string \&country)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classCity}{City} class that initializes an object with a name and country. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classCity_a4843313c0238390843ae5760ec5b6561}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the name of the city. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classCity_a29f48c92bdf5ea985324dd0e8bee2697}{get\+Country}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the country to which the city belongs. \end{DoxyCompactList}\item 
+const vector$<$ string $>$ \& \mbox{\hyperlink{classCity_a23be2feb2b9e5ee3e95bb594c0640426}{get\+Airports}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the list of airports in the city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCity_a71b31e257b1aa2fe8d9cb38ba9dbf42d}{set\+Name}} (const string \&name)
+\begin{DoxyCompactList}\small\item\em Setter for the name of the city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCity_a9182d515af2d22b6af184512953cb1f3}{set\+Country}} (const string \&country)
+\begin{DoxyCompactList}\small\item\em Setter for the country to which the city belongs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCity_aa5af40ce4258ca9bb155ab2e11ae5a28}{add\+Airport}} (const string \&airport)
+\begin{DoxyCompactList}\small\item\em Adds an airport to the list of airports in the city. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that represents a city, name, country and the airports. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCity_ab76161f52855d76d43892564e42f0f26}\label{classCity_ab76161f52855d76d43892564e42f0f26} 
+\index{City@{City}!City@{City}}
+\index{City@{City}!City@{City}}
+\doxysubsubsection{\texorpdfstring{City()}{City()}}
+{\footnotesize\ttfamily City\+::\+City (\begin{DoxyParamCaption}\item[{const string \&}]{name,  }\item[{const string \&}]{country }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{classCity}{City} class that initializes an object with a name and country. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the city. \\
+\hline
+{\em country} & The country to which the city belongs. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCity_aa5af40ce4258ca9bb155ab2e11ae5a28}\label{classCity_aa5af40ce4258ca9bb155ab2e11ae5a28} 
+\index{City@{City}!addAirport@{addAirport}}
+\index{addAirport@{addAirport}!City@{City}}
+\doxysubsubsection{\texorpdfstring{addAirport()}{addAirport()}}
+{\footnotesize\ttfamily void City\+::add\+Airport (\begin{DoxyParamCaption}\item[{const string \&}]{airport }\end{DoxyParamCaption})}
+
+
+
+Adds an airport to the list of airports in the city. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em airport} & The name of the airport to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCity_a23be2feb2b9e5ee3e95bb594c0640426}\label{classCity_a23be2feb2b9e5ee3e95bb594c0640426} 
+\index{City@{City}!getAirports@{getAirports}}
+\index{getAirports@{getAirports}!City@{City}}
+\doxysubsubsection{\texorpdfstring{getAirports()}{getAirports()}}
+{\footnotesize\ttfamily const vector$<$ string $>$ \& City\+::get\+Airports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the list of airports in the city. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+A constant reference to the vector of airport names. 
+\end{DoxyReturn}
+\Hypertarget{classCity_a29f48c92bdf5ea985324dd0e8bee2697}\label{classCity_a29f48c92bdf5ea985324dd0e8bee2697} 
+\index{City@{City}!getCountry@{getCountry}}
+\index{getCountry@{getCountry}!City@{City}}
+\doxysubsubsection{\texorpdfstring{getCountry()}{getCountry()}}
+{\footnotesize\ttfamily string City\+::get\+Country (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the country to which the city belongs. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+The country of the city. 
+\end{DoxyReturn}
+\Hypertarget{classCity_a4843313c0238390843ae5760ec5b6561}\label{classCity_a4843313c0238390843ae5760ec5b6561} 
+\index{City@{City}!getName@{getName}}
+\index{getName@{getName}!City@{City}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string City\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the name of the city. 
+
+Time complexity -\/ O(1) \begin{DoxyReturn}{Returns}
+The name of the city. 
+\end{DoxyReturn}
+\Hypertarget{classCity_a9182d515af2d22b6af184512953cb1f3}\label{classCity_a9182d515af2d22b6af184512953cb1f3} 
+\index{City@{City}!setCountry@{setCountry}}
+\index{setCountry@{setCountry}!City@{City}}
+\doxysubsubsection{\texorpdfstring{setCountry()}{setCountry()}}
+{\footnotesize\ttfamily void City\+::set\+Country (\begin{DoxyParamCaption}\item[{const string \&}]{country }\end{DoxyParamCaption})}
+
+
+
+Setter for the country to which the city belongs. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em country} & The new country of the city. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCity_a71b31e257b1aa2fe8d9cb38ba9dbf42d}\label{classCity_a71b31e257b1aa2fe8d9cb38ba9dbf42d} 
+\index{City@{City}!setName@{setName}}
+\index{setName@{setName}!City@{City}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void City\+::set\+Name (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Setter for the name of the city. 
+
+Time complexity -\/ O(1) 
+\begin{DoxyParams}{Parameters}
+{\em name} & The new name of the city. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+City.\+h\item 
+City.\+cpp\end{DoxyCompactItemize}

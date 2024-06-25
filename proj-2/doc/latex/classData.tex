@@ -1,0 +1,597 @@
+\doxysection{Data Class Reference}
+\hypertarget{classData}{}\label{classData}\index{Data@{Data}}
+
+
+Class that stores and processes useful data from the csv files.  
+
+
+
+
+{\ttfamily \#include $<$Data.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classData_af11f741cb7f587e2e495452a8905a22a}{Data}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classData}{Data} class that initializes essential data structures. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classAirport}{Airport}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classData_ae0bf95d65f16b2fa79563a02d59b5db3}{get\+Airports}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the map of airports. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classAirline}{Airline}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classData_ac9bff179fcc8bb26296f284fcadd4d0d}{get\+Airlines}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the map of airlines. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classCity}{City}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classData_a9affad4bd6a466508bdafc8cc8a5d37d}{get\+Cities}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the map of cities. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classCountry}{Country}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classData_a0513bd46f08b1e603128bac9a1bcfddb}{get\+Countries}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the map of countries. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classData_a8128669b7bf168be75cb1229ad4bea6f}{get\+FlightG}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the flight graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_ad62fb7261bdde2d2049f335530824173}{read\+\_\+airlines}} ()
+\begin{DoxyCompactList}\small\item\em Reads airline data from a file and populates relevant data structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a5943b87eadbdfbebac55f4d6d6d5857d}{read\+\_\+airports}} ()
+\begin{DoxyCompactList}\small\item\em Reads airport data from a file and populates relevant data structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_aad27fb0896f1ab1b979c48b79709c71e}{read\+\_\+flights}} ()
+\begin{DoxyCompactList}\small\item\em Reads flight data from a file and populates relevant data structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a445c781c41256dae97b2fa8ea836ff35}{list\+All\+Airports\+And\+Available\+Flights}} () const
+\begin{DoxyCompactList}\small\item\em Lists the number of flights and airports. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_ac31ef883d40656246b43dfd0f3ff9ac2}{flights\+Out\+From\+Airport\+And\+Different\+Airlines}} ()
+\begin{DoxyCompactList}\small\item\em Displays information about flights from a specific airport with different airlines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a25c049ba5828b4ad6dd9bc3f96f9ac1a}{number\+Of\+Flights\+Per\+City\+\_\+\+Airline}} (string city\+\_\+airline)
+\begin{DoxyCompactList}\small\item\em Calculates the number of flights in a specific city or by a particular airline. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ std\+::string $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classData_a8bee1f26cf2df0ec4b8833c8334d3245}{get\+Filtered\+Vertex}} (string mode, string search\+Term)
+\begin{DoxyCompactList}\small\item\em Retrieves a filtered list of vertices based on the specified mode and search term. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_ac56b850ff6c42c696cf97f5c5fef2e59}{number\+Of\+Unique\+Countries\+Reachable\+Airport\+\_\+\+City}} (string airport\+\_\+city)
+\begin{DoxyCompactList}\small\item\em Calculates the number of unique countries reachable from a given airport or city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_aabbc4138b077506181c8318581437a2a}{sum\+Of\+Destinations\+Airport}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the sum of destinations from a specified airport. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_aaac23366a0c2c20e4f316cd409521103}{sum\+Of\+Destinations\+Airport\+With\+Lay\+Overs}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the sum of destinations from a specified airport considering layovers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a1e742b55a2f3769ef86daa2f30b4ee22}{top\+KAirports}} (int k)
+\begin{DoxyCompactList}\small\item\em Prints the top K airports with the greatest air traffic capacity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a0ca71fb1e0fc31098dcf6777c518e620}{check\+Maximum\+Trip\+Stops}} ()
+\begin{DoxyCompactList}\small\item\em Checks and prints the maximum number of stops between airports using bfs. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classData_ac7c792f892e48178cf5e9f2e817ad9e7}{max\+Trip}} (stack$<$ pair$<$ string, string $>$ $>$ \&max\+Trips)
+\begin{DoxyCompactList}\small\item\em Checks the maximum number of stops between airports using bfs. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classData_a6fce501d019cd3b9661eb37fc803e068}{find\+Max\+Trip\+Bfs}} (stack$<$ pair$<$ string, string $>$ $>$ \&pairs, \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}source)
+\begin{DoxyCompactList}\small\item\em Using bfs, calculates the distance of each vertex from source, then finds the farthest vertices and creates pairs for them. \end{DoxyCompactList}\item 
+\Hypertarget{classData_a008b5a257d130497f6e98fc695c73cfd}\label{classData_a008b5a257d130497f6e98fc695c73cfd} 
+void {\bfseries check\+Essential\+Airports} ()
+\begin{DoxyCompactList}\small\item\em Checks and prints essential airports for circulation in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a9fd2461267960de9d9bfa27a8e6e5e76}{dfs\+\_\+art}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}v, stack$<$ string $>$ \&s, vector$<$ string $>$ \&airports, int \&i)
+\begin{DoxyCompactList}\small\item\em Depth-\/first search for finding essential airports for circulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a8945a94896a2660176967a8c0c0f798b}{count\+Destinations\+BFS}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}vertex, int max\+Stops, unordered\+\_\+set$<$ string $>$ \&visited\+Airports)
+\begin{DoxyCompactList}\small\item\em Performs a breadth-\/first search to count the number of destinations from a specified airport. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a9b161ddb05f79589c98a87933a4bf13b}{best\+Flight\+Option}} (string source\+Mode, string source, string dest\+Mode, string dest, unordered\+\_\+set$<$ string $>$ allowed, bool min)
+\begin{DoxyCompactList}\small\item\em Finds the best flight options between source and destination with specific constraints. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a4766bb2c004b341a439b995163f91cd1}{best\+Flight\+Option}} (vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*} $>$ source, vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*} $>$ dest, const unordered\+\_\+set$<$ string $>$ \&allowed)
+\begin{DoxyCompactList}\small\item\em Finds the best flight options from a set of source airports to a set of destination airports. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ \mbox{\hyperlink{classData_a8b4da6467d1e27df20f619a04d160858}{get\+Reverse\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em returns a version of the flight\+Graph with all of its edges reversed \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a9ea9f69b58dd8049d9ca2fc7251f60a5}{reverse\+Dfs\+Best\+Flight\+Option}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}source, vector$<$ vector$<$ string $>$ $>$ \&paths\+Discovered, vector$<$ string $>$ path)
+\begin{DoxyCompactList}\small\item\em Traverses the reversed graph starting on the dest node and through nodes of distance one less of the current node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_aacf9113fe2b5e85470d911b9b2f8d3ab}{fiter\+For\+Smallest}} (vector$<$ vector$<$ string $>$ $>$ \&paths\+Discovered)
+\begin{DoxyCompactList}\small\item\em filters paths\+Discovered to only have the shortest paths. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_aa2ca7fb2e8231a1e28f319c0715df84f}{best\+Flight\+Option\+Min}} (vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*} $>$ source\+Nodes, vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*} $>$ dest\+Nodes, unordered\+\_\+set$<$ string $>$ allowed)
+\begin{DoxyCompactList}\small\item\em Finds the best flight options from a set of source airports to a set of destination airports, while minimizing the number of airlines. \end{DoxyCompactList}\item 
+unordered\+\_\+set$<$ string $>$ \mbox{\hyperlink{classData_a38f5090adfa546a88bf7e3b7b8c2a11d}{optimize\+Airlines}} (vector$<$ vector$<$ string $>$ $>$ edge)
+\begin{DoxyCompactList}\small\item\em Approximation algorithm for minimizing the number of airlines per path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_abd673f7c8150b6195b7536ac672dc628}{reverse\+Dfs\+Best\+Flight\+Option\+Min}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}source, vector$<$ pair$<$ vector$<$ string $>$, unordered\+\_\+set$<$ string $>$ $>$ $>$ \&paths\+Discovered, vector$<$ string $>$ path, vector$<$ vector$<$ string $>$ $>$ airlines\+Per\+Edge)
+\begin{DoxyCompactList}\small\item\em Traverses the reversed graph starting on the dest node and through nodes of distance one less of the current node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a0f65f3e59673125f121b1c60d67ad73b}{filter\+For\+Smallest\+And\+Airlines}} (vector$<$ pair$<$ vector$<$ string $>$, unordered\+\_\+set$<$ string $>$ $>$ $>$ \&paths\+Discovered)
+\begin{DoxyCompactList}\small\item\em filters paths\+Discovered to only have the paths that are shortest and have the least airlines. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{classData_a5603e047c6c66425e0886434dcc550cd}{essential\+Airports\+For\+Circulation}} ()
+\begin{DoxyCompactList}\small\item\em Finds essential airports for circulation in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classData_a4e190b95926792ec4ba979f0397536d9}{bfs\+Best\+Flight\+Option}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}source, unordered\+\_\+set$<$ string $>$ allowed)
+\begin{DoxyCompactList}\small\item\em Using bfs, calculates the distance between the source vertex and every other vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that stores and processes useful data from the csv files. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classData_af11f741cb7f587e2e495452a8905a22a}\label{classData_af11f741cb7f587e2e495452a8905a22a} 
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily Data\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{classData}{Data} class that initializes essential data structures. 
+
+
+\begin{DoxyItemize}
+\item Time complexity\+: O(\+N), where N is the total number of entries in the airlines.\+csv, airports.\+csv, and flights.\+csv files. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classData_a9b161ddb05f79589c98a87933a4bf13b}\label{classData_a9b161ddb05f79589c98a87933a4bf13b} 
+\index{Data@{Data}!bestFlightOption@{bestFlightOption}}
+\index{bestFlightOption@{bestFlightOption}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{bestFlightOption()}{bestFlightOption()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Data\+::best\+Flight\+Option (\begin{DoxyParamCaption}\item[{string}]{source\+Mode,  }\item[{string}]{source,  }\item[{string}]{dest\+Mode,  }\item[{string}]{dest,  }\item[{unordered\+\_\+set$<$ string $>$}]{allowed,  }\item[{bool}]{min }\end{DoxyParamCaption})}
+
+
+
+Finds the best flight options between source and destination with specific constraints. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+Mode} & The mode for specifying the source ("{}airport\+Code"{}, "{}airport\+Name"{}, "{}city\+Name"{}, "{}geo\+Coords"{}). \\
+\hline
+{\em source} & The source identifier. \\
+\hline
+{\em dest\+Mode} & The mode for specifying the destination ("{}airport\+Code"{}, "{}airport\+Name"{}, "{}city\+Name"{}, "{}geo\+Coords"{}). \\
+\hline
+{\em dest} & The destination identifier. \\
+\hline
+{\em allowed} & The unordered set of allowed airlines. \\
+\hline
+{\em min} & If true, minimizes the number of airlines used.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(\+N log N), where N is the total number of flights in the flights.\+csv file. \Hypertarget{classData_a4766bb2c004b341a439b995163f91cd1}\label{classData_a4766bb2c004b341a439b995163f91cd1} 
+\index{Data@{Data}!bestFlightOption@{bestFlightOption}}
+\index{bestFlightOption@{bestFlightOption}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{bestFlightOption()}{bestFlightOption()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Data\+::best\+Flight\+Option (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*} $>$}]{source,  }\item[{vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*} $>$}]{dest,  }\item[{const unordered\+\_\+set$<$ string $>$ \&}]{allowed }\end{DoxyParamCaption})}
+
+
+
+Finds the best flight options from a set of source airports to a set of destination airports. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & A vector of \doxylink{classVertex}{Vertex} pointers representing the source airports. \\
+\hline
+{\em dest} & A vector of \doxylink{classVertex}{Vertex} pointers representing the destination airports. \\
+\hline
+{\em allowed} & A unordered set of strings representing the allowed airlines.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(S\texorpdfstring{$\ast$}{*}(V+E)), where S is the number of vertices in the source vector, V is the total number of vertices in the flight graph and E is the total number of edges in the graph. \Hypertarget{classData_aa2ca7fb2e8231a1e28f319c0715df84f}\label{classData_aa2ca7fb2e8231a1e28f319c0715df84f} 
+\index{Data@{Data}!bestFlightOptionMin@{bestFlightOptionMin}}
+\index{bestFlightOptionMin@{bestFlightOptionMin}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{bestFlightOptionMin()}{bestFlightOptionMin()}}
+{\footnotesize\ttfamily void Data\+::best\+Flight\+Option\+Min (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*} $>$}]{source\+Nodes,  }\item[{vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*} $>$}]{dest\+Nodes,  }\item[{unordered\+\_\+set$<$ string $>$}]{allowed }\end{DoxyParamCaption})}
+
+
+
+Finds the best flight options from a set of source airports to a set of destination airports, while minimizing the number of airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & A vector of \doxylink{classVertex}{Vertex} pointers representing the source airports. \\
+\hline
+{\em dest} & A vector of \doxylink{classVertex}{Vertex} pointers representing the destination airports. \\
+\hline
+{\em allowed} & A unordered set of strings representing the allowed airlines.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(S\texorpdfstring{$\ast$}{*}(V+E)), where S is the number of vertices in the source vector, V is the total number of vertices in the flight graph and E is the total number of edges in the graph. \Hypertarget{classData_a4e190b95926792ec4ba979f0397536d9}\label{classData_a4e190b95926792ec4ba979f0397536d9} 
+\index{Data@{Data}!bfsBestFlightOption@{bfsBestFlightOption}}
+\index{bfsBestFlightOption@{bfsBestFlightOption}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{bfsBestFlightOption()}{bfsBestFlightOption()}}
+{\footnotesize\ttfamily void Data\+::bfs\+Best\+Flight\+Option (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}}]{source,  }\item[{unordered\+\_\+set$<$ string $>$}]{allowed }\end{DoxyParamCaption})}
+
+
+
+Using bfs, calculates the distance between the source vertex and every other vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & \\
+\hline
+{\em dest} & \\
+\hline
+{\em allowed} & \\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(V+E), where V is the total number of vertices in the flight graph and E is the total number of edges in the graph. \Hypertarget{classData_a0ca71fb1e0fc31098dcf6777c518e620}\label{classData_a0ca71fb1e0fc31098dcf6777c518e620} 
+\index{Data@{Data}!checkMaximumTripStops@{checkMaximumTripStops}}
+\index{checkMaximumTripStops@{checkMaximumTripStops}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{checkMaximumTripStops()}{checkMaximumTripStops()}}
+{\footnotesize\ttfamily void Data\+::check\+Maximum\+Trip\+Stops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks and prints the maximum number of stops between airports using bfs. 
+
+Time complexity\+: O(N\texorpdfstring{$\ast$}{*}(N+E)), where N is the total number of vertices in the flight graph and E is total number of edges in the graph. \Hypertarget{classData_a8945a94896a2660176967a8c0c0f798b}\label{classData_a8945a94896a2660176967a8c0c0f798b} 
+\index{Data@{Data}!countDestinationsBFS@{countDestinationsBFS}}
+\index{countDestinationsBFS@{countDestinationsBFS}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{countDestinationsBFS()}{countDestinationsBFS()}}
+{\footnotesize\ttfamily void Data\+::count\+Destinations\+BFS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}}]{vertex,  }\item[{int}]{max\+Stops,  }\item[{unordered\+\_\+set$<$ string $>$ \&}]{visited\+Airports }\end{DoxyParamCaption})}
+
+
+
+Performs a breadth-\/first search to count the number of destinations from a specified airport. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & The starting airport vertex. \\
+\hline
+{\em max\+Stops} & The maximum number of layovers allowed. \\
+\hline
+{\em visited\+Airports} & An unordered set to store the visited airports.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(\+N\texorpdfstring{$^\wedge$}{\string^}2), where N is the number of vertices in the flight graph. \Hypertarget{classData_a9fd2461267960de9d9bfa27a8e6e5e76}\label{classData_a9fd2461267960de9d9bfa27a8e6e5e76} 
+\index{Data@{Data}!dfs\_art@{dfs\_art}}
+\index{dfs\_art@{dfs\_art}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{dfs\_art()}{dfs\_art()}}
+{\footnotesize\ttfamily void Data\+::dfs\+\_\+art (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}}]{current\+Vertex,  }\item[{stack$<$ string $>$ \&}]{traversal\+Stack,  }\item[{vector$<$ string $>$ \&}]{critical\+Airports,  }\item[{int \&}]{index }\end{DoxyParamCaption})}
+
+
+
+Depth-\/first search for finding essential airports for circulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Vertex} & The current vertex during DFS. \\
+\hline
+{\em traversal\+Stack} & A stack to store the visited airports. \\
+\hline
+{\em critical\+Airports} & A vector to store the essential airports. \\
+\hline
+{\em index} & An integer reference for assigning unique numbers to vertices. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classData_a5603e047c6c66425e0886434dcc550cd}\label{classData_a5603e047c6c66425e0886434dcc550cd} 
+\index{Data@{Data}!essentialAirportsForCirculation@{essentialAirportsForCirculation}}
+\index{essentialAirportsForCirculation@{essentialAirportsForCirculation}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{essentialAirportsForCirculation()}{essentialAirportsForCirculation()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Data\+::essential\+Airports\+For\+Circulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finds essential airports for circulation in the graph. 
+
+\begin{DoxyReturn}{Returns}
+A vector of essential airports.
+\end{DoxyReturn}
+Time complexity\+: O(V+E), where V is the number of vertices in the flight graph and E the edges. \Hypertarget{classData_a0f65f3e59673125f121b1c60d67ad73b}\label{classData_a0f65f3e59673125f121b1c60d67ad73b} 
+\index{Data@{Data}!filterForSmallestAndAirlines@{filterForSmallestAndAirlines}}
+\index{filterForSmallestAndAirlines@{filterForSmallestAndAirlines}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{filterForSmallestAndAirlines()}{filterForSmallestAndAirlines()}}
+{\footnotesize\ttfamily void Data\+::filter\+For\+Smallest\+And\+Airlines (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ vector$<$ string $>$, unordered\+\_\+set$<$ string $>$ $>$ $>$ \&}]{paths\+Discovered }\end{DoxyParamCaption})}
+
+
+
+filters paths\+Discovered to only have the paths that are shortest and have the least airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em paths\+Discovered} & \\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(n) where n is the number of elements in the vector. \Hypertarget{classData_a6fce501d019cd3b9661eb37fc803e068}\label{classData_a6fce501d019cd3b9661eb37fc803e068} 
+\index{Data@{Data}!findMaxTripBfs@{findMaxTripBfs}}
+\index{findMaxTripBfs@{findMaxTripBfs}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{findMaxTripBfs()}{findMaxTripBfs()}}
+{\footnotesize\ttfamily int Data\+::find\+Max\+Trip\+Bfs (\begin{DoxyParamCaption}\item[{stack$<$ pair$<$ string, string $>$ $>$ \&}]{pairs,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}}]{source }\end{DoxyParamCaption})}
+
+
+
+Using bfs, calculates the distance of each vertex from source, then finds the farthest vertices and creates pairs for them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pairs} & \\
+\hline
+{\em source} & \\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(N+E), where N is the total number of vertices in the graph and E is the total number of edges in the graph \begin{DoxyReturn}{Returns}
+max number of stops that a trip can have 
+\end{DoxyReturn}
+\Hypertarget{classData_aacf9113fe2b5e85470d911b9b2f8d3ab}\label{classData_aacf9113fe2b5e85470d911b9b2f8d3ab} 
+\index{Data@{Data}!fiterForSmallest@{fiterForSmallest}}
+\index{fiterForSmallest@{fiterForSmallest}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{fiterForSmallest()}{fiterForSmallest()}}
+{\footnotesize\ttfamily void Data\+::fiter\+For\+Smallest (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ string $>$ $>$ \&}]{paths\+Discovered }\end{DoxyParamCaption})}
+
+
+
+filters paths\+Discovered to only have the shortest paths. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em paths\+Discovered} & \\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(n) where n is the number of elements in the vector. \Hypertarget{classData_ac31ef883d40656246b43dfd0f3ff9ac2}\label{classData_ac31ef883d40656246b43dfd0f3ff9ac2} 
+\index{Data@{Data}!flightsOutFromAirportAndDifferentAirlines@{flightsOutFromAirportAndDifferentAirlines}}
+\index{flightsOutFromAirportAndDifferentAirlines@{flightsOutFromAirportAndDifferentAirlines}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{flightsOutFromAirportAndDifferentAirlines()}{flightsOutFromAirportAndDifferentAirlines()}}
+{\footnotesize\ttfamily void Data\+::flights\+Out\+From\+Airport\+And\+Different\+Airlines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays information about flights from a specific airport with different airlines. 
+
+Time complexity\+: O(1) \Hypertarget{classData_ac9bff179fcc8bb26296f284fcadd4d0d}\label{classData_ac9bff179fcc8bb26296f284fcadd4d0d} 
+\index{Data@{Data}!getAirlines@{getAirlines}}
+\index{getAirlines@{getAirlines}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getAirlines()}{getAirlines()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classAirline}{Airline}} \texorpdfstring{$\ast$}{*} $>$ Data\+::get\+Airlines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the map of airlines. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+The unordered map of airlines. 
+\end{DoxyReturn}
+\Hypertarget{classData_ae0bf95d65f16b2fa79563a02d59b5db3}\label{classData_ae0bf95d65f16b2fa79563a02d59b5db3} 
+\index{Data@{Data}!getAirports@{getAirports}}
+\index{getAirports@{getAirports}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getAirports()}{getAirports()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classAirport}{Airport}} \texorpdfstring{$\ast$}{*} $>$ Data\+::get\+Airports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the map of airports. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+The unordered map of airports. 
+\end{DoxyReturn}
+\Hypertarget{classData_a9affad4bd6a466508bdafc8cc8a5d37d}\label{classData_a9affad4bd6a466508bdafc8cc8a5d37d} 
+\index{Data@{Data}!getCities@{getCities}}
+\index{getCities@{getCities}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getCities()}{getCities()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classCity}{City}} \texorpdfstring{$\ast$}{*} $>$ Data\+::get\+Cities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the map of cities. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+The unordered map of cities. 
+\end{DoxyReturn}
+\Hypertarget{classData_a0513bd46f08b1e603128bac9a1bcfddb}\label{classData_a0513bd46f08b1e603128bac9a1bcfddb} 
+\index{Data@{Data}!getCountries@{getCountries}}
+\index{getCountries@{getCountries}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getCountries()}{getCountries()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classCountry}{Country}} \texorpdfstring{$\ast$}{*} $>$ Data\+::get\+Countries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the map of countries. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+The unordered map of countries. 
+\end{DoxyReturn}
+\Hypertarget{classData_a8bee1f26cf2df0ec4b8833c8334d3245}\label{classData_a8bee1f26cf2df0ec4b8833c8334d3245} 
+\index{Data@{Data}!getFilteredVertex@{getFilteredVertex}}
+\index{getFilteredVertex@{getFilteredVertex}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getFilteredVertex()}{getFilteredVertex()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*} $>$ Data\+::get\+Filtered\+Vertex (\begin{DoxyParamCaption}\item[{string}]{mode,  }\item[{string}]{search\+Term }\end{DoxyParamCaption})}
+
+
+
+Retrieves a filtered list of vertices based on the specified mode and search term. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The filter mode, which can be "{}airport\+Code,"{} "{}airport\+Name,"{} "{}city\+Name,"{} or "{}geo\+Coords."{} \\
+\hline
+{\em search\+Term} & The term to search for based on the specified mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of \doxylink{classVertex}{Vertex} pointers representing the filtered vertices.
+\end{DoxyReturn}
+Time complexity\+: O(\+N), where N is the number of vertices in the flight graph. \Hypertarget{classData_a8128669b7bf168be75cb1229ad4bea6f}\label{classData_a8128669b7bf168be75cb1229ad4bea6f} 
+\index{Data@{Data}!getFlightG@{getFlightG}}
+\index{getFlightG@{getFlightG}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getFlightG()}{getFlightG()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ \texorpdfstring{$\ast$}{*} Data\+::get\+FlightG (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the flight graph. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+A pointer to the flight graph. 
+\end{DoxyReturn}
+\Hypertarget{classData_a8b4da6467d1e27df20f619a04d160858}\label{classData_a8b4da6467d1e27df20f619a04d160858} 
+\index{Data@{Data}!getReverseGraph@{getReverseGraph}}
+\index{getReverseGraph@{getReverseGraph}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getReverseGraph()}{getReverseGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ Data\+::get\+Reverse\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns a version of the flight\+Graph with all of its edges reversed 
+
+\begin{DoxyReturn}{Returns}
+reversed -\/ the reversed version of the flight\+Graph
+\end{DoxyReturn}
+Time complexity\+: O(V+E), where V is the total number of vertices of the flight graph and E is the total number of edges in the graph. \Hypertarget{classData_a445c781c41256dae97b2fa8ea836ff35}\label{classData_a445c781c41256dae97b2fa8ea836ff35} 
+\index{Data@{Data}!listAllAirportsAndAvailableFlights@{listAllAirportsAndAvailableFlights}}
+\index{listAllAirportsAndAvailableFlights@{listAllAirportsAndAvailableFlights}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{listAllAirportsAndAvailableFlights()}{listAllAirportsAndAvailableFlights()}}
+{\footnotesize\ttfamily void Data\+::list\+All\+Airports\+And\+Available\+Flights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Lists the number of flights and airports. 
+
+Time complexity\+: O(1) \Hypertarget{classData_ac7c792f892e48178cf5e9f2e817ad9e7}\label{classData_ac7c792f892e48178cf5e9f2e817ad9e7} 
+\index{Data@{Data}!maxTrip@{maxTrip}}
+\index{maxTrip@{maxTrip}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{maxTrip()}{maxTrip()}}
+{\footnotesize\ttfamily int Data\+::max\+Trip (\begin{DoxyParamCaption}\item[{stack$<$ pair$<$ string, string $>$ $>$ \&}]{max\+Trips }\end{DoxyParamCaption})}
+
+
+
+Checks the maximum number of stops between airports using bfs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Trips} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+max\+Dist -\/ the distance of the longest trip(s)
+\end{DoxyReturn}
+Time complexity\+: O(N\texorpdfstring{$\ast$}{*}(N+E)), where N is the total number of vertices in the flight graph and E is total number of edges in the graph. \Hypertarget{classData_a25c049ba5828b4ad6dd9bc3f96f9ac1a}\label{classData_a25c049ba5828b4ad6dd9bc3f96f9ac1a} 
+\index{Data@{Data}!numberOfFlightsPerCity\_Airline@{numberOfFlightsPerCity\_Airline}}
+\index{numberOfFlightsPerCity\_Airline@{numberOfFlightsPerCity\_Airline}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{numberOfFlightsPerCity\_Airline()}{numberOfFlightsPerCity\_Airline()}}
+{\footnotesize\ttfamily void Data\+::number\+Of\+Flights\+Per\+City\+\_\+\+Airline (\begin{DoxyParamCaption}\item[{string}]{city\+\_\+airline }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of flights in a specific city or by a particular airline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em city\+\_\+airline} & The mode of calculation ("{}city"{} or "{}airline"{}).\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(\+N), where N is the number of flights associated with the specified city or airline. \Hypertarget{classData_ac56b850ff6c42c696cf97f5c5fef2e59}\label{classData_ac56b850ff6c42c696cf97f5c5fef2e59} 
+\index{Data@{Data}!numberOfUniqueCountriesReachableAirport\_City@{numberOfUniqueCountriesReachableAirport\_City}}
+\index{numberOfUniqueCountriesReachableAirport\_City@{numberOfUniqueCountriesReachableAirport\_City}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{numberOfUniqueCountriesReachableAirport\_City()}{numberOfUniqueCountriesReachableAirport\_City()}}
+{\footnotesize\ttfamily void Data\+::number\+Of\+Unique\+Countries\+Reachable\+Airport\+\_\+\+City (\begin{DoxyParamCaption}\item[{string}]{airport\+\_\+city }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of unique countries reachable from a given airport or city. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport\+\_\+city} & The mode of calculation ("{}airport"{} or "{}city"{}).\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(\+N), where N is the number of destinations from the specified airport or city. \Hypertarget{classData_a38f5090adfa546a88bf7e3b7b8c2a11d}\label{classData_a38f5090adfa546a88bf7e3b7b8c2a11d} 
+\index{Data@{Data}!optimizeAirlines@{optimizeAirlines}}
+\index{optimizeAirlines@{optimizeAirlines}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{optimizeAirlines()}{optimizeAirlines()}}
+{\footnotesize\ttfamily unordered\+\_\+set$<$ string $>$ Data\+::optimize\+Airlines (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ string $>$ $>$}]{airlines\+Per\+Edge }\end{DoxyParamCaption})}
+
+
+
+Approximation algorithm for minimizing the number of airlines per path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airlines\+Per\+Edge} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return\+Set -\/ set containing the approximation of the minimal set of airlines necessary.
+\end{DoxyReturn}
+Time complexity\+: Worst case scenario, when each flight in the path requires a different airlines, is O(N³) where N is the number of edges/airlines. \Hypertarget{classData_ad62fb7261bdde2d2049f335530824173}\label{classData_ad62fb7261bdde2d2049f335530824173} 
+\index{Data@{Data}!read\_airlines@{read\_airlines}}
+\index{read\_airlines@{read\_airlines}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{read\_airlines()}{read\_airlines()}}
+{\footnotesize\ttfamily void Data\+::read\+\_\+airlines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads airline data from a file and populates relevant data structures. 
+
+Time complexity\+: O(\+N), where N is the number of entries in the airlines.\+csv file. \Hypertarget{classData_a5943b87eadbdfbebac55f4d6d6d5857d}\label{classData_a5943b87eadbdfbebac55f4d6d6d5857d} 
+\index{Data@{Data}!read\_airports@{read\_airports}}
+\index{read\_airports@{read\_airports}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{read\_airports()}{read\_airports()}}
+{\footnotesize\ttfamily void Data\+::read\+\_\+airports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads airport data from a file and populates relevant data structures. 
+
+Time complexity\+: O(\+N), where N is the number of entries in the airports.\+csv file. \Hypertarget{classData_aad27fb0896f1ab1b979c48b79709c71e}\label{classData_aad27fb0896f1ab1b979c48b79709c71e} 
+\index{Data@{Data}!read\_flights@{read\_flights}}
+\index{read\_flights@{read\_flights}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{read\_flights()}{read\_flights()}}
+{\footnotesize\ttfamily void Data\+::read\+\_\+flights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads flight data from a file and populates relevant data structures. 
+
+Time complexity\+: O(\+N), where N is the number of entries in the flights.\+csv file. \Hypertarget{classData_a9ea9f69b58dd8049d9ca2fc7251f60a5}\label{classData_a9ea9f69b58dd8049d9ca2fc7251f60a5} 
+\index{Data@{Data}!reverseDfsBestFlightOption@{reverseDfsBestFlightOption}}
+\index{reverseDfsBestFlightOption@{reverseDfsBestFlightOption}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{reverseDfsBestFlightOption()}{reverseDfsBestFlightOption()}}
+{\footnotesize\ttfamily void Data\+::reverse\+Dfs\+Best\+Flight\+Option (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}}]{source,  }\item[{vector$<$ vector$<$ string $>$ $>$ \&}]{paths\+Discovered,  }\item[{vector$<$ string $>$}]{path }\end{DoxyParamCaption})}
+
+
+
+Traverses the reversed graph starting on the dest node and through nodes of distance one less of the current node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & \\
+\hline
+{\em source} & \\
+\hline
+{\em paths\+Discovered} & \\
+\hline
+{\em path} & \\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(\+E) where E is the number of outgoing edges of source. \Hypertarget{classData_abd673f7c8150b6195b7536ac672dc628}\label{classData_abd673f7c8150b6195b7536ac672dc628} 
+\index{Data@{Data}!reverseDfsBestFlightOptionMin@{reverseDfsBestFlightOptionMin}}
+\index{reverseDfsBestFlightOptionMin@{reverseDfsBestFlightOptionMin}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{reverseDfsBestFlightOptionMin()}{reverseDfsBestFlightOptionMin()}}
+{\footnotesize\ttfamily void Data\+::reverse\+Dfs\+Best\+Flight\+Option\+Min (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ \texorpdfstring{$\ast$}{*}}]{source,  }\item[{vector$<$ pair$<$ vector$<$ string $>$, unordered\+\_\+set$<$ string $>$ $>$ $>$ \&}]{paths\+Discovered,  }\item[{vector$<$ string $>$}]{path,  }\item[{vector$<$ vector$<$ string $>$ $>$}]{airlines\+Per\+Edge }\end{DoxyParamCaption})}
+
+
+
+Traverses the reversed graph starting on the dest node and through nodes of distance one less of the current node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & \\
+\hline
+{\em source} & \\
+\hline
+{\em paths\+Discovered} & \\
+\hline
+{\em path} & \\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(\+E) where E is the number of outgoing edges of source. \Hypertarget{classData_aabbc4138b077506181c8318581437a2a}\label{classData_aabbc4138b077506181c8318581437a2a} 
+\index{Data@{Data}!sumOfDestinationsAirport@{sumOfDestinationsAirport}}
+\index{sumOfDestinationsAirport@{sumOfDestinationsAirport}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{sumOfDestinationsAirport()}{sumOfDestinationsAirport()}}
+{\footnotesize\ttfamily void Data\+::sum\+Of\+Destinations\+Airport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the sum of destinations from a specified airport. 
+
+Time complexity\+: O(\+N), where N is the number of vertices in the flight graph. \Hypertarget{classData_aaac23366a0c2c20e4f316cd409521103}\label{classData_aaac23366a0c2c20e4f316cd409521103} 
+\index{Data@{Data}!sumOfDestinationsAirportWithLayOvers@{sumOfDestinationsAirportWithLayOvers}}
+\index{sumOfDestinationsAirportWithLayOvers@{sumOfDestinationsAirportWithLayOvers}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{sumOfDestinationsAirportWithLayOvers()}{sumOfDestinationsAirportWithLayOvers()}}
+{\footnotesize\ttfamily void Data\+::sum\+Of\+Destinations\+Airport\+With\+Lay\+Overs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the sum of destinations from a specified airport considering layovers. 
+
+Time complexity\+: O(V+E), where V is the number of vertices in the flight graph and E the edges. \Hypertarget{classData_a1e742b55a2f3769ef86daa2f30b4ee22}\label{classData_a1e742b55a2f3769ef86daa2f30b4ee22} 
+\index{Data@{Data}!topKAirports@{topKAirports}}
+\index{topKAirports@{topKAirports}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{topKAirports()}{topKAirports()}}
+{\footnotesize\ttfamily void Data\+::top\+KAirports (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Prints the top K airports with the greatest air traffic capacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & The number of airports to display.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(\+N log K), where N is the total number of vertices in the flight graph. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Data.\+h\item 
+Data.\+cpp\end{DoxyCompactItemize}
